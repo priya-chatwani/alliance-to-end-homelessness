@@ -10,9 +10,6 @@
 * Rogelio Salinas, salin074@stanford.edu
 <img src="/images/IMG_1128.jpg" alt="Rogelio" width="200"/>
 
-## Communication
-We keep in touch via iMessage group chat.
-
 ## Team Skills
 
 | Member  | Skills                                     | Personal Traits    | Desired Growth    | Weaknesses       |
@@ -21,3 +18,12 @@ We keep in touch via iMessage group chat.
 | Rogelio | Java, CSS, app experiece, UI/UX            | Good Presentation | Improve mobile app development | Dislikes programming |
 | Amanda  | React, Java, UI/UX , web dev               | Team Player       | Improve app development        | Distracts easily |
 | Jesseca | React, Java,  UI/UX, web dev, app experiece| Organized         | Better understanding of app development | Distracts easily|
+
+## Project
+We are partnering with the Young Presidents Organization to develop a mobile application their Los Angeles event "The Alliance To End Homelessness". This application will provide a directory of organizations that are working to combat homelessness as well as opportunities to connect with these organizations.
+
+![](/images/Homelessness.png)
+
+## Communication
+We keep in touch via iMessage group chat. In terms of chatting with TAs, we prefer to communicate via email. 
+
