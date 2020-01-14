@@ -1,5 +1,5 @@
 # Smash Mouth Cover Band 
-<img src="/images/Logo.jpeg" alt="logo" width="300"/>
+<img src="/images/Logo.jpeg" alt="logo" width="300" align="middle"/>
 
 ## Team Members
 <ul>
