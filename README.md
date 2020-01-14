@@ -3,13 +3,13 @@
 
 ## Team Members
 <ul>
-  <li>Amanda Jacquez, ajacquez@stanford.edu</li>
+  <li>Amanda Jacquez, <a href="mailto:ajacquez@stanford.edu">ajacquez@stanford.edu</a></li>
   <img src="/images/Amanda.jpeg" alt="Amanda" width="200"/>
-  <li>Jesseca Topete, jtopete@stanford.edu</li>
+  <li>Jesseca Topete, <a href="mailto:jtopete@stanford.edu">jtopete@stanford.edu</a></li>
   <img src="/images/IMG_2132.jpeg" alt="Jesseca" width="200"/>
-  <li>Priya Chatwani, priyac5@stanford.edu</li>
+  <li>Priya Chatwani, <a href="mailto:priyac5@stanford.edu">priyac5@stanford.edu</a></li>
   <img src="/images/Priya.jpg" alt="Priya" width="200"/>
-  <li>Rogelio Salinas, salin074@stanford.edu</li>
+  <li>Rogelio Salinas, <a href="mailto:salin074@stanford.edu">salin074@stanford.edu</a></li>
   <img src="/images/IMG_1128.jpg" alt="Rogelio" width="200"/>
 </ul>
 
