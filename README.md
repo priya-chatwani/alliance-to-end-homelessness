@@ -1,4 +1,5 @@
 # Smash Mouth Cover Band 
+![](/images/Logo.jpeg)
 
 ## Team Members
 * Amanda Jacquez, ajacquez@stanford.edu
