@@ -1,5 +1,5 @@
 # Smash Mouth Cover Band 
-<img src="/images/Logo.jpeg" alt="Logo" width="200"/>
+<img src="/images/Logo.jpeg" alt="Logo" width="300"/>
 
 ## Team Members
 * Amanda Jacquez, ajacquez@stanford.edu
