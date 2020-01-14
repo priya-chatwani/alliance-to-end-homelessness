@@ -2,14 +2,16 @@
 <img src="/images/Logo.jpeg" alt="logo" width="300"/>
 
 ## Team Members
-* Amanda Jacquez, ajacquez@stanford.edu
-<img src="/images/Amanda.jpeg" alt="Amanda" width="200"/>
-* Jesseca Topete, jtopete@stanford.edu
-<img src="/images/IMG_2132.jpeg" alt="Jesseca" width="200"/>
-* Priya Chatwani, priyac5@stanford.edu
-<img src="/images/Priya.jpg" alt="Priya" width="200"/>
-* Rogelio Salinas, salin074@stanford.edu
-<img src="/images/IMG_1128.jpg" alt="Rogelio" width="200"/>
+<ul>
+  <li>Amanda Jacquez, ajacquez@stanford.edu</li>
+  <img src="/images/Amanda.jpeg" alt="Amanda" width="200"/>
+  <li>Jesseca Topete, jtopete@stanford.edu</li>
+  <img src="/images/IMG_2132.jpeg" alt="Jesseca" width="200"/>
+  <li>Priya Chatwani, priyac5@stanford.edu</li>
+  <img src="/images/Priya.jpg" alt="Priya" width="200"/>
+  <li>Rogelio Salinas, salin074@stanford.edu</li>
+  <img src="/images/IMG_1128.jpg" alt="Rogelio" width="200"/>
+</ul>
 
 ## Team Skills
 
