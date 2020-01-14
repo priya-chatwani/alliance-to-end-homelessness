@@ -2,9 +2,13 @@
 
 ## Team Members
 * Amanda Jacquez, ajacquez@stanford.edu
+<img src="/images/Amanda.jpeg" alt="Amanda" width="200"/>
 * Jesseca Topete, jtopete@stanford.edu
+<img src="/images/IMG_2132.jpeg" alt="Jesseca" width="200"/>
 * Priya Chatwani, priyac5@stanford.edu
+<img src="/images/Priya.jpg" alt="Priya" width="200"/>
 * Rogelio Salinas, salin074@stanford.edu
+<img src="/images/IMG_1128.jpg" alt="Rogelio" width="200"/>
 
 ## Communication
 We keep in touch via iMessage group chat.
