@@ -6,5 +6,5 @@
 * Priya Chatwani, priyac5@stanford.edu
 * Rogelio Salinas, salin074@stanford.edu
 
-## Communication: 
+## Communication
 We keep in touch via iMessage group chat.
