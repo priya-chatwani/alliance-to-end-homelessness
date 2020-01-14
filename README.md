@@ -17,4 +17,4 @@ We are partnering with the Young Presidents Organization to develop a mobile app
 ![](/images/Homelessness.png)
 
 ## Communication
-We keep in touch via iMessage group chat.
+We keep in touch via iMessage group chat. In terms of chatting with TAs, we prefer to be reached out to via email. 
