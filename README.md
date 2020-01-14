@@ -1,5 +1,5 @@
 # Smash Mouth Cover Band 
-![](/images/Logo.jpeg)
+<img src="/images/Logo.jpeg" alt="Logo" width="200"/>
 
 ## Team Members
 * Amanda Jacquez, ajacquez@stanford.edu
@@ -13,6 +13,7 @@
 
 ## Project
 We are partnering with the Young Presidents Organization to develop a mobile application their Los Angeles event "The Alliance To End Homelessness". This application will provide a directory of organizations that are working to combat homelessness as well as opportunities to connect with these organizations.
+
 ![](/images/Homelessness.png)
 
 ## Communication
