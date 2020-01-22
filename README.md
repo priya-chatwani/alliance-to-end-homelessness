@@ -10,7 +10,7 @@
   <li>Priya Chatwani, <a href="mailto:priyac5@stanford.edu">priyac5@stanford.edu</a></li>
   <img src="/images/Priya.jpg" alt="Priya" width="200"/>
   <li>Rogelio Salinas, <a href="mailto:salin074@stanford.edu">salin074@stanford.edu</a></li>
-  <img src="/images/IMG_1128.jpg" alt="Rogelio" width="200"/>
+  <img src="/images/IMG_1128.jpg" alt="Rogelio" width="200"/> 
 </ul>
 
 ## Team Skills
