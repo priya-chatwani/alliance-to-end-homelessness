@@ -23,7 +23,7 @@
 | Jesseca | React, Java,  UI/UX, web dev, app experiece| Organized         | Better understanding of app development | Distracts easily|
 
 ## Project
-We are partnering with the Young Presidents Organization to develop a mobile application their Los Angeles event "The Alliance To End Homelessness". This application will provide a directory of organizations that are working to combat homelessness as well as opportunities to connect with these organizations.
+We are partnering with the Young Presidents Organization to develop a mobile application for their Los Angeles event <a href="https://event.ypo.org/events/ypo-alliance-to-end-homelessness/event-summary-144fb476c31d40be8c9c299de1fe4b5c.aspx?RefID=Endhomelessness">"The Alliance To End Homelessness"</a>. This application will provide a directory of organizations that are working to combat homelessness as well as opportunities to connect with these organizations.
 
 ![](/images/Homelessness.png)
 
