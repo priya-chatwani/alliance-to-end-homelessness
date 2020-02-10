@@ -41,6 +41,14 @@ function AgendaTabNavigator(){
   );
 }
 
+AgendaScreen.navigationOptions = {
+  title: 'Agenda',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue,
+  },
+  headerTintColor: '#fff',
+};
+
 export default function AgendaScreen() {
   return (
     <NavigationContainer>
