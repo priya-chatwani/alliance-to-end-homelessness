@@ -2,6 +2,8 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Colors from '../constants/Colors';
 
 import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
@@ -23,14 +25,7 @@ const AgendaStack = createStackNavigator(
 AgendaStack.navigationOptions = {
   tabBarLabel: 'Agenda',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
+    <TabBarIcon focused={focused} name='ios-time'/>
   ),
 };
 
@@ -68,11 +63,20 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
+const tabOptions = {    
+    tabBarOptions: {
+        style:{
+            backgroundColor:Colors.YPOBlue,
+        },
+        showLabel: false, 
+    },
+}
+
 const tabNavigator = createBottomTabNavigator({
   AgendaStack,
   LinksStack,
   SettingsStack,
-});
+}, tabOptions);
 
 tabNavigator.path = '';
 
