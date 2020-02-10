@@ -11,7 +11,7 @@ import {
   View,
 } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import {YPOBlue, YPOGold} from '../constants/Colors';
+import Colors from '../constants/customColors';
 import Day1Agenda from '../screens/Day1Agenda';
 
 const Tab = createMaterialTopTabNavigator();
@@ -21,10 +21,10 @@ function AgendaTabNavigator(){
     <Tab.Navigator
       initialRouteName = "Day1"
       tabBarOptions = {{
-        activeTintColor: '#d69d23',
+        activeTintColor: Colors.YPOGold,
         labelStyle: {fontSize: 12},
-        style: {backgroundColor: '#083050'},
-        indicatorStyle: {backgroundColor: '#d69d23'}
+        style: {backgroundColor: Colors.YPOBlue},
+        indicatorStyle: {backgroundColor: Colors.YPOGold}
       }}
     >
       <Tab.Screen
