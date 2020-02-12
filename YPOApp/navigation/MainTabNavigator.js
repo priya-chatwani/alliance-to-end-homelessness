@@ -2,9 +2,10 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import Colors from '../constants/Colors';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import AgendaScreen from '../screens/AgendaScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -13,28 +14,21 @@ const config = Platform.select({
   default: {},
 });
 
-const HomeStack = createStackNavigator(
+const AgendaStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Agenda: AgendaScreen,
   },
   config
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+AgendaStack.navigationOptions = {
+  tabBarLabel: 'Agenda',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
+    <TabBarIcon focused={focused} name='ios-time'/>
   ),
 };
 
-HomeStack.path = '';
+AgendaStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
@@ -68,11 +62,20 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
+const tabOptions = {    
+    tabBarOptions: {
+        style:{
+            backgroundColor:Colors.YPOBlue,
+        },
+        showLabel: false, 
+    },
+}
+
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
+  AgendaStack,
   LinksStack,
   SettingsStack,
-});
+}, tabOptions);
 
 tabNavigator.path = '';
 

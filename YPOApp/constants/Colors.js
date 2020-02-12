@@ -1,6 +1,4 @@
 const tintColor = '#2f95dc';
-const YPOBlue = '#083050';
-const YPOGold = '#D69D23';
 
 export default {
   tintColor,
@@ -13,4 +11,6 @@ export default {
   warningText: '#666804',
   noticeBackground: tintColor,
   noticeText: '#fff',
+  YPOBlue: '#083050',
+  YPOGold: '#d69d23',
 };
