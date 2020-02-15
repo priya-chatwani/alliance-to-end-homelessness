@@ -1,11 +1,22 @@
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
+import * as firebase from 'firebase';
 import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import AppNavigator from './navigation/AppNavigator';
+
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBoVrsY6j8V9tCk6Goez5UWT-Mkm4UhwZI",
+  authDomain: "homelessness-app-1013e.firebaseapp.com",
+  databaseURL: "https://homelessness-app-1013e.firebaseio.com/",
+  storageBucket: "gs://homelessness-app-1013e.appspot.com"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
