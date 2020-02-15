@@ -8,17 +8,19 @@ import { Ionicons } from '@expo/vector-icons';
 
 import AppNavigator from './navigation/AppNavigator';
 
-// Initialize Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyBoVrsY6j8V9tCk6Goez5UWT-Mkm4UhwZI",
-  authDomain: "homelessness-app-1013e.firebaseapp.com",
-  databaseURL: "https://homelessness-app-1013e.firebaseio.com/",
-  storageBucket: "gs://homelessness-app-1013e.appspot.com"
-};
-
-firebase.initializeApp(firebaseConfig);
-
 export default function App(props) {
+  // Initialize Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyBoVrsY6j8V9tCk6Goez5UWT-Mkm4UhwZI",
+    authDomain: "homelessness-app-1013e.firebaseapp.com",
+    databaseURL: "https://homelessness-app-1013e.firebaseio.com/",
+    storageBucket: "gs://homelessness-app-1013e.appspot.com"
+  };
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
   if (!isLoadingComplete && !props.skipLoadingScreen) {
@@ -40,6 +42,7 @@ export default function App(props) {
 }
 
 async function loadResourcesAsync() {
+
   await Promise.all([
     Asset.loadAsync([
       require('./assets/images/robot-dev.png'),

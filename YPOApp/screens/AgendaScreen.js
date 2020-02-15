@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
+import * as firebase from 'firebase';
 import {
   Image,
   Platform,
@@ -13,6 +14,16 @@ import {
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Colors from '../constants/Colors';
 import Day1Agenda from '../screens/Day1Agenda';
+
+// Get a reference to the database service
+//var database = firebase.database();
+
+var day = 'Friday';
+function readUserData() {
+  firebase.database().ref('Agenda/' + day + '/').once('value', function (snapshot) {
+    console.log(snapshot.val())
+  });
+}
 
 const Tab = createMaterialTopTabNavigator();
 
