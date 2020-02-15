@@ -31,11 +31,14 @@ export default function LoginScreen({ navigation }){
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>
-				YPO Alliance to end Homelessness
+				YPO Alliance to End Homelessness
 			</Text>
-			<TextInput clearTextOnFocus={true} style={styles.code} onChangeText={(text) => setCode(text)} value={code} placeholder="Text Input For Password" secureTextEntry={true}/>
-			<Button title={"Submit"} onPress={onPress} buttonStyle={styles.button} titleStyle={styles.buttonTitle} />
-			<Image source={'../assets/images/ypo_icon.jpg'}/>
+			<TextInput clearTextOnFocus={true} style={styles.code} onChangeText={(text) => setCode(text)} value={code} placeholder="access code" secureTextEntry={true}/>
+			<View style={styles.buttonContainer}>
+				<Button title={"Submit"} onPress={onPress} buttonStyle={styles.button} titleStyle={styles.buttonTitle} />
+			</View>
+			<Image source={{uri:'https://custom.cvent.com/ECA7D751B15B4F01AD4A1E6FF113D8BA/pix/85010edf6c2f470c9343e816a8ede655.jpg'}} width={146} height={56}/>
+
 		</View>
 
 	);
@@ -49,9 +52,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonContainer:{
+  	display: 'flex',
+  	flexDirection: 'row',
+  	alignItems: 'flex-end',
+  },
   title: {
-  	fontSize: 32,
+  	fontSize: 36,
   	color: Colors.YPOBlue,
+  	textAlign: 'center',
+  	fontWeight: 'bold',
   },
   logo: {
   	width: 146,
@@ -59,24 +69,22 @@ const styles = StyleSheet.create({
 
   },
   code: {
-  	height: 28,
-  	width: 308,
+  	height: 40,
+  	width: 300,
   	borderColor: 'gray',
   	paddingLeft: 5,
-  	marginTop: 50,
+  	marginTop: 40,
   	borderWidth: 1,
   	borderRadius: 20,
   },
   button: {
   	marginTop: 10,
-  	paddingTop: 2,
-  	paddingBottom: 2,
+  	paddingTop: 4,
+  	paddingBottom: 4,
   	backgroundColor: Colors.YPOGold,
   	borderRadius: 20,
-  	alignItems: 'center', 
-  	justifyContent: 'center',
   },
   buttonTitle: {
-  	fontSize: 12,
+  	fontSize: 14,
   }
 });
