@@ -1,6 +1,6 @@
 import * as WebBrowser from 'expo-web-browser';
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
+import React, {useState} from 'react';
 import * as firebase from 'firebase';
 import {
   Image,
@@ -15,19 +15,26 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import Colors from '../constants/Colors';
 import Day1Agenda from '../screens/Day1Agenda';
 
-// Get a reference to the database service
-//var database = firebase.database();
-
-var day = 'Friday';
-function readUserData() {
-  firebase.database().ref('Agenda/' + day + '/').once('value', function (snapshot) {
-    console.log(snapshot.val())
-  });
-}
-
 const Tab = createMaterialTopTabNavigator();
 
 function AgendaTabNavigator(){
+  
+  var ref = firebase.database().ref('Agenda/Friday');
+  ref.once('value', function(snapshot) {
+      snapshot.forEach(function(eventSnapshot) {
+        //console.log(eventSnapshot.val());
+        var start = eventSnapshot.val().Start;
+        var end = eventSnapshot.val().End;
+        var title = eventSnapshot.val().Title;
+        var location = eventSnapshot.val().Location;
+        var notes = eventSnapshot.val().Notes;
+        var isBreakout = eventSnapshot.val().Breakout;
+        var keynote = eventSnapshot.val().Keynote;
+        var moderators = eventSnapshot.val().Moderators;
+        var speakers = eventSnapshot.val().Speakers;
+      });
+  });
+
   return (
     <Tab.Navigator
       initialRouteName = "Day1"
