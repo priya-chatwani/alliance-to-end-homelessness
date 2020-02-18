@@ -6,7 +6,7 @@ import Colors from '../constants/Colors';
 
 import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
-import LinksScreen from '../screens/LinksScreen';
+import DirectoryScreen from '../screens/DirectoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const config = Platform.select({
@@ -30,21 +30,37 @@ AgendaStack.navigationOptions = {
 
 AgendaStack.path = '';
 
-const LinksStack = createStackNavigator(
+const DirectoryStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Directory: DirectoryScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+DirectoryStack.navigationOptions = {
+  tabBarLabel: 'Directory',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
 };
 
-LinksStack.path = '';
+DirectoryStack.path = '';
+
+// const LinksStack = createStackNavigator(
+//   {
+//     Links: LinksScreen,
+//   },
+//   config
+// );
+
+// LinksStack.navigationOptions = {
+//   tabBarLabel: 'Links',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+//   ),
+// };
+
+// LinksStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
@@ -73,7 +89,7 @@ const tabOptions = {
 
 const tabNavigator = createBottomTabNavigator({
   AgendaStack,
-  LinksStack,
+  DirectoryStack,
   SettingsStack,
 }, tabOptions);
 
