@@ -36,11 +36,16 @@ export default function Organizations() {
     );
   });
 
+  const [search, setSearch] = useState('');
+
   return (
     <View style={{ flex: 1}}>
       <SearchBar
+        showLoading
         platform="ios"
         placeholder='Search' 
+        value={search}
+        onChangeText={(text) => setSearch(text)}
       />
       <ScrollView>
         {OrganizationRender}
