@@ -2,7 +2,7 @@ import * as WebBrowser from 'expo-web-browser';
 import React, { useState, useEffect } from 'react';
 import { SearchBar } from 'react-native-elements';
 
-import Attendee from '../components/Attendee';
+import Organization from '../components/Organization';
 
 import * as firebase from 'firebase';
 import {
@@ -15,24 +15,24 @@ import {
   View,
 } from 'react-native';
 
-export default function Attendees() {
+export default function Organizations() {
 
-  const [attendeeList, setattendeeList] = useState([]);
+  const [organizationList, setOrganizationList] = useState([]);
   
   useEffect(() => {
-    var query = firebase.database().ref('Attendees');
+    var query = firebase.database().ref('Organizations');
     query.once('value', function(snapshot) {
-        let tempAttendeeList = [];
+        let tempOrganizationList = [];
         snapshot.forEach(function(childSnapshot) {
-          tempAttendeeList.push(childSnapshot.val());
+          tempOrganizationList.push(childSnapshot.val());
         });
-        setattendeeList(tempAttendeeList)
+        setOrganizationList(tempOrganizationList)
     });
   },[]);
 
-  const AttendeeRender = attendeeList.map((attendee, i) => {
+  const OrganizationRender = organizationList.map((organization, i) => {
     return (
-      <Attendee key={i} attendee={attendee}/>
+      <Organization key={i} organization={organization}/>
     );
   });
 
@@ -43,12 +43,12 @@ export default function Attendees() {
       <SearchBar
         showLoading
         platform="ios"
-        placeholder='Search'
+        placeholder='Search' 
         value={search}
         onChangeText={(text) => setSearch(text)}
       />
       <ScrollView>
-        {AttendeeRender}
+        {OrganizationRender}
       </ScrollView>
     </View>
   );

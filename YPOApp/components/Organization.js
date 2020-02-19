@@ -12,15 +12,15 @@ import {
 
 import Colors from '../constants/Colors.js'
 
-export default function Attendee(Props){
+export default function Organization(Props){
 	return (
 		<View>
 			<View style={styles.item}>
 				<Text style={styles.organization}> 
-					{Props.attendee.Organization}
+					{Props.organization.Organization}
 				</Text>
 				<Text style={styles.contact}>
-					{Props.attendee.Contact}
+					{Props.organization.Contact}
 				</Text>
 			</View>
 			<Divider style={styles.divider} />
@@ -41,11 +41,10 @@ const styles = StyleSheet.create({
 		flex: 2,
 		color: '#fff',
 		marginLeft: 10,
-		marginRight: 15,
+		marginRight: 50,
 	}, 
 	contact: {
 		color: '#fff',
-		marginRight: 10,
 		flexWrap: 'wrap',
 		flex: 3,
 	}, 

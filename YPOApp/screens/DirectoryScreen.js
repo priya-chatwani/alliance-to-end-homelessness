@@ -13,6 +13,7 @@ import {
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Colors from '../constants/Colors';
 import Attendees from '../screens/Attendees';
+import Organizations from '../screens/Organizations';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -34,7 +35,7 @@ function DirectoryTabNavigator() {
     />
     <Tab.Screen
       name="Organizations"
-      component={Attendees}
+      component={Organizations}
       options={{tabBarLabel:"Organizations"}}
     />
     </Tab.Navigator>
