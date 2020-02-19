@@ -1,20 +1,47 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
+import Event from '../components/Event';
+
+import * as firebase from 'firebase';
+
 import {
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
+  ActivityIndicator,
 } from 'react-native';
 
 
 export default function Day1Agenda(){
+
+const [agendaList, setAgendaList] = React.useState([]);
+
+React.useEffect(() => {
+  var query = firebase.database().ref('Agenda/Friday');
+  query.once('value', function(snapshot) {
+      let tempAgendaList = [];
+      snapshot.forEach(function(childSnapshot) {
+        //console.log(childSnapshot.val())
+        //setAgendaList(agendaList.concat([childSnapshot.val()]))
+        tempAgendaList.push(childSnapshot.val());
+      });
+      setAgendaList(tempAgendaList)
+  });
+},[]);
+
+
+
+  const Day1Render = agendaList.map((event, i) => {
+    return (
+      <Event key={i} event={event}/>
+    );
+  });
+
 	return (
-		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      		<Text>Agenda</Text>
-    	</View>
+		<ScrollView style={{ flex: 1}}>
+        {Day1Render}
+    </ScrollView>
 	);
 }

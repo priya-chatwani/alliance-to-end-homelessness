@@ -1,7 +1,6 @@
 import * as WebBrowser from 'expo-web-browser';
 import { NavigationContainer } from '@react-navigation/native';
 import React, {useState} from 'react';
-import * as firebase from 'firebase';
 import {
   Image,
   Platform,
@@ -18,22 +17,6 @@ import Day1Agenda from '../screens/Day1Agenda';
 const Tab = createMaterialTopTabNavigator();
 
 function AgendaTabNavigator(){
-  
-  var ref = firebase.database().ref('Agenda/Friday');
-  ref.once('value', function(snapshot) {
-      snapshot.forEach(function(eventSnapshot) {
-        //console.log(eventSnapshot.val());
-        var start = eventSnapshot.val().Start;
-        var end = eventSnapshot.val().End;
-        var title = eventSnapshot.val().Title;
-        var location = eventSnapshot.val().Location;
-        var notes = eventSnapshot.val().Notes;
-        var isBreakout = eventSnapshot.val().Breakout;
-        var keynote = eventSnapshot.val().Keynote;
-        var moderators = eventSnapshot.val().Moderators;
-        var speakers = eventSnapshot.val().Speakers;
-      });
-  });
 
   return (
     <Tab.Navigator
