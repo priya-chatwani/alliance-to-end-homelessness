@@ -14,17 +14,15 @@ import {
 } from 'react-native';
 
 
-export default function Day1Agenda(){
+export default function Day2Agenda(){
 
 const [agendaList, setAgendaList] = React.useState([]);
 
 React.useEffect(() => {
-  var query = firebase.database().ref('Agenda/Friday');
+  var query = firebase.database().ref('Agenda/Saturday');
   query.once('value', function(snapshot) {
       let tempAgendaList = [];
       snapshot.forEach(function(childSnapshot) {
-        //console.log(childSnapshot.val())
-        //setAgendaList(agendaList.concat([childSnapshot.val()]))
         tempAgendaList.push(childSnapshot.val());
       });
       setAgendaList(tempAgendaList)
@@ -33,7 +31,7 @@ React.useEffect(() => {
 
 
 
-  const Day1Render = agendaList.map((event, i) => {
+  const Day2Render = agendaList.map((event, i) => {
     return (
       <Event key={i} event={event}/>
     );
@@ -41,7 +39,7 @@ React.useEffect(() => {
 
 	return (
 		<ScrollView style={{ flex: 1}}>
-        {Day1Render}
+        {Day2Render}
     </ScrollView>
 	);
 }
