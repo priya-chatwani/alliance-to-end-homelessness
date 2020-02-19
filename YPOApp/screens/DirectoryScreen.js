@@ -16,7 +16,7 @@ import Attendees from '../screens/Attendees';
 
 const Tab = createMaterialTopTabNavigator();
 
-function DirectoryTabNavigator(){
+function DirectoryTabNavigator() {
   return (
     <Tab.Navigator
       initialRouteName = "Attendees"
@@ -27,16 +27,16 @@ function DirectoryTabNavigator(){
         indicatorStyle: {backgroundColor: Colors.YPOGold}
       }}
     >
-      <Tab.Screen
-        name="Attendees"
-        component={Attendees}
-        options={{tabBarLabel:"Attendees"}}
-      />
-      <Tab.Screen
-        name="Organizations"
-        component={Attendees}
-        options={{tabBarLabel:"Organizations"}}
-      />
+    <Tab.Screen
+      name="Attendees"
+      component={Attendees}
+      options={{tabBarLabel:"Attendees"}}
+    />
+    <Tab.Screen
+      name="Organizations"
+      component={Attendees}
+      options={{tabBarLabel:"Organizations"}}
+    />
     </Tab.Navigator>
   );
 }
