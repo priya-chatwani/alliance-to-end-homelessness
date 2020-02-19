@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem } from 'react-native-elements';
+import { ListItem, Divider } from 'react-native-elements';
 import {
   Image,
   ScrollView,
@@ -10,15 +10,20 @@ import {
   View,
 } from 'react-native';
 
+import Colors from '../constants/Colors.js'
+
 export default function Event(Props){
 	return (
-		<View style={styles.item}>
-			<Text stile={styles.time}> 
-				{Props.event.Start + "-" + Props.event.End}
-			</Text>
-			<Text style={styles.title}>
-				{Props.event.Title}
-			</Text>
+		<View>
+			<View style={styles.item}>
+				<Text style={styles.time}> 
+					{Props.event.Start + "-" + Props.event.End}
+				</Text>
+				<Text style={styles.title}>
+					{Props.event.Title}
+				</Text>
+			</View>
+			<Divider style={styles.divider} />
 		</View>
 
 	);
@@ -26,17 +31,28 @@ export default function Event(Props){
 
 const styles = StyleSheet.create({
 	item: {
+		backgroundColor: '#44779F',
+		height: 71,
 		display: 'flex',
 		flexDirection: 'row',
-		marginBottom: 10,
+		alignItems: 'center',
 	}, 
 	title: {
-		marginLeft: 10,
+		color: '#fff',
+		marginRight: 10,
 		flexWrap: 'wrap',
-		flex: 1,
+		flex: 3,
 	}, 
 	time: {
+			flexWrap: 'wrap',
+			flex: 2,
+			color: '#fff',
 			marginLeft: 10,
-			marginRight: 10,
+			marginRight: 15,
 	},
+	divider: {
+		paddingLeft: 5,
+		paddingRight: 5,
+		backgroundColor: '#888888',
+	}
 });

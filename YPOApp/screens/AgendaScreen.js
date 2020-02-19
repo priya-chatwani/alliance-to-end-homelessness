@@ -13,6 +13,7 @@ import {
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Colors from '../constants/Colors';
 import Day1Agenda from '../screens/Day1Agenda';
+import Day2Agenda from '../screens/Day2Agenda';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -35,7 +36,7 @@ function AgendaTabNavigator(){
       />
       <Tab.Screen
         name="Day2"
-        component={Day1Agenda}
+        component={Day2Agenda}
         options={{tabBarLabel:"Sat, May 2"}}
       />
     </Tab.Navigator>
