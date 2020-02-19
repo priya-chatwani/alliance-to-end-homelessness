@@ -15,15 +15,17 @@ import {
 export default function Attendees() {
 
   const [attendeeList, setattendeeList] = useState([]);
-  var ref = firebase.database().ref('Attendees');
-
+  
   useEffect(() => {
-    ref.once('value', function(snapshot) {
-      return snapshot.forEach(function(attendeeSnapshot) {
-        setattendeeList(attendeeList => [...attendeeList, attendeeSnapshot.val()])
-      });
+    var query = firebase.database().ref('Attendees');
+    query.once('value', function(snapshot) {
+        let tempAttendeeList = [];
+        snapshot.forEach(function(childSnapshot) {
+          tempAttendeeList.push(childSnapshot.val());
+        });
+        setattendeeList(tempAttendeeList)
     });
-  });  
+  },[]);
 
   return (
     <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
