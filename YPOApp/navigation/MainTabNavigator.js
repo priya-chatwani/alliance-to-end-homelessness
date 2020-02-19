@@ -40,7 +40,7 @@ const DirectoryStack = createStackNavigator(
 DirectoryStack.navigationOptions = {
   tabBarLabel: 'Directory',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-people' : 'md-people'} />
   ),
 };
 
