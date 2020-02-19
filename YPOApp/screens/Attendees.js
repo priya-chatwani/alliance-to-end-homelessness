@@ -36,12 +36,19 @@ export default function Attendees() {
     );
   });
 
+  const [search, setSearch] = useState('');
+
+  const handleChange = val => {
+    setSearch(val);
+  }
+
   return (
     <View style={{ flex: 1}}>
       <SearchBar
-        showLoading
         platform="ios"
-        placeholder='Search' 
+        placeholder='Search'
+        value={search}
+        onChange={(e) => handleChange(e.target.value)}
       />
       <ScrollView>
         {AttendeeRender}
