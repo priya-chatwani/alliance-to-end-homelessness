@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem, Divider } from 'react-native-elements';
+import { ListItem, Divider, Button } from 'react-native-elements';
 import {
   Image,
   ScrollView,
@@ -10,11 +10,49 @@ import {
   View,
 } from 'react-native';
 
+import { Ionicons } from '@expo/vector-icons';
+
+
 import Colors from '../constants/Colors.js'
 
 export default function Event(Props){
+	const dropdown = (
+		<Ionicons
+      name={'md-arrow-dropdown'}
+      size={28}
+      color={'#fff'}
+    />
+	);
+
+	const dropup = (
+		<Ionicons
+    	name={'md-arrow-dropup'}
+    	size={28}
+     	color={'#fff'}
+    />
+	);
+
+	const [expanded, setExpanded] = React.useState(false);
+	const [buttonIcon, setButtonIcon] = React.useState(dropdown);
+
+	const onPress = () => {
+		if(expanded){
+			setExpanded(false);
+			setButtonIcon(dropdown);
+		}else{
+			setExpanded(true);
+			setButtonIcon(dropup);
+		}
+	};
+
+	const Speakers = (
+		<Text style={styles.speakers}>
+			{"Speakers: " + Props.event.Speakers}
+		</Text>
+	);
+
 	return (
-		<View>
+		<View >
 			<View style={styles.item}>
 				<Text style={styles.time}> 
 					{Props.event.Start + "-" + Props.event.End}
@@ -22,7 +60,9 @@ export default function Event(Props){
 				<Text style={styles.title}>
 					{Props.event.Title}
 				</Text>
+				{(Props.event.Speakers.length != 0) ? <Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
 			</View>
+			{(expanded) ? Speakers : null}
 			<Divider style={styles.divider} />
 		</View>
 
@@ -36,7 +76,7 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
-	}, 
+	},
 	title: {
 		color: '#fff',
 		marginRight: 10,
@@ -54,5 +94,16 @@ const styles = StyleSheet.create({
 		paddingLeft: 5,
 		paddingRight: 5,
 		backgroundColor: '#888888',
+	}, 
+	button: {
+		flex: 1, 
+	},
+	speakers: {
+		paddingLeft: 10, 
+		paddingTop: 5,
+		paddingBottom: 10,
+		backgroundColor: '#44779F',
+		color: '#fff',
+
 	}
 });
