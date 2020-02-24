@@ -29,14 +29,14 @@ function DirectoryTabNavigator() {
       }}
     >
     <Tab.Screen
-      name="Attendees"
-      component={Attendees}
-      options={{tabBarLabel:"Attendees"}}
-    />
-    <Tab.Screen
       name="Organizations"
       component={Organizations}
       options={{tabBarLabel:"Organizations"}}
+    />
+    <Tab.Screen
+      name="Attendees"
+      component={Attendees}
+      options={{tabBarLabel:"Attendees"}}
     />
     </Tab.Navigator>
   );
