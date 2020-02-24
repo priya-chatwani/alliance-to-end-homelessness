@@ -90,8 +90,7 @@ const styles = StyleSheet.create({
 		marginLeft: 30,
 	}, 
 	info: {
-		paddingLeft: 30, 
-		paddingTop: 5,
+		paddingLeft: 40, 
 		paddingBottom: 10,
 		backgroundColor: '#fff',
 		color: '#44779F',
