@@ -34,9 +34,9 @@ React.useEffect(() => {
 
 
   const Day1Render = agendaList.map((event, i) => {
-    return  (event.Breakout == 'FALSE') ? (
+    return  (
       <Event key={i} event={event}/>
-    ) : null;
+    );
   });
 
   console.log(Day1Render);

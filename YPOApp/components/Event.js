@@ -45,16 +45,36 @@ export default function Event(Props){
 		}
 	};
 
-	const Speakers = (
-		<Text style={styles.speakers}>
-			{"Speakers: " + Props.event.Speakers}
-		</Text>
+	const speakersList = (Props.event.Speakers) ? Props.event.Speakers.split(';') : [];
+
+	const Speakers = speakersList.map((speaker) => {
+			return (
+				<Button onPress={onPress} type={'clear'} title={speaker} titleStyle={styles.speakersName}/>
+			);		
+		}
+		
 	);
 
 	const Location = (
-		<Text style={styles.speakers}>
+		<Text style={styles.expanded}>
 			{"Location: " + Props.event.Location}
 		</Text>
+	);
+
+	const Moderators = (
+		<Text style={styles.expanded}>
+			{"Moderators: " + Props.event.Moderators}
+		</Text>
+
+	);
+
+	const SpeakersRendered = (
+		<View style={styles.speakerButton}>
+			<Text style={styles.expanded}> 
+				{"Speakers: "}
+			</Text>
+			{ Speakers}
+		</View>
 	);
 
 	return (
@@ -66,10 +86,11 @@ export default function Event(Props){
 				<Text style={styles.title}>
 					{Props.event.Title}
 				</Text>
-				{(Props.event.Speakers.length != 0) ? <Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
+				{(Props.event.Location.length != 0) ? <Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
 			</View>
 			{(expanded) ? Location : null}
-			{(expanded) ? Speakers : null}
+			{(expanded && Props.event.Speakers.length != 0) ? SpeakersRendered : null}
+			{(expanded && Props.event.Moderators.length != 0) ? Moderators : null}
 			<Divider style={styles.divider} />
 		</View>
 
@@ -79,6 +100,7 @@ export default function Event(Props){
 const styles = StyleSheet.create({
 	item: {
 		backgroundColor: '#44779F',
+		padding: 5,
 		height: 71,
 		display: 'flex',
 		flexDirection: 'row',
@@ -105,12 +127,22 @@ const styles = StyleSheet.create({
 	button: {
 		flex: 1, 
 	},
-	speakers: {
-		paddingLeft: 10, 
-		paddingTop: 5,
-		paddingBottom: 10,
+	expanded: { 
+		padding: 10,
 		backgroundColor: '#44779F',
 		color: '#fff',
+	},
+	speakersName: {
+		color: '#fff',
+		fontSize: 14,
+		textDecorationLine: 'underline',
+		 
+	},
+	speakerButton: {
+		backgroundColor: '#44779F',
+		flexDirection: 'row', 
+		flexWrap: 'wrap',
+		alignItems: 'center',
 
 	}
 });
