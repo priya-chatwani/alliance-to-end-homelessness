@@ -34,14 +34,16 @@ React.useEffect(() => {
 
 
   const Day1Render = agendaList.map((event, i) => {
-    return (
+    return  (event.Breakout == 'FALSE') ? (
       <Event key={i} event={event}/>
-    );
+    ) : null;
   });
+
+  console.log(Day1Render);
 
 	return (
 		<ScrollView style={{ flex: 1}}>
-        {Day1Render}
+        {Day1Render.filter(Boolean)}
     </ScrollView>
 	);
 }

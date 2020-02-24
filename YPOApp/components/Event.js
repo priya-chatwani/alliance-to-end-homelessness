@@ -51,6 +51,12 @@ export default function Event(Props){
 		</Text>
 	);
 
+	const Location = (
+		<Text style={styles.speakers}>
+			{"Location: " + Props.event.Location}
+		</Text>
+	);
+
 	return (
 		<View >
 			<View style={styles.item}>
@@ -62,6 +68,7 @@ export default function Event(Props){
 				</Text>
 				{(Props.event.Speakers.length != 0) ? <Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
 			</View>
+			{(expanded) ? Location : null}
 			{(expanded) ? Speakers : null}
 			<Divider style={styles.divider} />
 		</View>
