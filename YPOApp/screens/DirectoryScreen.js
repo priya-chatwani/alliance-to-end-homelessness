@@ -52,8 +52,6 @@ DirectoryScreen.navigationOptions = {
 
 export default function DirectoryScreen() {
   return (
-    <NavigationContainer>
-      <DirectoryTabNavigator />
-    </NavigationContainer>
+    <DirectoryTabNavigator />
   );
 }

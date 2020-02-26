@@ -13,28 +13,28 @@ import {
 
 import * as firebase from 'firebase';
 
-
-
 export default function SpeakerBio(Props){
-  const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [website, setWebsite] = useState("");
+  const speaker = Props.navigation.getParam('speaker');
+
+  const firebaseRoute = 'Speakers/' + speaker
 
   React.useEffect(() => {
-    var query = firebase.database().ref('Speakers/0');
+    var query = firebase.database().ref(firebaseRoute);
     query.once('value', function(snapshot) {
-        var speaker = snapshot.val()
-        console.log(speaker)
-        setName(speaker.Speaker);
-        setBio(speaker.Bio);
-        setWebsite(speaker.Website)
+        if (snapshot.exists()){
+          var speaker = snapshot.val()
+          setBio(speaker.Bio);
+          setWebsite(speaker.Website)
+        }
     });
   },[]);
 
   return (
     <View style={styles.container}>
       <Text style={styles.name}>
-        {name}
+        {speaker}
       </Text>
       <Text style={styles.bio}>
         {bio}

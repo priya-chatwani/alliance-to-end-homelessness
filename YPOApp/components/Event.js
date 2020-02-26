@@ -51,9 +51,9 @@ export default function Event(Props){
 
 	const speakersList = (Props.event.Speakers) ? Props.event.Speakers.split(';') : [];
 
-	const Speakers = speakersList.map((speaker) => {
+	const Speakers = speakersList.map((speaker, i) => {
 			return (
-				<Button onPress={Props.onSpeakerSelect} type={'clear'} title={speaker} titleStyle={styles.speakersName}/>
+				<Button key ={i} onPress={() => Props.onSpeakerSelect(speaker)} type={'clear'} title={speaker} titleStyle={styles.speakersName}/>
 			);
 		}
 
@@ -77,12 +77,12 @@ export default function Event(Props){
 			<Text style={styles.expanded}>
 				{"Speakers: "}
 			</Text>
-			{ Speakers}
+			{Speakers}
 		</View>
 	);
 
 	return (
-		<View >
+		<View style = {styles.container}>
 			<View style={styles.item}>
 				<Text style={styles.time}>
 					{Props.event.Start + "-" + Props.event.End}
@@ -93,8 +93,8 @@ export default function Event(Props){
 				{(Props.event.Location.length != 0) ? <Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
 			</View>
 			{(expanded) ? Location : null}
-			{(expanded && Props.event.Speakers) ? SpeakersRendered : null}
-			{(expanded && Props.event.Moderators) ? Moderators : null}
+			{(expanded && Props.event.Speakers.length != 0) ? SpeakersRendered : null}
+			{(expanded && Props.event.Moderators.length != 0) ? Moderators : null}
 			<Divider style={styles.divider} />
 		</View>
 
@@ -102,8 +102,11 @@ export default function Event(Props){
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#44779F',
+    padding: 5,
+  },
 	item: {
-		backgroundColor: '#44779F',
 		padding: 5,
 		height: 71,
 		display: 'flex',
@@ -120,12 +123,9 @@ const styles = StyleSheet.create({
 			flexWrap: 'wrap',
 			flex: 2,
 			color: '#fff',
-			marginLeft: 10,
 			marginRight: 15,
 	},
 	divider: {
-		paddingLeft: 5,
-		paddingRight: 5,
 		backgroundColor: '#888888',
 	},
 	button: {

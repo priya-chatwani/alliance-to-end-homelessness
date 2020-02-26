@@ -29,6 +29,12 @@ function AgendaTabNavigator(Props){
     );
   }
 
+  const Day2 = () => {
+    return (
+      <Day2Agenda onSpeakerSelecet={Props.onSpeakerSelect}/>
+    );
+  }
+
   return (
     <Tab.Navigator
       initialRouteName = "Day1"
@@ -46,7 +52,7 @@ function AgendaTabNavigator(Props){
       />
       <Tab.Screen
         name="Day2"
-        component={Day2Agenda}
+        component={Day2}
         options={{tabBarLabel:"Sat, May 2"}}
       />
     </Tab.Navigator>
@@ -62,8 +68,8 @@ AgendaScreen.navigationOptions = {
 };
 
 export default function AgendaScreen({navigation}) {
-  const onSpeakerSelect = () => {
-    navigation.navigate('SpeakerBio');
+  const onSpeakerSelect = (speaker) => {
+    navigation.navigate('SpeakerBio', {speaker: speaker});
   }
   return (
     <AgendaTabNavigator onSpeakerSelect={onSpeakerSelect}/>

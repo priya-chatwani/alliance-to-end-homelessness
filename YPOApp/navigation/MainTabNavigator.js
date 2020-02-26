@@ -18,6 +18,14 @@ const config = Platform.select({
   default: {},
 });
 
+SpeakerBio.navigationOptions = {
+  title: 'Speaker Bio',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue,
+  },
+  headerTintColor: '#fff',
+};
+
 const AgendaStack = createStackNavigator(
   {
     Agenda: AgendaScreen,
