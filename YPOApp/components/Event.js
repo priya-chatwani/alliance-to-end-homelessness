@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { ListItem, Divider, Button } from 'react-native-elements';
+
 import {
   Image,
   ScrollView,
@@ -12,10 +13,13 @@ import {
 
 import { Ionicons } from '@expo/vector-icons';
 
+import SpeakerBio from '../screens/SpeakerBio';
+
 
 import Colors from '../constants/Colors.js'
 
 export default function Event(Props){
+
 	const dropdown = (
 		<Ionicons
       name={'md-arrow-dropdown'}
@@ -49,10 +53,10 @@ export default function Event(Props){
 
 	const Speakers = speakersList.map((speaker) => {
 			return (
-				<Button onPress={onPress} type={'clear'} title={speaker} titleStyle={styles.speakersName}/>
-			);		
+				<Button onPress={Props.onSpeakerSelect} type={'clear'} title={speaker} titleStyle={styles.speakersName}/>
+			);
 		}
-		
+
 	);
 
 	const Location = (
@@ -70,7 +74,7 @@ export default function Event(Props){
 
 	const SpeakersRendered = (
 		<View style={styles.speakerButton}>
-			<Text style={styles.expanded}> 
+			<Text style={styles.expanded}>
 				{"Speakers: "}
 			</Text>
 			{ Speakers}
@@ -80,7 +84,7 @@ export default function Event(Props){
 	return (
 		<View >
 			<View style={styles.item}>
-				<Text style={styles.time}> 
+				<Text style={styles.time}>
 					{Props.event.Start + "-" + Props.event.End}
 				</Text>
 				<Text style={styles.title}>
@@ -89,8 +93,8 @@ export default function Event(Props){
 				{(Props.event.Location.length != 0) ? <Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
 			</View>
 			{(expanded) ? Location : null}
-			{(expanded && Props.event.Speakers.length != 0) ? SpeakersRendered : null}
-			{(expanded && Props.event.Moderators.length != 0) ? Moderators : null}
+			{(expanded && Props.event.Speakers) ? SpeakersRendered : null}
+			{(expanded && Props.event.Moderators) ? Moderators : null}
 			<Divider style={styles.divider} />
 		</View>
 
@@ -111,7 +115,7 @@ const styles = StyleSheet.create({
 		marginRight: 10,
 		flexWrap: 'wrap',
 		flex: 3,
-	}, 
+	},
 	time: {
 			flexWrap: 'wrap',
 			flex: 2,
@@ -123,11 +127,11 @@ const styles = StyleSheet.create({
 		paddingLeft: 5,
 		paddingRight: 5,
 		backgroundColor: '#888888',
-	}, 
-	button: {
-		flex: 1, 
 	},
-	expanded: { 
+	button: {
+		flex: 1,
+	},
+	expanded: {
 		padding: 10,
 		backgroundColor: '#44779F',
 		color: '#fff',
@@ -136,11 +140,11 @@ const styles = StyleSheet.create({
 		color: '#fff',
 		fontSize: 14,
 		textDecorationLine: 'underline',
-		 
+
 	},
 	speakerButton: {
 		backgroundColor: '#44779F',
-		flexDirection: 'row', 
+		flexDirection: 'row',
 		flexWrap: 'wrap',
 		alignItems: 'center',
 

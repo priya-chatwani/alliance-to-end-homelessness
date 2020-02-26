@@ -8,6 +8,10 @@ import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import SpeakerBio from '../screens/SpeakerBio';
+
+
+import { NavigationContainer } from 'react-navigation';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -17,6 +21,7 @@ const config = Platform.select({
 const AgendaStack = createStackNavigator(
   {
     Agenda: AgendaScreen,
+    SpeakerBio: SpeakerBio,
   },
   config
 );
@@ -46,22 +51,6 @@ DirectoryStack.navigationOptions = {
 
 DirectoryStack.path = '';
 
-// const LinksStack = createStackNavigator(
-//   {
-//     Links: LinksScreen,
-//   },
-//   config
-// );
-
-// LinksStack.navigationOptions = {
-//   tabBarLabel: 'Links',
-//   tabBarIcon: ({ focused }) => (
-//     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-//   ),
-// };
-
-// LinksStack.path = '';
-
 const SettingsStack = createStackNavigator(
   {
     Settings: SettingsScreen,
@@ -78,20 +67,21 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
-const tabOptions = {    
+const tabOptions = {
     tabBarOptions: {
         style:{
             backgroundColor:Colors.YPOBlue,
         },
-        showLabel: false, 
+        showLabel: false,
     },
 }
 
 const tabNavigator = createBottomTabNavigator({
-  AgendaStack,
-  DirectoryStack,
-  SettingsStack,
-}, tabOptions);
+   AgendaStack,
+   DirectoryStack,
+   SettingsStack,
+ }, tabOptions);
+
 
 tabNavigator.path = '';
 
