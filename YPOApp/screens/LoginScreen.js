@@ -25,10 +25,8 @@ export default function LoginScreen({ navigation }) {
 	useEffect(() => {
 		ref.getDownloadURL().then(data => {
 			setImageUrl(data);
-			console.log("IN EFFECT", imageUrl);
 		}).catch(error => {
 			console.log(error);
-			setImageUrl("https://firebasestorage.googleapis.com/v0/b/homelessness-app-1013e.appspot.com/o/images%2FYPOLogo.jpg?alt=media&token=bd446cd5-0b36-4cbb-b896-656c00f600c9");
 		})
 	}, []);
 
@@ -40,7 +38,7 @@ export default function LoginScreen({ navigation }) {
 			navigation.navigate('Main');
 		}
 	};
-	console.log("out EFFECT", imageUrl);
+	
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>
