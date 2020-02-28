@@ -47,11 +47,11 @@ export default function Attendee (Props) {
 	const AttendeeInfo = (
 		<View>
 			<Text style={styles.info}>
-				<Text style={{fontWeight: 'bold'}}>{"Region: "}</Text>
+				<Text style={styles.heading}>{"Region: "}</Text>
 				{Props.attendee.Region}
 			</Text>
 			<Text style={styles.info}>
-				<Text style={{fontWeight: 'bold'}}>{"Company: "}</Text>
+				<Text style={styles.heading}>{"Company: "}</Text>
 				{Props.attendee.Company}
 			</Text>
 		</View>
@@ -100,5 +100,8 @@ const styles = StyleSheet.create({
 		paddingLeft: 5,
 		paddingRight: 5,
 		backgroundColor: '#C4C4C4',
+	},
+	heading: {
+		fontWeight: 'bold',
 	}
 });
