@@ -12,15 +12,14 @@ import {
 } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Colors from '../constants/Colors';
-import Attendees from '../screens/Attendees';
-import Organizations from '../screens/Organizations';
+import Articles from '../screens/Articles';
 
 const Tab = createMaterialTopTabNavigator();
 
-function DirectoryTabNavigator() {
+function LearningTabNavigator() {
   return (
     <Tab.Navigator
-      initialRouteName = "Organizations"
+      initialRouteName = "Articles"
       tabBarOptions = {{
         activeTintColor: Colors.YPOGold,
         labelStyle: {fontSize: 12},
@@ -29,31 +28,26 @@ function DirectoryTabNavigator() {
       }}
     >
     <Tab.Screen
-      name="Organizations"
-      component={Organizations}
-      options={{tabBarLabel:"Organizations"}}
-    />
-    <Tab.Screen
-      name="Attendees"
-      component={Attendees}
-      options={{tabBarLabel:"Attendees"}}
+      name="Articles"
+      component={Articles}
+      options={{tabBarLabel:"Articles"}}
     />
     </Tab.Navigator>
   );
 }
 
-DirectoryScreen.navigationOptions = {
-  title: 'Directory',
+LearningScreen.navigationOptions = {
+  title: 'Learning',
   headerStyle: {
     backgroundColor: Colors.YPOBlue,
   },
   headerTintColor: '#fff',
 };
 
-export default function DirectoryScreen() {
+export default function LearningScreen() {
   return (
     <NavigationContainer>
-      <DirectoryTabNavigator />
+      <LearningTabNavigator />
     </NavigationContainer>
   );
 }

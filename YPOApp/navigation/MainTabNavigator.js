@@ -8,6 +8,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import LearningScreen from '../screens/LearningScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -62,6 +63,23 @@ DirectoryStack.path = '';
 
 // LinksStack.path = '';
 
+const LearningStack = createStackNavigator(
+  {
+    Learning: LearningScreen,
+  },
+  config
+);
+
+LearningStack.navigationOptions = {
+  tabBarLabel: 'Learning',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={'ios-star'} />
+  ),
+};
+
+LearningStack.path = '';
+
+
 const SettingsStack = createStackNavigator(
   {
     Settings: SettingsScreen,
@@ -90,6 +108,7 @@ const tabOptions = {
 const tabNavigator = createBottomTabNavigator({
   AgendaStack,
   DirectoryStack,
+  LearningStack,
   SettingsStack,
 }, tabOptions);
 
