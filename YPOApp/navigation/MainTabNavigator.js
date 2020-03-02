@@ -9,6 +9,7 @@ import AgendaScreen from '../screens/AgendaScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
 import SpeakerBio from '../screens/SpeakerBio';
 import LearningScreen from '../screens/LearningScreen';
+import OrgBio from '../screens/OrgBio';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -22,6 +23,15 @@ SpeakerBio.navigationOptions = {
   },
   headerTintColor: '#fff',
 };
+
+
+OrgBio.navigationOptions = {
+  title: 'Organization Bio',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue,
+  },
+  headerTintColor: '#fff',
+}
 
 const AgendaStack = createStackNavigator(
   {
@@ -43,6 +53,7 @@ AgendaStack.path = '';
 const DirectoryStack = createStackNavigator(
   {
     Directory: DirectoryScreen,
+    OrgBio: OrgBio,
   },
   config
 );

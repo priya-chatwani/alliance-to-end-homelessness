@@ -14,9 +14,31 @@ import {
 import * as firebase from 'firebase';
 
 export default function OrgBio(Props){
+  const org = Props.navigation.getParam('org')
   return(
-    <Text>
-      Org Bio
-    </Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.org}>
+        {org.Organization}
+      </Text>
+      <Text style={styles.description}>
+        {org.Description}
+      </Text>
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  org: {
+    fontSize: 30,
+    marginTop: 10,
+  },
+  description: {
+    fontSize: 16,
+    marginTop: 15,
+  }
+});

@@ -57,9 +57,9 @@ DirectoryScreen.navigationOptions = {
   headerTintColor: '#fff',
 };
 
-export default function DirectoryScreen() {
+export default function DirectoryScreen({navigation}) {
   const onOrgSelect = (org) => {
-    navigation.navigate('OrgBio', {org: orgs});
+    navigation.navigate('OrgBio', {org: org});
   }
   return (
     <NavigationContainer independent={true}>

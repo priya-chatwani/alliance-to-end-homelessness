@@ -90,7 +90,7 @@ export default function Event(Props){
 				<Text style={styles.title}>
 					{Props.event.Title}
 				</Text>
-				{(Props.event.Location.length != 0) ? <Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
+				{(Props.event.Location.length != 0) ? <Button  icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
 			</View>
 			{(expanded) ? Location : null}
 			{(expanded && Props.event.Speakers.length != 0) ? SpeakersRendered : null}
@@ -127,9 +127,6 @@ const styles = StyleSheet.create({
 	},
 	divider: {
 		backgroundColor: '#888888',
-	},
-	button: {
-		flex: 1,
 	},
 	expanded: {
 		padding: 10,
