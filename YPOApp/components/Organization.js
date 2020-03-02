@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
 		flexWrap: 'wrap',
 		flex: 2,
 		color: '#000000',
-		marginLeft: 10,
-		marginRight: 50,
+		marginLeft: 20,
+		marginRight: 10,
 	}, 
 	contact: {
 		color: '#000000',
