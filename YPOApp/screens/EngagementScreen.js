@@ -16,7 +16,7 @@ import Articles from '../screens/Articles';
 
 const Tab = createMaterialTopTabNavigator();
 
-function LearningTabNavigator() {
+function EngagementTabNavigator() {
   return (
     <Tab.Navigator
       initialRouteName = "Articles"
@@ -36,18 +36,18 @@ function LearningTabNavigator() {
   );
 }
 
-LearningScreen.navigationOptions = {
-  title: 'Learning',
+EngagementScreen.navigationOptions = {
+  title: 'Engagement',
   headerStyle: {
     backgroundColor: Colors.YPOBlue,
   },
   headerTintColor: '#fff',
 };
 
-export default function LearningScreen() {
+export default function EngagementScreen() {
   return (
     <NavigationContainer>
-      <LearningTabNavigator />
+      <EngagementTabNavigator />
     </NavigationContainer>
   );
 }

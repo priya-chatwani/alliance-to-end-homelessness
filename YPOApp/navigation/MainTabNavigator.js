@@ -8,7 +8,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import LearningScreen from '../screens/LearningScreen';
+import EngagementScreen from '../screens/EngagementScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -41,43 +41,27 @@ const DirectoryStack = createStackNavigator(
 DirectoryStack.navigationOptions = {
   tabBarLabel: 'Directory',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-people' : 'md-people'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-search' : 'md-search'} />
   ),
 };
 
 DirectoryStack.path = '';
 
-// const LinksStack = createStackNavigator(
-//   {
-//     Links: LinksScreen,
-//   },
-//   config
-// );
-
-// LinksStack.navigationOptions = {
-//   tabBarLabel: 'Links',
-//   tabBarIcon: ({ focused }) => (
-//     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-//   ),
-// };
-
-// LinksStack.path = '';
-
-const LearningStack = createStackNavigator(
+const EngagementStack = createStackNavigator(
   {
-    Learning: LearningScreen,
+    Engagement: EngagementScreen,
   },
   config
 );
 
-LearningStack.navigationOptions = {
-  tabBarLabel: 'Learning',
+EngagementStack.navigationOptions = {
+  tabBarLabel: 'Engagement',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={'ios-star'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-bulb' : 'md-bulb'} />
   ),
 };
 
-LearningStack.path = '';
+EngagementStack.path = '';
 
 
 const SettingsStack = createStackNavigator(
@@ -108,7 +92,7 @@ const tabOptions = {
 const tabNavigator = createBottomTabNavigator({
   AgendaStack,
   DirectoryStack,
-  LearningStack,
+  EngagementStack,
   SettingsStack,
 }, tabOptions);
 
