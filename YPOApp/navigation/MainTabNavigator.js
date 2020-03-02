@@ -7,7 +7,6 @@ import Colors from '../constants/Colors';
 import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import SpeakerBio from '../screens/SpeakerBio';
 import LearningScreen from '../screens/LearningScreen';
 
@@ -56,14 +55,6 @@ DirectoryStack.navigationOptions = {
 };
 
 DirectoryStack.path = '';
-
-DirectoryScreen.navigationOptions = {
-  title: 'Directory',
-  headerStyle: {
-    backgroundColor: Colors.YPOBlue,
-  },
-  headerTintColor: '#fff',
-};
 
 const LearningStack = createStackNavigator(
   {

@@ -48,6 +48,6 @@ export default function LearningScreen() {
   return (
     <NavigationContainer independent={true}>
       <LearningTabNavigator />
-      </NavigationContainer>
+    </NavigationContainer>
   );
 }
