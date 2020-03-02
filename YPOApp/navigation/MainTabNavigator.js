@@ -9,15 +9,25 @@ import AgendaScreen from '../screens/AgendaScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import EngagementScreen from '../screens/EngagementScreen';
+import SpeakerBio from '../screens/SpeakerBio';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
 });
 
+SpeakerBio.navigationOptions = {
+  title: 'Speaker Bio',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue,
+  },
+  headerTintColor: '#fff',
+};
+
 const AgendaStack = createStackNavigator(
   {
     Agenda: AgendaScreen,
+    SpeakerBio: SpeakerBio,
   },
   config
 );
@@ -63,7 +73,6 @@ EngagementStack.navigationOptions = {
 
 EngagementStack.path = '';
 
-
 const SettingsStack = createStackNavigator(
   {
     Settings: SettingsScreen,
@@ -81,12 +90,12 @@ SettingsStack.navigationOptions = {
 SettingsStack.path = '';
 
 const tabOptions = {    
-    tabBarOptions: {
-        style:{
-            backgroundColor:Colors.YPOBlue,
-        },
-        showLabel: false, 
-    },
+  tabBarOptions: {
+      style:{
+        backgroundColor:Colors.YPOBlue,
+      },
+    showLabel: false,
+  },
 }
 
 const tabNavigator = createBottomTabNavigator({

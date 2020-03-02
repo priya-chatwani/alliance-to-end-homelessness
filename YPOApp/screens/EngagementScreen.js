@@ -46,7 +46,7 @@ EngagementScreen.navigationOptions = {
 
 export default function EngagementScreen() {
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <EngagementTabNavigator />
     </NavigationContainer>
   );

@@ -1,4 +1,5 @@
 import * as WebBrowser from 'expo-web-browser';
+
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import {
@@ -15,11 +16,11 @@ import Colors from '../constants/Colors';
 import Attendees from '../screens/Attendees';
 import Organizations from '../screens/Organizations';
 
-const Tab = createMaterialTopTabNavigator();
+const DirectoryTab= createMaterialTopTabNavigator();
 
 function DirectoryTabNavigator() {
   return (
-    <Tab.Navigator
+    <DirectoryTab.Navigator
       initialRouteName = "Organizations"
       tabBarOptions = {{
         activeTintColor: Colors.YPOGold,
@@ -28,31 +29,24 @@ function DirectoryTabNavigator() {
         indicatorStyle: {backgroundColor: Colors.YPOGold}
       }}
     >
-    <Tab.Screen
+    <DirectoryTab.Screen
       name="Organizations"
       component={Organizations}
       options={{tabBarLabel:"Organizations"}}
     />
-    <Tab.Screen
+    <DirectoryTab.Screen
       name="Attendees"
       component={Attendees}
       options={{tabBarLabel:"Attendees"}}
     />
-    </Tab.Navigator>
+    </DirectoryTab.Navigator>
   );
 }
 
-DirectoryScreen.navigationOptions = {
-  title: 'Directory',
-  headerStyle: {
-    backgroundColor: Colors.YPOBlue,
-  },
-  headerTintColor: '#fff',
-};
 
 export default function DirectoryScreen() {
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <DirectoryTabNavigator />
     </NavigationContainer>
   );
