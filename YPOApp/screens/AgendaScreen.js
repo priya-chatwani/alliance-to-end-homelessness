@@ -72,6 +72,8 @@ export default function AgendaScreen({navigation}) {
     navigation.navigate('SpeakerBio', {speaker: speaker});
   }
   return (
-    <AgendaTabNavigator onSpeakerSelect={onSpeakerSelect}/>
+    <NavigationContainer independent={true}>
+      <AgendaTabNavigator onSpeakerSelect={onSpeakerSelect}/>
+    </NavigationContainer>
   );
 }

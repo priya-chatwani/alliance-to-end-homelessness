@@ -9,7 +9,6 @@ import AgendaScreen from '../screens/AgendaScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import SpeakerBio from '../screens/SpeakerBio';
-import { NavigationContainer } from 'react-navigation';
 import LearningScreen from '../screens/LearningScreen';
 
 const config = Platform.select({
@@ -58,6 +57,14 @@ DirectoryStack.navigationOptions = {
 
 DirectoryStack.path = '';
 
+DirectoryScreen.navigationOptions = {
+  title: 'Directory',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue,
+  },
+  headerTintColor: '#fff',
+};
+
 const LearningStack = createStackNavigator(
   {
     Learning: LearningScreen,
@@ -72,24 +79,6 @@ LearningStack.navigationOptions = {
   ),
 };
 
-LearningStack.path = '';
-
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen,
-  },
-  config
-);
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  ),
-};
-
-SettingsStack.path = '';
-
 const tabOptions = {
     tabBarOptions: {
         style:{
@@ -103,7 +92,6 @@ const tabNavigator = createBottomTabNavigator({
   AgendaStack,
   DirectoryStack,
   LearningStack,
-  SettingsStack,
 }, tabOptions);
 
 tabNavigator.path = '';
