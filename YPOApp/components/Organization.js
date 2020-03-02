@@ -19,9 +19,6 @@ export default function Organization(Props){
 				<Text style={styles.organization}> 
 					{Props.organization.Organization}
 				</Text>
-				<Text style={styles.contact}>
-					{Props.organization.Contact}
-				</Text>
 			</View>
 			<Divider style={styles.divider} />
 		</View>
@@ -30,7 +27,7 @@ export default function Organization(Props){
 
 const styles = StyleSheet.create({
 	item: {
-		backgroundColor: '#44779F',
+		backgroundColor: '#fff',
 		height: 71,
 		display: 'flex',
 		flexDirection: 'row',
@@ -39,12 +36,12 @@ const styles = StyleSheet.create({
 	organization: {
 		flexWrap: 'wrap',
 		flex: 2,
-		color: '#fff',
+		color: '#000000',
 		marginLeft: 10,
 		marginRight: 50,
 	}, 
 	contact: {
-		color: '#fff',
+		color: '#000000',
 		flexWrap: 'wrap',
 		flex: 3,
 	}, 

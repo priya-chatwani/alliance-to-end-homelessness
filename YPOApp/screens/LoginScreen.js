@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import * as firebase from 'firebase';
 import {
   Image,
   ScrollView,
@@ -15,19 +16,29 @@ import {Button} from 'react-native-elements';
 
 import Colors from '../constants/Colors';
 
+export default function LoginScreen({ navigation }) {
 
-export default function LoginScreen({ navigation }){
+	const [imageUrl, setImageUrl] = useState("");
+
+	const ref = firebase.storage().ref().child("images/YPOLogo.jpg");
+
+	useEffect(() => {
+		ref.getDownloadURL().then(data => {
+			setImageUrl(data);
+		}).catch(error => {
+			console.log(error);
+		})
+	}, []);
+
 	const [code, setCode] = React.useState('');
 	const [access, setAccess] = React.useState(false);
 
 	const onPress = () => {
-		if(code == 'alliance'){
+		if (code == 'alliance'){
 			navigation.navigate('Main');
 		}
 	};
-
-
-
+	
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>
@@ -37,8 +48,10 @@ export default function LoginScreen({ navigation }){
 			<View style={styles.buttonContainer}>
 				<Button title={"Submit"} onPress={onPress} buttonStyle={styles.button} titleStyle={styles.buttonTitle} />
 			</View>
-			<Image source={{uri:'https://custom.cvent.com/ECA7D751B15B4F01AD4A1E6FF113D8BA/pix/85010edf6c2f470c9343e816a8ede655.jpg'}} width={146} height={56}/>
-
+			<Image 
+				source={{ uri: imageUrl }} 
+				style={styles.image}
+			/>
 		</View>
 
 	);
@@ -51,6 +64,11 @@ const styles = StyleSheet.create({
   	flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  image: {
+	marginTop: 50, 
+	width: 146, 
+	height: 56,
   },
   buttonContainer:{
   	display: 'flex',

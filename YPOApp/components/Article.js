@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  Linking,
   TextInput,
   TouchableOpacity,
   View,
@@ -13,7 +14,7 @@ import {
 import Colors from '../constants/Colors.js'
 import { Ionicons } from '@expo/vector-icons';
 
-export default function Attendee (Props) {
+export default function Article (Props) {
 
 	const dropdown = (
 		<Ionicons
@@ -44,28 +45,32 @@ export default function Attendee (Props) {
 		}
 	};
 
-	const AttendeeInfo = (
+	const ArticleInfo = (
 		<View>
-			<Text style={styles.info}>
-				<Text style={styles.heading}>{"Region: "}</Text>
-				{Props.attendee.Region}
-			</Text>
-			<Text style={styles.info}>
-				<Text style={styles.heading}>{"Company: "}</Text>
-				{Props.attendee.Company}
-			</Text>
+			{(Props.article.Author) ? 
+				<Text style={styles.info}>
+					<Text style={styles.heading}>{"Author: "}</Text>
+					{Props.article.Author}
+				</Text> 
+			: null}
+			{(Props.article.Publisher) ? 
+				<Text style={styles.info}>
+					<Text style={styles.heading}>{"Publisher: "}</Text>
+					{Props.article.Publisher}
+				</Text> 
+			: null}
 		</View>
 	);
 
 	return (
 		<View>
 			<View style={styles.item}>
-				<Text style={styles.name}> 
-					{Props.attendee.First + " " + Props.attendee.Last}
+				<Text style={styles.title} onPress={() => Linking.openURL(Props.article.Link)}> 
+					{Props.article.Title}
 				</Text>
 				<Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/>
 			</View>
-			{(expanded) ? AttendeeInfo : null}
+			{(expanded) ? ArticleInfo : null}
 			<Divider style={styles.divider} />
 		</View>
 	);
@@ -83,12 +88,16 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 	}, 
-	name: {
+	title: {
 		flexWrap: 'wrap',
 		flex: 2,
 		color: '#000000',
 		marginLeft: 30,
+		textDecorationLine: 'underline',
 	}, 
+	heading: {
+		fontWeight: 'bold',
+	},
 	info: {
 		paddingLeft: 40, 
 		paddingBottom: 10,
@@ -100,8 +109,5 @@ const styles = StyleSheet.create({
 		paddingLeft: 5,
 		paddingRight: 5,
 		backgroundColor: '#C4C4C4',
-	},
-	heading: {
-		fontWeight: 'bold',
 	}
 });

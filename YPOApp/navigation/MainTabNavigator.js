@@ -9,9 +9,8 @@ import AgendaScreen from '../screens/AgendaScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import SpeakerBio from '../screens/SpeakerBio';
-
-
 import { NavigationContainer } from 'react-navigation';
+import LearningScreen from '../screens/LearningScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -59,6 +58,22 @@ DirectoryStack.navigationOptions = {
 
 DirectoryStack.path = '';
 
+const LearningStack = createStackNavigator(
+  {
+    Learning: LearningScreen,
+  },
+  config
+);
+
+LearningStack.navigationOptions = {
+  tabBarLabel: 'Learning',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={'ios-star'} />
+  ),
+};
+
+LearningStack.path = '';
+
 const SettingsStack = createStackNavigator(
   {
     Settings: SettingsScreen,
@@ -85,11 +100,11 @@ const tabOptions = {
 }
 
 const tabNavigator = createBottomTabNavigator({
-   AgendaStack,
-   DirectoryStack,
-   SettingsStack,
- }, tabOptions);
-
+  AgendaStack,
+  DirectoryStack,
+  LearningStack,
+  SettingsStack,
+}, tabOptions);
 
 tabNavigator.path = '';
 
