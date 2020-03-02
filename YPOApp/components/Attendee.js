@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
 
 	button: {
 		flex: 1, 
+		marginRight: 15,
 	},
 	item: {
 		backgroundColor: '#fff',
@@ -87,7 +88,8 @@ const styles = StyleSheet.create({
 		flexWrap: 'wrap',
 		flex: 2,
 		color: '#000000',
-		marginLeft: 30,
+		marginLeft: 20,
+		marginRight: 10,
 	}, 
 	info: {
 		paddingLeft: 40, 
