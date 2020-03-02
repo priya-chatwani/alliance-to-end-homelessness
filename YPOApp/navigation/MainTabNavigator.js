@@ -7,8 +7,9 @@ import Colors from '../constants/Colors';
 import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import EngagementScreen from '../screens/EngagementScreen';
 import SpeakerBio from '../screens/SpeakerBio';
-import LearningScreen from '../screens/LearningScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -50,47 +51,58 @@ const DirectoryStack = createStackNavigator(
 DirectoryStack.navigationOptions = {
   tabBarLabel: 'Directory',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-people' : 'md-people'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-search' : 'md-search'} />
   ),
 };
 
 DirectoryStack.path = '';
 
-DirectoryScreen.navigationOptions = {
-  title: 'Directory',
-  headerStyle: {
-    backgroundColor: Colors.YPOBlue,
-  },
-  headerTintColor: '#fff',
-};
-
-const LearningStack = createStackNavigator(
+const EngagementStack = createStackNavigator(
   {
-    Learning: LearningScreen,
+    Engagement: EngagementScreen,
   },
   config
 );
 
-LearningStack.navigationOptions = {
-  tabBarLabel: 'Learning',
+EngagementStack.navigationOptions = {
+  tabBarLabel: 'Engagement',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={'ios-star'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-bulb' : 'md-bulb'} />
   ),
 };
 
-const tabOptions = {
-    tabBarOptions: {
-        style:{
-            backgroundColor:Colors.YPOBlue,
-        },
-        showLabel: false,
-    },
+EngagementStack.path = '';
+
+const SettingsStack = createStackNavigator(
+  {
+    Settings: SettingsScreen,
+  },
+  config
+);
+
+SettingsStack.navigationOptions = {
+  tabBarLabel: 'Settings',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  ),
+};
+
+SettingsStack.path = '';
+
+const tabOptions = {    
+  tabBarOptions: {
+      style:{
+        backgroundColor:Colors.YPOBlue,
+      },
+    showLabel: false,
+  },
 }
 
 const tabNavigator = createBottomTabNavigator({
   AgendaStack,
   DirectoryStack,
-  LearningStack,
+  EngagementStack,
+  SettingsStack,
 }, tabOptions);
 
 tabNavigator.path = '';
