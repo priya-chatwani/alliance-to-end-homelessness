@@ -46,8 +46,8 @@ LearningScreen.navigationOptions = {
 
 export default function LearningScreen() {
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <LearningTabNavigator />
-    </NavigationContainer>
+      </NavigationContainer>
   );
 }

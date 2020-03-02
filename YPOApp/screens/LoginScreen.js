@@ -1,5 +1,4 @@
 import * as WebBrowser from 'expo-web-browser';
-import { NavigationContainer } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import * as firebase from 'firebase';
 import {
@@ -38,7 +37,7 @@ export default function LoginScreen({ navigation }) {
 			navigation.navigate('Main');
 		}
 	};
-	
+
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>
@@ -48,8 +47,8 @@ export default function LoginScreen({ navigation }) {
 			<View style={styles.buttonContainer}>
 				<Button title={"Submit"} onPress={onPress} buttonStyle={styles.button} titleStyle={styles.buttonTitle} />
 			</View>
-			<Image 
-				source={{ uri: imageUrl }} 
+			<Image
+				source={{ uri: imageUrl }}
 				style={styles.image}
 			/>
 		</View>
@@ -66,8 +65,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-	marginTop: 50, 
-	width: 146, 
+	marginTop: 50,
+	width: 146,
 	height: 56,
   },
   buttonContainer:{
