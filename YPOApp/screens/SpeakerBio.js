@@ -32,14 +32,14 @@ export default function SpeakerBio(Props){
   },[]);
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.name}>
         {speaker}
       </Text>
       <Text style={styles.bio}>
         {bio}
       </Text>
-    </View>
+    </ScrollView>
   );
 
 }
