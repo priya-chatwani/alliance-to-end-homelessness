@@ -7,7 +7,6 @@ import Colors from '../constants/Colors';
 import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import EngagementScreen from '../screens/EngagementScreen';
 import SpeakerBio from '../screens/SpeakerBio';
 
@@ -73,22 +72,6 @@ EngagementStack.navigationOptions = {
 
 EngagementStack.path = '';
 
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen,
-  },
-  config
-);
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  ),
-};
-
-SettingsStack.path = '';
-
 const tabOptions = {    
   tabBarOptions: {
       style:{
@@ -102,7 +85,6 @@ const tabNavigator = createBottomTabNavigator({
   AgendaStack,
   DirectoryStack,
   EngagementStack,
-  SettingsStack,
 }, tabOptions);
 
 tabNavigator.path = '';
