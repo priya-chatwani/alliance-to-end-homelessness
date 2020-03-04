@@ -26,7 +26,7 @@ function infoTitle(title, info){
   )
 }
 
-export default function OrgBio(Props){
+function OrgBio(Props){
   const org = Props.navigation.getParam('org')
   return(
     <ScrollView contentContainerStyle={styles.container}>
@@ -44,6 +44,8 @@ export default function OrgBio(Props){
     </ScrollView>
   );
 }
+
+export default OrgBio;
 
 const styles = StyleSheet.create({
   container: {
