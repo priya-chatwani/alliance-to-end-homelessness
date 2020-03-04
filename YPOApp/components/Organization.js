@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem, Divider } from 'react-native-elements';
+import { ListItem, Divider, Button } from 'react-native-elements';
 import {
   Image,
   ScrollView,
@@ -10,15 +10,28 @@ import {
   View,
 } from 'react-native';
 
-import Colors from '../constants/Colors.js'
+import Colors from '../constants/Colors.js';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Organization(Props){
+  const onPress = () => {
+    Props.onOrgSelect(Props.organization);
+  }
+
+  const buttonIcon = (
+    <Ionicons
+      name={'md-arrow-dropright'}
+      size={28}
+      color={Colors.YPOBlue}
+    />
+  );
 	return (
 		<View>
 			<View style={styles.item}>
-				<Text style={styles.organization}> 
+				<Text style={styles.organization}>
 					{Props.organization.Organization}
 				</Text>
+        <Button onPress={() => Props.onOrgSelect(Props.organization)} icon={buttonIcon} type={'clear'}/>
 			</View>
 			<Divider style={styles.divider} />
 		</View>
@@ -32,19 +45,15 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
-	}, 
+    padding: 5,
+	},
 	organization: {
 		flexWrap: 'wrap',
-		flex: 2,
+		flex: 5,
 		color: '#000000',
 		marginLeft: 20,
 		marginRight: 10,
-	}, 
-	contact: {
-		color: '#000000',
-		flexWrap: 'wrap',
-		flex: 3,
-	}, 
+	},
 	divider: {
 		paddingLeft: 5,
 		paddingRight: 5,

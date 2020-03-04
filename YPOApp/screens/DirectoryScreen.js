@@ -18,7 +18,13 @@ import Organizations from '../screens/Organizations';
 
 const DirectoryTab= createMaterialTopTabNavigator();
 
-function DirectoryTabNavigator() {
+function DirectoryTabNavigator(Props) {
+
+  const Orgs = () => {
+    return (
+      <Organizations onOrgSelect={Props.onOrgSelect}/>
+    );
+  }
   return (
     <DirectoryTab.Navigator
       initialRouteName = "Organizations"
@@ -31,7 +37,7 @@ function DirectoryTabNavigator() {
     >
     <DirectoryTab.Screen
       name="Organizations"
-      component={Organizations}
+      component={Orgs}
       options={{tabBarLabel:"Organizations"}}
     />
     <DirectoryTab.Screen
@@ -43,11 +49,21 @@ function DirectoryTabNavigator() {
   );
 }
 
+DirectoryScreen.navigationOptions = {
+  title: 'Directory',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue,
+  },
+  headerTintColor: '#fff',
+};
 
-export default function DirectoryScreen() {
+export default function DirectoryScreen({navigation}) {
+  const onOrgSelect = (org) => {
+    navigation.navigate('OrgBio', {org: org});
+  }
   return (
     <NavigationContainer independent={true}>
-      <DirectoryTabNavigator />
+      <DirectoryTabNavigator onOrgSelect={onOrgSelect}/>
     </NavigationContainer>
   );
 }
