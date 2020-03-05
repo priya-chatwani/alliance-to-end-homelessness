@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
   StyleSheet,
+  Linking,
   Text,
   View,
 } from 'react-native';
@@ -26,6 +27,19 @@ function infoTitle(title, info){
   )
 }
 
+function infoTitleLink(title, website){
+  return(
+    <View style={styles.infoItem}>
+      <Text style={styles.infoTitle}>
+        {title}
+      </Text>
+      <Text style={styles.website} onPress={() => Linking.openURL(website)}>
+        {website}
+      </Text>
+    </View>
+  )
+}
+
 function OrgBio(Props){
   const org = Props.navigation.getParam('org')
   return(
@@ -39,7 +53,7 @@ function OrgBio(Props){
         </Text>
       </View>
       {org.Contact.length != 0 ? infoTitle("Contact: ", org.Contact) : null}
-      {org.Contact.length != 0 ? infoTitle("Website: ", org.Website) : null}
+      {org.Contact.length != 0 ? infoTitleLink("Website: ", org.Website) : null}
       {org.Phone.length != 0 ? infoTitle("Phone: ", org.Phone) : null}
     </ScrollView>
   );
@@ -51,6 +65,10 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
     flexDirection: 'column',
+  },
+  website: {
+    fontSize: 16,
+    textDecorationLine: 'underline',
   },
   bio: {
     alignItems: 'center',
