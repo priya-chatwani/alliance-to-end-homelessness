@@ -44,7 +44,8 @@ function AgendaTabNavigator(){
 }
 
 AgendaScreen.navigationOptions = {
-  title: 'Agenda',
+
+title: 'Agenda',
   headerStyle: {
     backgroundColor: Colors.YPOBlue,
   },

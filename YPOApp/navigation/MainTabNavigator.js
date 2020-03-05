@@ -9,7 +9,7 @@ import AgendaScreen from '../screens/AgendaScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import LearningScreen from '../screens/LearningScreen';
-
+import AboutScreen from '../screens/AboutScreen';
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
@@ -47,21 +47,39 @@ DirectoryStack.navigationOptions = {
 
 DirectoryStack.path = '';
 
-// const LinksStack = createStackNavigator(
-//   {
-//     Links: LinksScreen,
-//   },
-//   config
-// );
 
-// LinksStack.navigationOptions = {
-//   tabBarLabel: 'Links',
-//   tabBarIcon: ({ focused }) => (
-//     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-//   ),
-// };
+//added by aj
+ const AboutStack = createStackNavigator(
+      {
+     About: AboutScreen,
+   },
+   config
+ );
 
-// LinksStack.path = '';
+
+ AboutStack.navigationOptions = {
+   tabBarLabel: 'About',
+   tabBarIcon: ({ focused }) => (
+     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-information-circle' : 'ios-information-circle'} />
+   ),
+ };
+ //this was orignally in aboutscreen
+ AboutScreen.navigationOptions = {
+   title: 'About',
+   headerStyle: {
+     backgroundColor: Colors.YPOBlue,
+   },
+   headerTintColor: '#fff',
+
+ };
+
+AboutStack.path = '';
+
+
+
+
+
+
 
 const LearningStack = createStackNavigator(
   {
@@ -69,6 +87,7 @@ const LearningStack = createStackNavigator(
   },
   config
 );
+
 
 LearningStack.navigationOptions = {
   tabBarLabel: 'Learning',
@@ -96,12 +115,12 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
-const tabOptions = {    
+const tabOptions = {
     tabBarOptions: {
         style:{
             backgroundColor:Colors.YPOBlue,
         },
-        showLabel: false, 
+        showLabel: false,
     },
 }
 
@@ -110,6 +129,7 @@ const tabNavigator = createBottomTabNavigator({
   DirectoryStack,
   LearningStack,
   SettingsStack,
+  AboutStack
 }, tabOptions);
 
 tabNavigator.path = '';
