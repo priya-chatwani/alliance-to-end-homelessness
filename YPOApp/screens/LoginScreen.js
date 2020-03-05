@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import * as firebase from 'firebase';
 import {
   Image,
+  Alert,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -35,7 +35,17 @@ export default function LoginScreen({ navigation }) {
 	const onPress = () => {
 		if (code == 'alliance'){
 			navigation.navigate('Main');
-		}
+		}else{
+      setCode('');
+      Alert.alert(
+        'Incorrect Access Code',
+        'Please try again',
+        [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ],
+        {cancelable: false},
+      );
+    }
 	};
 
 	return (
