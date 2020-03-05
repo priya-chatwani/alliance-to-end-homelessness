@@ -27,13 +27,26 @@ function infoTitle(title, info){
   )
 }
 
-function infoTitleLink(title, website){
+function infoTitlePhone(title, phoneNumber){
   return(
     <View style={styles.infoItem}>
       <Text style={styles.infoTitle}>
         {title}
       </Text>
-      <Text style={styles.website} onPress={() => Linking.openURL(website)}>
+      <Text style={styles.linked} onPress={() => Linking.openURL(`tel:${phoneNumber}`)}>
+      {phoneNumber}
+      </Text>
+    </View>
+  )
+}
+
+function infoTitleWebsite(title, website){
+  return(
+    <View style={styles.infoItem}>
+      <Text style={styles.infoTitle}>
+        {title}
+      </Text>
+      <Text style={styles.linked} onPress={() => Linking.openURL(website)}>
         {website}
       </Text>
     </View>
@@ -53,8 +66,8 @@ function OrgBio(Props){
         </Text>
       </View>
       {org.Contact.length != 0 ? infoTitle("Contact: ", org.Contact) : null}
-      {org.Contact.length != 0 ? infoTitleLink("Website: ", org.Website) : null}
-      {org.Phone.length != 0 ? infoTitle("Phone: ", org.Phone) : null}
+      {org.Contact.length != 0 ? infoTitleWebsite("Website: ", org.Website) : null}
+      {org.Phone.length != 0 ? infoTitlePhone("Phone: ", org.Phone) : null}
     </ScrollView>
   );
 }
@@ -66,7 +79,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'column',
   },
-  website: {
+  linked: {
     fontSize: 16,
     textDecorationLine: 'underline',
   },
