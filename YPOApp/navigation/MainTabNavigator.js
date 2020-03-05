@@ -6,6 +6,7 @@ import Colors from '../constants/Colors';
 
 import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
+import AboutScreen from '../screens/AboutScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
 import EngagementScreen from '../screens/EngagementScreen';
 import SpeakerBio from '../screens/SpeakerBio';
@@ -67,6 +68,35 @@ DirectoryStack.navigationOptions = {
 
 DirectoryStack.path = '';
 
+//added by aj
+ const AboutStack = createStackNavigator(
+      {
+     About: AboutScreen,
+   },
+   config
+ );
+
+
+ AboutStack.navigationOptions = {
+   tabBarLabel: 'About',
+   tabBarIcon: ({ focused }) => (
+     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-information-circle' : 'ios-information-circle'} />
+   ),
+ };
+ //this was orignally in aboutscreen
+ AboutScreen.navigationOptions = {
+   title: 'About',
+   headerStyle: {
+     backgroundColor: Colors.YPOBlue,
+   },
+   headerTintColor: '#fff',
+
+ };
+
+AboutStack.path = '';
+
+
+
 const EngagementStack = createStackNavigator(
   {
     Engagement: EngagementScreen,
@@ -83,7 +113,7 @@ EngagementStack.navigationOptions = {
 
 EngagementStack.path = '';
 
-const tabOptions = {    
+const tabOptions = {
   tabBarOptions: {
       style:{
         backgroundColor:Colors.YPOBlue,
