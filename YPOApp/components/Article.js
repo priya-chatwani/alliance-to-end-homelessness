@@ -63,39 +63,39 @@ export default function Article (Props) {
 	);
 
 	return (
-		<View>
+		<TouchableOpacity onPress={() => Linking.openURL(Props.article.Link)} activeOpacity={.80} style={styles.container}>
 			<View style={styles.item}>
-				<Text style={styles.title} onPress={() => Linking.openURL(Props.article.Link)}>
+				<Text style={styles.title}>
 					{Props.article.Title}
 				</Text>
 				<Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/>
 			</View>
 			{(expanded) ? ArticleInfo : null}
-			<Divider style={styles.divider} />
-		</View>
+			<Divider style={{backgroundColor: '#C4C4C4'}} />
+		</TouchableOpacity>
 	);
 }
 
 const styles = StyleSheet.create({
-
+  container: {
+    backgroundColor: '#fff',
+    paddingHorizontal: 10,
+  },
 	button: {
 		flex: 1,
-		marginRight: 15,
 	},
 	item: {
-		backgroundColor: '#fff',
 		height: 71,
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
 	title: {
+    fontSize: 16,
 		flexWrap: 'wrap',
 		flex: 2,
 		color: '#000000',
-		marginLeft: 20,
 		marginRight: 10,
-		textDecorationLine: 'underline',
 	},
 	heading: {
 		fontWeight: 'bold',
@@ -107,9 +107,4 @@ const styles = StyleSheet.create({
 		color: '#44779F',
 		flex: 3,
 	},
-	divider: {
-		paddingLeft: 5,
-		paddingRight: 5,
-		backgroundColor: '#C4C4C4',
-	}
 });
