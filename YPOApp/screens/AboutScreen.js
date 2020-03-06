@@ -72,6 +72,8 @@ export default function AboutScreen({ navigation }) {
       <Text style={styles.subTitle}> Organizers </Text>
 
 
+    <View style={styles.container2}>
+
        <Image
        	source={{ uri: imageUrl1 }}
         style={styles.firstRow}
@@ -94,31 +96,32 @@ export default function AboutScreen({ navigation }) {
 
 
        </View>
+      </View>
 
 	);
 }
 
 const styles = StyleSheet.create({
   container: {
-  	display: 'flex',
-  	flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
 
   },
-
-  firstRow:{
+  container2: {
+    display: 'flex',
+  	flex: 1,
     display: 'grid',
     gridTemplateColumns: '60px 60px',
     gridTemplateRows: '60px 60px',
+  },
+
+  firstRow:{
     gridColumn: '2/2',
     marginVertical: 8,
     marginHorizontal: 16,
-
-   width: 100,
+    width: 100,
     height: 100,
-
     borderRadius: 100/ 2,
   },
   secondRow:{

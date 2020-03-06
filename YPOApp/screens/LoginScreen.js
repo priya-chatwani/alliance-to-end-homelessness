@@ -34,8 +34,9 @@ export default function LoginScreen({ navigation }) {
 
 	const onPress = () => {
 		if (code == 'alliance'){
-			navigation.navigate('Main');
-		}else{
+		navigation.navigate('Main');
+		}else
+    {
       setCode('');
       Alert.alert(
         'Incorrect Access Code',
@@ -43,7 +44,6 @@ export default function LoginScreen({ navigation }) {
         [
           {text: 'OK', onPress: () => console.log('OK Pressed')},
         ],
-        {cancelable: false},
       );
     }
 	};
