@@ -23,7 +23,6 @@ export default function Article (Props) {
 					{Props.article.Title}
 				</Text>
 			</View>
-			{(expanded) ? ArticleInfo : null}
 			<Divider style={{backgroundColor: '#C4C4C4'}} />
 		</TouchableOpacity>
 	);
