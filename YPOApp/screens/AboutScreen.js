@@ -61,7 +61,7 @@ export default function AboutScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        YPO Alliance To End Homelessness
+        Alliance To End Homelessness
       </Text>
       <Text style={styles.infoText}>
         Homelessness is a globel problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. We will hear from a range of experts from across the world including, policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
