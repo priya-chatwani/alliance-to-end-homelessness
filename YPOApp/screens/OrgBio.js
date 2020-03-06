@@ -1,10 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
-import React, {useState} from 'react';
-import Event from '../components/Event';
+import React from 'react';
 import Colors from '../constants/Colors';
-
 import {
-  Image,
   ScrollView,
   StyleSheet,
   Linking,
@@ -12,22 +9,20 @@ import {
   View,
 } from 'react-native';
 
-import * as firebase from 'firebase';
-
-function infoTitle(title, info){
+function infoTitleContact(title, contact) {
   return(
-    <View style={styles.infoItem}>
+    <View style={styles.infoItem} onPress={() => Props.onContactSelect(contact)}>
       <Text style={styles.infoTitle}>
         {title}
       </Text>
       <Text style={{fontSize: 16}}>
-        {info}
+        {contact}
       </Text>
     </View>
   )
 }
 
-function infoTitlePhone(title, phoneNumber){
+function infoTitlePhone(title, phoneNumber) {
   return(
     <View style={styles.infoItem}>
       <Text style={styles.infoTitle}>
@@ -40,7 +35,7 @@ function infoTitlePhone(title, phoneNumber){
   )
 }
 
-function infoTitleWebsite(title, website){
+function infoTitleWebsite(title, website) {
   return(
     <View style={styles.infoItem}>
       <Text style={styles.infoTitle}>
@@ -53,8 +48,8 @@ function infoTitleWebsite(title, website){
   )
 }
 
-function OrgBio(Props){
-  const org = Props.navigation.getParam('org')
+function OrgBio(Props) {
+  const org = Props.navigation.getParam('org');
   return(
     <ScrollView contentContainerStyle={styles.container}>
       <View style = {styles.bio}>
@@ -65,8 +60,8 @@ function OrgBio(Props){
           {org.Description}
         </Text>
       </View>
-      {org.Contact.length != 0 ? infoTitle("Contact: ", org.Contact) : null}
-      {org.Contact.length != 0 ? infoTitleWebsite("Website: ", org.Website) : null}
+      {org.Contact.length != 0 ? infoTitleContact("Contact: ", org.Contact) : null}
+      {org.Website.length != 0 ? infoTitleWebsite("Website: ", org.Website) : null}
       {org.Phone.length != 0 ? infoTitlePhone("Phone: ", org.Phone) : null}
     </ScrollView>
   );

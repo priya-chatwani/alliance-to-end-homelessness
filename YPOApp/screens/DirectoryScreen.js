@@ -22,7 +22,7 @@ function DirectoryTabNavigator(Props) {
 
   const Orgs = () => {
     return (
-      <Organizations onOrgSelect={Props.onOrgSelect}/>
+      <Organizations onOrgSelect={Props.onOrgSelect} onContactSelect={Props.onContactSelect}/>
     );
   }
   return (
@@ -61,9 +61,12 @@ export default function DirectoryScreen({navigation}) {
   const onOrgSelect = (org) => {
     navigation.navigate('OrgBio', {org: org});
   }
+  const onContactSelect = (contact) => {
+    navigation.navigate('SpeakerBio', {contact: contact});
+  }
   return (
     <NavigationContainer independent={true}>
-      <DirectoryTabNavigator onOrgSelect={onOrgSelect}/>
+      <DirectoryTabNavigator onOrgSelect={onOrgSelect} onContactSelect={onContactSelect}/>
     </NavigationContainer>
   );
 }

@@ -1,25 +1,21 @@
 import React from 'react';
-import { ListItem, Divider, Button } from 'react-native-elements';
+import { Divider } from 'react-native-elements';
 import {
-  Image,
-  ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-
 import Colors from '../constants/Colors.js';
-import { Ionicons } from '@expo/vector-icons';
 
-export default function Organization(Props){
-  const onPress = () => {
-    Props.onOrgSelect(Props.organization);
-  }
+export default function Organization(Props) {
+
+	const onPress = () => {
+		Props.onOrgSelect(Props.organization);
+	}
 
 	return (
-		<TouchableOpacity onPress={() => Props.onOrgSelect(Props.organization)} activeTint={.80} style={styles.container}>
+		<TouchableOpacity onPress={onPress} activeTint={.80} style={styles.container}>
 			<View style={styles.item}>
 				<Text style={styles.organization}>
 					{Props.organization.Organization}
@@ -31,18 +27,18 @@ export default function Organization(Props){
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    paddingHorizontal: 10,
-  },
+	container: {
+		backgroundColor: '#fff',
+		paddingHorizontal: 10,
+	},
 	item: {
-    paddingVertical: 20,
+    	paddingVertical: 20,
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'center',
 	},
 	organization: {
-    fontSize: 16,
+    	fontSize: 16,
 		flexWrap: 'wrap',
 		flex: 5,
 		color: '#000000',

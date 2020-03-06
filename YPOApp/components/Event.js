@@ -1,9 +1,6 @@
-import React, {useState} from 'react';
-import { ListItem, Divider, Button } from 'react-native-elements';
-
+import React from 'react';
+import { Divider } from 'react-native-elements';
 import {
-  Image,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -12,42 +9,34 @@ import {
 
 import { Ionicons } from '@expo/vector-icons';
 
-import SpeakerBio from '../screens/SpeakerBio';
-
-
-import Colors from '../constants/Colors.js'
-
-export default function Event(Props){
+export default function Event(Props) {
 
 	const dropdown = (
 		<Ionicons
-      style={{margin: 5}}
-      name={'md-arrow-dropdown'}
-      size={28}
-      color={'#fff'}
-    />
+			style={{margin: 5}}
+			name={'md-arrow-dropdown'}
+			size={28}
+			color={'#fff'}
+		/>
 	);
 
 	const dropup = (
 		<Ionicons
-      style={{margin: 5}}
-    	name={'md-arrow-dropup'}
-    	size={28}
-     	color={'#fff'}
-    />
+			style={{margin: 5}}
+			name={'md-arrow-dropup'}
+			size={28}
+			color={'#fff'}
+    	/>
 	);
 	
-	
-
-
 	const [expanded, setExpanded] = React.useState(false);
 	const [buttonIcon, setButtonIcon] = React.useState(dropdown);
 
 	const onExpand = () => {
-		if(expanded){
+		if (expanded) {
 			setExpanded(false);
 			setButtonIcon(dropdown);
-		}else{
+		} else {
 			setExpanded(true);
 			setButtonIcon(dropup);
 		}
@@ -58,8 +47,8 @@ export default function Event(Props){
 	const Speakers = speakersList.map((speaker, i) => {
 			return (
 				<Text key ={i} onPress={() => Props.onSpeakerSelect(speaker)} style={styles.speakersName}>
-          {speaker}
-        </Text>
+					{speaker}
+				</Text>
 			);
 		}
 
@@ -67,15 +56,44 @@ export default function Event(Props){
 
 	const Location = (
 		<Text style={styles.expanded}>
-			{"Location: " + Props.event.Location}
+			{"Location: "}
+			<Text style={{fontWeight: 'normal'}}>{Props.event.Location}</Text>
 		</Text>
 	);
 
-	const Moderators = (
-		<Text style={styles.expanded}>
-			{"Moderators: " + Props.event.Moderators}
-		</Text>
+	const moderatorsList = (Props.event.Moderators) ? Props.event.Moderators.split(';') : [];
 
+	const Moderators = moderatorsList.map((moderator, i) => {
+			return (
+				<Text key ={i} onPress={() => Props.onSpeakerSelect(moderator)} style={styles.speakersName}>
+					{moderator}
+				</Text>
+			);
+		}
+	);
+
+	const ModeratorsRendered = (
+		<View style={styles.speakerButton}>
+			<Text style={styles.expanded}>
+				{"Moderators: "}
+			</Text>
+			{Moderators}
+		</View>
+	);
+
+	const Keynote = (
+		<Text onPress={() => Props.onSpeakerSelect(Props.event.Keynote)} style={styles.speakersName}>
+			{Props.event.Keynote}
+		</Text>
+	);
+
+	const KeynoteRendered = (
+		<View style={styles.speakerButton}>
+			<Text style={styles.expanded}>
+				{"Keynote: "}
+			</Text>
+			{Keynote}
+		</View>
 	);
 
 	const SpeakersRendered = (
@@ -100,7 +118,8 @@ export default function Event(Props){
 			</View>
 			{(expanded) ? Location : null}
 			{(expanded && Props.event.Speakers.length != 0) ? SpeakersRendered : null}
-			{(expanded && Props.event.Moderators.length != 0) ? Moderators : null}
+			{(expanded && Props.event.Moderators.length != 0) ? ModeratorsRendered : null}
+			{(expanded && Props.event.Keynote.length != 0) ? KeynoteRendered : null}
 			<Divider style={{backgroundColor: '#888888'}} />
 		</TouchableOpacity>
 
@@ -108,10 +127,10 @@ export default function Event(Props){
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#44779F',
-    paddingHorizontal: 10,
-  },
+	container: {
+		backgroundColor: '#44779F',
+		paddingHorizontal: 10,
+	},
 	item: {
 		paddingVertical: 10,
 		display: 'flex',
@@ -122,30 +141,29 @@ const styles = StyleSheet.create({
 		color: '#fff',
 		flexWrap: 'wrap',
 		flex: 3,
-    marginRight: 5,
+    	marginRight: 5,
 	},
 	time: {
-			flexWrap: 'wrap',
-			flex: 2,
-			color: '#fff',
+		flexWrap: 'wrap',
+		flex: 2,
+		color: '#fff',
 	},
 	expanded: {
-    marginVertical: 10,
+    	marginVertical: 10,
 		backgroundColor: '#44779F',
 		color: '#fff',
+		fontWeight: 'bold',
 	},
 	speakersName: {
 		color: '#fff',
 		fontSize: 14,
 		textDecorationLine: 'underline',
-    marginRight: 5,
-
+    	margin: 6,
 	},
 	speakerButton: {
 		backgroundColor: '#44779F',
 		flexDirection: 'row',
 		flexWrap: 'wrap',
 		alignItems: 'center',
-
 	}
 });
