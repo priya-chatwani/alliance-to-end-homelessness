@@ -15,10 +15,10 @@ import {
   View,
 } from 'react-native';
 
-export default function Organizations() {
+export default function Organizations(Props) {
 
   const [organizationList, setOrganizationList] = useState([]);
-  
+
   useEffect(() => {
     var query = firebase.database().ref('Organizations');
     query.once('value', function(snapshot) {
@@ -32,7 +32,7 @@ export default function Organizations() {
 
   const OrganizationRender = organizationList.map((organization, i) => {
     return (
-      <Organization key={i} organization={organization}/>
+      <Organization key={i} organization={organization} onOrgSelect={Props.onOrgSelect}/>
     );
   });
 
@@ -43,7 +43,7 @@ export default function Organizations() {
       <SearchBar
         showLoading
         platform="ios"
-        placeholder='Search' 
+        placeholder='Search'
         value={search}
         onChangeText={(text) => setSearch(text)}
       />

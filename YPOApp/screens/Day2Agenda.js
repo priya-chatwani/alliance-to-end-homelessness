@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 
 
-export default function Day2Agenda(){
+export default function Day2Agenda(Props){
 
 const [agendaList, setAgendaList] = React.useState([]);
 
@@ -33,7 +33,7 @@ React.useEffect(() => {
 
   const Day2Render = agendaList.map((event, i) => {
     return (
-      <Event key={i} event={event}/>
+      <Event key={i} event={event} onSpeakerSelect={Props.onSpeakerSelect}/>
     );
   });
 

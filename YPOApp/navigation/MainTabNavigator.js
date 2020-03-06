@@ -6,18 +6,40 @@ import Colors from '../constants/Colors';
 
 import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
+import AboutScreen from '../screens/AboutScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import LearningScreen from '../screens/LearningScreen';
 import AboutScreen from '../screens/AboutScreen';
+import EngagementScreen from '../screens/EngagementScreen';
+import SpeakerBio from '../screens/SpeakerBio';
+import OrgBio from '../screens/OrgBio';
+
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
 });
 
+SpeakerBio.navigationOptions = {
+  title: 'Speaker Bio',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue,
+  },
+  headerTintColor: '#fff',
+};
+
+
+OrgBio.navigationOptions = {
+  title: 'Organization Bio',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue,
+  },
+  headerTintColor: '#fff',
+}
+
 const AgendaStack = createStackNavigator(
   {
     Agenda: AgendaScreen,
+    SpeakerBio: SpeakerBio,
   },
   config
 );
@@ -34,6 +56,7 @@ AgendaStack.path = '';
 const DirectoryStack = createStackNavigator(
   {
     Directory: DirectoryScreen,
+    OrgBio: OrgBio,
   },
   config
 );
@@ -41,12 +64,11 @@ const DirectoryStack = createStackNavigator(
 DirectoryStack.navigationOptions = {
   tabBarLabel: 'Directory',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-people' : 'md-people'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-search' : 'md-search'} />
   ),
 };
 
 DirectoryStack.path = '';
-
 
 //added by aj
  const AboutStack = createStackNavigator(
@@ -75,61 +97,36 @@ DirectoryStack.path = '';
 
 AboutStack.path = '';
 
-
-
-
-
-
-
-const LearningStack = createStackNavigator(
+const EngagementStack = createStackNavigator(
   {
-    Learning: LearningScreen,
+    Engagement: EngagementScreen,
   },
   config
 );
 
-
-LearningStack.navigationOptions = {
-  tabBarLabel: 'Learning',
+EngagementStack.navigationOptions = {
+  tabBarLabel: 'Engagement',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={'ios-star'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-bulb' : 'md-bulb'} />
   ),
 };
 
-LearningStack.path = '';
-
-
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen,
-  },
-  config
-);
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  ),
-};
-
-SettingsStack.path = '';
+EngagementStack.path = '';
 
 const tabOptions = {
-    tabBarOptions: {
-        style:{
-            backgroundColor:Colors.YPOBlue,
-        },
-        showLabel: false,
-    },
+  tabBarOptions: {
+      style:{
+        backgroundColor:Colors.YPOBlue,
+      },
+    showLabel: false,
+  },
 }
 
 const tabNavigator = createBottomTabNavigator({
   AgendaStack,
   DirectoryStack,
-  LearningStack,
-  SettingsStack,
   AboutStack
+  EngagementStack,
 }, tabOptions);
 
 tabNavigator.path = '';

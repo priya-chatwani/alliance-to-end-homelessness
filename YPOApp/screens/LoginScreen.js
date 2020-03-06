@@ -1,14 +1,13 @@
 import * as WebBrowser from 'expo-web-browser';
-import { NavigationContainer } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import * as firebase from 'firebase';
 import {
   Image,
+  Alert,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -36,7 +35,17 @@ export default function LoginScreen({ navigation }) {
 	const onPress = () => {
 		if (code == 'alliance'){
 			navigation.navigate('Main');
-		}
+		}else{
+      setCode('');
+      Alert.alert(
+        'Incorrect Access Code',
+        'Please try again',
+        [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ],
+        {cancelable: false},
+      );
+    }
 	};
 
 	return (
@@ -48,7 +57,7 @@ export default function LoginScreen({ navigation }) {
 			<View style={styles.buttonContainer}>
 				<Button title={"Submit"} onPress={onPress} buttonStyle={styles.button} titleStyle={styles.buttonTitle} />
 			</View>
-      
+
 			<Image
 				source={{ uri: imageUrl }}
 				style={styles.image}

@@ -46,14 +46,18 @@ export default function Attendee (Props) {
 
 	const AttendeeInfo = (
 		<View>
-			<Text style={styles.info}>
-				<Text style={styles.heading}>{"Region: "}</Text>
-				{Props.attendee.Region}
-			</Text>
-			<Text style={styles.info}>
-				<Text style={styles.heading}>{"Company: "}</Text>
-				{Props.attendee.Company}
-			</Text>
+			{(Props.attendee.Region.length > 0) ? 
+				<Text style={styles.info}>
+					<Text style={styles.heading}>{"Region: "}</Text>
+					{Props.attendee.Region}
+				</Text>
+			: null}
+			{(Props.attendee.Company.length > 0) ? 
+				<Text style={styles.info}>
+					<Text style={styles.heading}>{"Company: "}</Text>
+					{Props.attendee.Company}
+				</Text>
+			: null}
 		</View>
 	);
 
@@ -63,7 +67,8 @@ export default function Attendee (Props) {
 				<Text style={styles.name}> 
 					{Props.attendee.First + " " + Props.attendee.Last}
 				</Text>
-				<Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/>
+				{(Props.attendee.Company.length > 0 || Props.attendee.Region.length > 0) ? 
+					<Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
 			</View>
 			{(expanded) ? AttendeeInfo : null}
 			<Divider style={styles.divider} />
@@ -75,6 +80,7 @@ const styles = StyleSheet.create({
 
 	button: {
 		flex: 1, 
+		marginRight: 15,
 	},
 	item: {
 		backgroundColor: '#fff',
@@ -87,7 +93,8 @@ const styles = StyleSheet.create({
 		flexWrap: 'wrap',
 		flex: 2,
 		color: '#000000',
-		marginLeft: 30,
+		marginLeft: 20,
+		marginRight: 10,
 	}, 
 	info: {
 		paddingLeft: 40, 

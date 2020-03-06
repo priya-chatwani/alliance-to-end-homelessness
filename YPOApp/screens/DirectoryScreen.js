@@ -1,4 +1,5 @@
 import * as WebBrowser from 'expo-web-browser';
+
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import {
@@ -15,11 +16,17 @@ import Colors from '../constants/Colors';
 import Attendees from '../screens/Attendees';
 import Organizations from '../screens/Organizations';
 
-const Tab = createMaterialTopTabNavigator();
+const DirectoryTab= createMaterialTopTabNavigator();
 
-function DirectoryTabNavigator() {
+function DirectoryTabNavigator(Props) {
+
+  const Orgs = () => {
+    return (
+      <Organizations onOrgSelect={Props.onOrgSelect}/>
+    );
+  }
   return (
-    <Tab.Navigator
+    <DirectoryTab.Navigator
       initialRouteName = "Organizations"
       tabBarOptions = {{
         activeTintColor: Colors.YPOGold,
@@ -28,17 +35,17 @@ function DirectoryTabNavigator() {
         indicatorStyle: {backgroundColor: Colors.YPOGold}
       }}
     >
-    <Tab.Screen
+    <DirectoryTab.Screen
       name="Organizations"
-      component={Organizations}
+      component={Orgs}
       options={{tabBarLabel:"Organizations"}}
     />
-    <Tab.Screen
+    <DirectoryTab.Screen
       name="Attendees"
       component={Attendees}
       options={{tabBarLabel:"Attendees"}}
     />
-    </Tab.Navigator>
+    </DirectoryTab.Navigator>
   );
 }
 
@@ -50,10 +57,13 @@ DirectoryScreen.navigationOptions = {
   headerTintColor: '#fff',
 };
 
-export default function DirectoryScreen() {
+export default function DirectoryScreen({navigation}) {
+  const onOrgSelect = (org) => {
+    navigation.navigate('OrgBio', {org: org});
+  }
   return (
-    <NavigationContainer>
-      <DirectoryTabNavigator />
+    <NavigationContainer independent={true}>
+      <DirectoryTabNavigator onOrgSelect={onOrgSelect}/>
     </NavigationContainer>
   );
 }
