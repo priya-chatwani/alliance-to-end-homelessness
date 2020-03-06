@@ -15,7 +15,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Articles from '../screens/Articles';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import {Button, SocialIcon } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 
 import Colors from '../constants/Colors';
 
