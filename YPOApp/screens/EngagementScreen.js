@@ -41,24 +41,24 @@ export default function EngagementScreen({ navigation }) {
       <Button style={styles.button}
         icon={<Icon
           name="newspaper-o"
-          size={40}
+          size={150}
           color='white'
         />}
-        title="Articles"
-        titleStyle={styles.text}
+        // title="Articles"
+        // titleStyle={styles.text}
         type="clear"
         onPress={() => navigation.navigate('Articles')}
 			/>
       <Button style={styles.button}
         icon={<Icon
           name="facebook-official"
-          size={40}
+          size={150}
           color='white'
         />}
-        title="Facebook Group"
-        titleStyle={styles.text}
+        // title="Facebook Group"
+        // titleStyle={styles.text}
         type="clear"
-        onPress={() => Linking.openURL('https://www.facebook.com/groups/alliancetoendhomelessness/')}
+        onPress={() => Linking.openURL('fb://group/alliancetoendhomelessness/')}
 			/>
 		</View>
 	);
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-  	margin: 10,
+    margin: 10,
   	padding: 10,
     borderRadius: 20
   },

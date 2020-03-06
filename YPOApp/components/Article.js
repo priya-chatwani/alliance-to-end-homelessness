@@ -16,16 +16,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default function Article (Props) {
 
-	const onPress = () => {
-		if (expanded) {
-			setExpanded(false);
-			setButtonIcon(dropdown);
-		} else {
-			setExpanded(true);
-			setButtonIcon(dropup);
-		}
-	};
-
 	return (
 		<View>
 			<View style={styles.item}>
