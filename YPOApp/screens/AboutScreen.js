@@ -58,42 +58,32 @@ export default function AboutScreen({ navigation }) {
       })
   }, []);
 
-
   return (
-
     <View style={styles.container}>
-			<Text style={styles.title}>
-       YPO Alliance To End Homelessness
-			</Text>
-
+      <Text style={styles.title}>
+        YPO Alliance To End Homelessness
+      </Text>
       <Text style={styles.infoText}>
-				Homelessness is a globel problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. We will hear from a range of experts from across the world including, policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
-			</Text>
+        Homelessness is a globel problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. We will hear from a range of experts from across the world including, policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
+      </Text>
       <Text style={styles.subTitle}> Organizers </Text>
-
-
-       <Image
-       	source={{ uri: imageUrl1 }}
+      <Image
+        source={{ uri: imageUrl1 }}
         style={styles.firstRow}
-       />
-
-       <Image
-         source={{ uri: imageUrl2 }}
-         style = {styles.secondRow}
-       />
-
-       <Image
-         source={{ uri: imageUrl3 }}
-       style={styles.firstRow}
-       />
-
-       <Image
-         source={{ uri: imageUrl4 }}
-       style={styles.firstRow}
-       />
-
-
-       </View>
+      />
+      <Image
+        source={{ uri: imageUrl2 }}
+        style = {styles.secondRow}
+      />
+      <Image
+        source={{ uri: imageUrl3 }}
+        style={styles.firstRow}
+      />
+      <Image
+        source={{ uri: imageUrl4 }}
+        style={styles.firstRow}
+      />
+    </View>
 
 	);
 }
@@ -105,33 +95,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-
   },
-
   firstRow:{
-    display: 'grid',
-    gridTemplateColumns: '60px 60px',
-    gridTemplateRows: '60px 60px',
-    gridColumn: '2/2',
     marginVertical: 8,
     marginHorizontal: 16,
-
-   width: 100,
+    width: 100,
     height: 100,
-
     borderRadius: 100/ 2,
   },
-  secondRow:{
-    display: 'grid',
-    gridTemplateColumns: '60px 60px',
-    gridTemplateRows: '60px 60px',
-    gridColumn: '1/2',
+  secondRow: {
     marginVertical: 8,
     marginHorizontal: 16,
-
-   width: 100,
+    width: 100,
     height: 100,
-
     borderRadius: 100/ 2,
   },
   title: {
@@ -151,9 +127,6 @@ const styles = StyleSheet.create({
   	fontWeight: 'bold',
   },
   hi: {
-    display: 'grid',
-    gridTemplateRows: '60px 60px',
-    gridTemplateColumns: '60px 60 px',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute'

@@ -8,8 +8,6 @@ import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
 import AboutScreen from '../screens/AboutScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import AboutScreen from '../screens/AboutScreen';
 import EngagementScreen from '../screens/EngagementScreen';
 import SpeakerBio from '../screens/SpeakerBio';
 import OrgBio from '../screens/OrgBio';
@@ -70,7 +68,6 @@ DirectoryStack.navigationOptions = {
 
 DirectoryStack.path = '';
 
-//added by aj
  const AboutStack = createStackNavigator(
       {
      About: AboutScreen,
@@ -85,7 +82,7 @@ DirectoryStack.path = '';
      <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-information-circle' : 'ios-information-circle'} />
    ),
  };
- //this was orignally in aboutscreen
+
  AboutScreen.navigationOptions = {
    title: 'About',
    headerStyle: {
@@ -125,8 +122,8 @@ const tabOptions = {
 const tabNavigator = createBottomTabNavigator({
   AgendaStack,
   DirectoryStack,
-  AboutStack
   EngagementStack,
+  AboutStack
 }, tabOptions);
 
 tabNavigator.path = '';
