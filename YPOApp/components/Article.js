@@ -29,10 +29,10 @@ export default function Article (Props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    paddingHorizontal: 10,
-  },
+	container: {
+		backgroundColor: '#fff',
+		paddingHorizontal: 10,
+	},
 	button: {
 		flex: 1,
 	},
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	title: {
-    fontSize: 16,
+    	fontSize: 16,
 		flexWrap: 'wrap',
 		flex: 2,
 		color: '#000000',
