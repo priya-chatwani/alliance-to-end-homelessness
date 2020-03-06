@@ -8,6 +8,8 @@ import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
 import AboutScreen from '../screens/AboutScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import AboutScreen from '../screens/AboutScreen';
 import EngagementScreen from '../screens/EngagementScreen';
 import SpeakerBio from '../screens/SpeakerBio';
 import OrgBio from '../screens/OrgBio';
@@ -95,8 +97,6 @@ DirectoryStack.path = '';
 
 AboutStack.path = '';
 
-
-
 const EngagementStack = createStackNavigator(
   {
     Engagement: EngagementScreen,
@@ -125,6 +125,7 @@ const tabOptions = {
 const tabNavigator = createBottomTabNavigator({
   AgendaStack,
   DirectoryStack,
+  AboutStack
   EngagementStack,
 }, tabOptions);
 

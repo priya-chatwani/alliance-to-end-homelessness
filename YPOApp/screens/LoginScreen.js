@@ -57,6 +57,7 @@ export default function LoginScreen({ navigation }) {
 			<View style={styles.buttonContainer}>
 				<Button title={"Submit"} onPress={onPress} buttonStyle={styles.button} titleStyle={styles.buttonTitle} />
 			</View>
+
 			<Image
 				source={{ uri: imageUrl }}
 				style={styles.image}
