@@ -16,10 +16,25 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Articles from '../screens/Articles';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Button } from 'react-native-elements';
-
 import Colors from '../constants/Colors';
 
+EngagementScreen.navigationOptions = {
+  title: 'Engagement',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue,
+  },
+  headerTintColor: '#fff',
+};
+
 export default function EngagementScreen({ navigation }) {
+
+  // EngagementScreen.navigationOptions = {
+  //   title: 'Engagement',
+  //   headerStyle: {
+  //     backgroundColor: Colors.YPOBlue,
+  //   },
+  //   headerTintColor: '#fff',
+  // };
 
 	return (
 		<View style={styles.container}>

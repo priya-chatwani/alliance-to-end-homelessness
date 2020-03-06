@@ -84,6 +84,17 @@ const EngagementStack = createStackNavigator(
   config
 );
 
+EngagementScreen.navigationOptions = {
+  title: 'Engagement',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue
+  },
+  headerTitleStyle: {
+    padding: 10
+  },
+  headerTintColor: '#fff',
+};
+
 EngagementStack.navigationOptions = {
   tabBarLabel: 'Engagement',
   tabBarIcon: ({ focused }) => (
