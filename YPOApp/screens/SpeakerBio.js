@@ -13,10 +13,13 @@ import {
 
 import * as firebase from 'firebase';
 
-export default function SpeakerBio(Props){
+export default function SpeakerBio (Props) {
   const [bio, setBio] = useState("");
   const [website, setWebsite] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const speaker = Props.navigation.getParam('speaker');
+  const nameWithoutSpace = speaker.replace(/\s+/g, '');
+  const imagePath = "images/Speakers/" + nameWithoutSpace + ".jpg";
 
   const firebaseRoute = 'Speakers/' + speaker
 
@@ -24,11 +27,16 @@ export default function SpeakerBio(Props){
     var query = firebase.database().ref(firebaseRoute);
     query.once('value', function(snapshot) {
         if (snapshot.exists()){
-          var speaker = snapshot.val()
+          var speaker = snapshot.val();
           setBio(speaker.Bio);
-          setWebsite(speaker.Website)
+          setWebsite(speaker.Website);
         }
     });
+    firebase.storage().ref().child(imagePath).getDownloadURL().then(data => {
+			setImageUrl(data);
+		}).catch(error => {
+			console.log(error);
+		})
   },[]);
 
   return (
@@ -36,6 +44,10 @@ export default function SpeakerBio(Props){
       <Text style={styles.name}>
         {speaker}
       </Text>
+      <Image
+				source={{ uri: imageUrl }}
+				style={styles.image}
+			/>
       <Text style={styles.bio}>
         {bio}
       </Text>
@@ -56,6 +68,11 @@ const styles = StyleSheet.create({
     bio: {
       fontSize: 16,
       marginTop: 15,
+    },
+    image: {
+      marginTop: 10,
+      width: 300,
+      height: 200,
     }
   }
 );

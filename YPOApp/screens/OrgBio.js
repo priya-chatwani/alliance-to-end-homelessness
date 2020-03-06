@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
   StyleSheet,
+  Linking,
   Text,
   View,
 } from 'react-native';
@@ -26,6 +27,32 @@ function infoTitle(title, info){
   )
 }
 
+function infoTitlePhone(title, phoneNumber){
+  return(
+    <View style={styles.infoItem}>
+      <Text style={styles.infoTitle}>
+        {title}
+      </Text>
+      <Text style={styles.linked} onPress={() => Linking.openURL(`tel:${phoneNumber}`)}>
+      {phoneNumber}
+      </Text>
+    </View>
+  )
+}
+
+function infoTitleWebsite(title, website){
+  return(
+    <View style={styles.infoItem}>
+      <Text style={styles.infoTitle}>
+        {title}
+      </Text>
+      <Text style={styles.linked} onPress={() => Linking.openURL(website)}>
+        {website}
+      </Text>
+    </View>
+  )
+}
+
 function OrgBio(Props){
   const org = Props.navigation.getParam('org')
   return(
@@ -39,8 +66,8 @@ function OrgBio(Props){
         </Text>
       </View>
       {org.Contact.length != 0 ? infoTitle("Contact: ", org.Contact) : null}
-      {org.Contact.length != 0 ? infoTitle("Website: ", org.Website) : null}
-      {org.Phone.length != 0 ? infoTitle("Phone: ", org.Phone) : null}
+      {org.Contact.length != 0 ? infoTitleWebsite("Website: ", org.Website) : null}
+      {org.Phone.length != 0 ? infoTitlePhone("Phone: ", org.Phone) : null}
     </ScrollView>
   );
 }
@@ -51,6 +78,10 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
     flexDirection: 'column',
+  },
+  linked: {
+    fontSize: 16,
+    textDecorationLine: 'underline',
   },
   bio: {
     alignItems: 'center',

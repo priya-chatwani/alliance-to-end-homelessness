@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem, Divider, Button } from 'react-native-elements';
+import { ListItem, Divider } from 'react-native-elements';
 import {
   Image,
   ScrollView,
@@ -16,25 +16,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default function Article (Props) {
 
-	const dropdown = (
-		<Ionicons
-			name={'md-arrow-dropdown'}
-			size={28}
-			color={'#C4C4C4'}
-		/>
-	);
-
-	const dropup = (
-		<Ionicons
-			name={'md-arrow-dropup'}
-			size={28}
-			color={'#C4C4C4'}
-		/>
-	);
-
-	const [expanded, setExpanded] = React.useState(false);
-	const [buttonIcon, setButtonIcon] = React.useState(dropdown);
-
 	const onPress = () => {
 		if (expanded) {
 			setExpanded(false);
@@ -45,30 +26,12 @@ export default function Article (Props) {
 		}
 	};
 
-	const ArticleInfo = (
-		<View>
-			{(Props.article.Author) ?
-				<Text style={styles.info}>
-					<Text style={styles.heading}>{"Author: "}</Text>
-					{Props.article.Author}
-				</Text>
-			: null}
-			{(Props.article.Publisher) ?
-				<Text style={styles.info}>
-					<Text style={styles.heading}>{"Publisher: "}</Text>
-					{Props.article.Publisher}
-				</Text>
-			: null}
-		</View>
-	);
-
 	return (
 		<TouchableOpacity onPress={() => Linking.openURL(Props.article.Link)} activeOpacity={.80} style={styles.container}>
 			<View style={styles.item}>
 				<Text style={styles.title}>
 					{Props.article.Title}
 				</Text>
-				<Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/>
 			</View>
 			{(expanded) ? ArticleInfo : null}
 			<Divider style={{backgroundColor: '#C4C4C4'}} />

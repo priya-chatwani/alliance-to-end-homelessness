@@ -48,14 +48,18 @@ export default function Attendee (Props) {
 
 	const AttendeeInfo = (
 		<View>
-			<Text style={styles.info}>
-				<Text style={styles.heading}>{"Region: "}</Text>
-				{Props.attendee.Region}
-			</Text>
-			<Text style={styles.info}>
-				<Text style={styles.heading}>{"Company: "}</Text>
-				{Props.attendee.Company}
-			</Text>
+			{(Props.attendee.Region.length > 0) ? 
+				<Text style={styles.info}>
+					<Text style={styles.heading}>{"Region: "}</Text>
+					{Props.attendee.Region}
+				</Text>
+			: null}
+			{(Props.attendee.Company.length > 0) ? 
+				<Text style={styles.info}>
+					<Text style={styles.heading}>{"Company: "}</Text>
+					{Props.attendee.Company}
+				</Text>
+			: null}
 		</View>
 	);
 
