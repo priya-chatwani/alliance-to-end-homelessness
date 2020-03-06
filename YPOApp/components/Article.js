@@ -16,16 +16,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default function Article (Props) {
 
-	const onPress = () => {
-		if (expanded) {
-			setExpanded(false);
-			setButtonIcon(dropdown);
-		} else {
-			setExpanded(true);
-			setButtonIcon(dropup);
-		}
-	};
-
 	return (
 		<TouchableOpacity onPress={() => Linking.openURL(Props.article.Link)} activeOpacity={.80} style={styles.container}>
 			<View style={styles.item}>
