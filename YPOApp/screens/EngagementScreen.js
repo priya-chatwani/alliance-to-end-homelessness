@@ -58,7 +58,7 @@ export default function EngagementScreen({ navigation }) {
         // title="Facebook Group"
         // titleStyle={styles.text}
         type="clear"
-        onPress={() => Linking.openURL('fb://group/alliancetoendhomelessness/')}
+        onPress={() => Linking.openURL('https://www.facebook.com/groups/alliancetoendhomelessness')}
 			/>
 		</View>
 	);
