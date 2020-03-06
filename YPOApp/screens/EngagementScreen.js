@@ -1,53 +1,72 @@
 import * as WebBrowser from 'expo-web-browser';
+import React, { useState, useEffect } from 'react';
+import * as firebase from 'firebase';
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
 import {
   Image,
-  Platform,
+  Linking,
+  Alert,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
+  TextInput,
   View,
 } from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Colors from '../constants/Colors';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Articles from '../screens/Articles';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import {Button, SocialIcon } from 'react-native-elements';
 
-const Tab = createMaterialTopTabNavigator();
+import Colors from '../constants/Colors';
 
-function EngagementTabNavigator() {
-  return (
-    <Tab.Navigator
-      initialRouteName = "Articles"
-      tabBarOptions = {{
-        activeTintColor: Colors.YPOGold,
-        labelStyle: {fontSize: 12},
-        style: {backgroundColor: Colors.YPOBlue},
-        indicatorStyle: {backgroundColor: Colors.YPOGold}
-      }}
-    >
-    <Tab.Screen
-      name="Articles"
-      component={Articles}
-      options={{tabBarLabel:"Articles"}}
-    />
-    </Tab.Navigator>
-  );
+export default function EngagementScreen({ navigation }) {
+
+	return (
+		<View style={styles.container}>
+      <Button style={styles.button}
+        icon={<Icon
+          name="newspaper-o"
+          size={40}
+          color='white'
+        />}
+        title="Articles"
+        titleStyle={styles.text}
+        type="clear"
+        onPress={() => navigation.navigate('Articles')}
+			/>
+      <Button style={styles.button}
+        icon={<Icon
+          name="facebook-official"
+          size={40}
+          color='white'
+        />}
+        title="Facebook Group"
+        titleStyle={styles.text}
+        type="clear"
+        onPress={() => Linking.openURL('https://www.facebook.com/groups/alliancetoendhomelessness/')}
+			/>
+		</View>
+	);
 }
 
-EngagementScreen.navigationOptions = {
-  title: 'Engagement',
-  headerStyle: {
-    backgroundColor: Colors.YPOBlue,
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    backgroundColor: '#44779F',
+  	flex: 1,
+  	flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  headerTintColor: '#fff',
-};
-
-export default function EngagementScreen() {
-  return (
-    <NavigationContainer independent={true}>
-      <EngagementTabNavigator />
-    </NavigationContainer>
-  );
-}
+  button: {
+  	margin: 10,
+  	padding: 10,
+    borderRadius: 20
+  },
+  text: {
+    margin: 10,
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+  }
+});

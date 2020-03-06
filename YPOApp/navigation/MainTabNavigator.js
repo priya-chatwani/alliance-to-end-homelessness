@@ -10,6 +10,7 @@ import DirectoryScreen from '../screens/DirectoryScreen';
 import EngagementScreen from '../screens/EngagementScreen';
 import SpeakerBio from '../screens/SpeakerBio';
 import OrgBio from '../screens/OrgBio';
+import Articles from '../screens/Articles';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -67,9 +68,18 @@ DirectoryStack.navigationOptions = {
 
 DirectoryStack.path = '';
 
+Articles.navigationOptions = {
+  title: 'Articles',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue,
+  },
+  headerTintColor: '#fff',
+}
+
 const EngagementStack = createStackNavigator(
   {
     Engagement: EngagementScreen,
+    Articles: Articles,
   },
   config
 );
