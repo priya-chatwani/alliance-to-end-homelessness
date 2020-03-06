@@ -16,46 +16,38 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default function Article (Props) {
 
-	const onPress = () => {
-		if (expanded) {
-			setExpanded(false);
-			setButtonIcon(dropdown);
-		} else {
-			setExpanded(true);
-			setButtonIcon(dropup);
-		}
-	};
-
 	return (
-		<View>
+		<TouchableOpacity onPress={() => Linking.openURL(Props.article.Link)} activeOpacity={.80} style={styles.container}>
 			<View style={styles.item}>
-				<Text style={styles.title} onPress={() => Linking.openURL(Props.article.Link)}>
+				<Text style={styles.title}>
 					{Props.article.Title}
 				</Text>
 			</View>
-			<Divider style={styles.divider} />
-		</View>
+			{(expanded) ? ArticleInfo : null}
+			<Divider style={{backgroundColor: '#C4C4C4'}} />
+		</TouchableOpacity>
 	);
 }
 
 const styles = StyleSheet.create({
-
+  container: {
+    backgroundColor: '#fff',
+    paddingHorizontal: 10,
+  },
 	button: {
 		flex: 1,
-		marginRight: 15,
 	},
 	item: {
-		backgroundColor: '#fff',
 		height: 71,
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
 	title: {
+    fontSize: 16,
 		flexWrap: 'wrap',
 		flex: 2,
 		color: '#000000',
-		marginLeft: 20,
 		marginRight: 10,
 	},
 	heading: {
@@ -68,9 +60,4 @@ const styles = StyleSheet.create({
 		color: '#44779F',
 		flex: 3,
 	},
-	divider: {
-		paddingLeft: 5,
-		paddingRight: 5,
-		backgroundColor: '#C4C4C4',
-	}
 });
