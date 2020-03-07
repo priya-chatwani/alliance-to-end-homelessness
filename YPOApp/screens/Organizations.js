@@ -6,17 +6,11 @@ import Organization from '../components/Organization';
 
 import * as firebase from 'firebase';
 import {
-  Image,
-  Platform,
   ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
 export default function Organizations(Props) {
-
   const [organizationList, setOrganizationList] = useState([]);
 
   useEffect(() => {
@@ -32,7 +26,7 @@ export default function Organizations(Props) {
 
   const OrganizationRender = organizationList.map((organization, i) => {
     return (
-      <Organization key={i} organization={organization} onOrgSelect={Props.onOrgSelect}/>
+      <Organization key={i} organization={organization} onOrgSelect={Props.onOrgSelect} />
     );
   });
 

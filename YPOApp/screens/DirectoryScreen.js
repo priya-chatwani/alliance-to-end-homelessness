@@ -2,15 +2,6 @@ import * as WebBrowser from 'expo-web-browser';
 
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Colors from '../constants/Colors';
 import Attendees from '../screens/Attendees';
@@ -22,7 +13,7 @@ function DirectoryTabNavigator(Props) {
 
   const Orgs = () => {
     return (
-      <Organizations onOrgSelect={Props.onOrgSelect}/>
+      <Organizations onOrgSelect={Props.onOrgSelect} onContactSelect={Props.onContactSelect}/>
     );
   }
   return (
@@ -58,9 +49,13 @@ DirectoryScreen.navigationOptions = {
 };
 
 export default function DirectoryScreen({navigation}) {
-  const onOrgSelect = (org) => {
-    navigation.navigate('OrgBio', {org: org});
+  const onOrgSelect = (org, speaker) => {
+    navigation.navigate('OrgBio', {
+      org: org,
+      onContactSelect: () => {navigation.navigate('SpeakerBio', {speaker: speaker})}
+    });
   }
+  
   return (
     <NavigationContainer independent={true}>
       <DirectoryTabNavigator onOrgSelect={onOrgSelect}/>
