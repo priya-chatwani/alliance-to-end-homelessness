@@ -9,13 +9,13 @@ import {
   View,
 } from 'react-native';
 
-function infoTitleContact(title, contact) {
+function infoTitleContact(title, contact, onContactSelect) {
   return(
-    <View style={styles.infoItem} onPress={() => Props.onContactSelect(contact)}>
+    <View style={styles.infoItem}>
       <Text style={styles.infoTitle}>
         {title}
       </Text>
-      <Text style={{fontSize: 16}}>
+      <Text style={styles.linked} onPress={() => onContactSelect(contact)}>
         {contact}
       </Text>
     </View>
@@ -48,21 +48,36 @@ function infoTitleWebsite(title, website) {
   )
 }
 
+function infoTitle(title, info) {
+  return(
+    <View style={styles.infoItem}>
+      <Text style={styles.infoTitle}>
+        {title}
+      </Text>
+      <Text style={{fontSize: 16}}>
+        {info}
+      </Text>
+    </View>
+  )
+}
+
 function OrgBio(Props) {
   const org = Props.navigation.getParam('org');
+  const onContactSelect = Props.navigation.getParam('onContactSelect');
   return(
     <ScrollView contentContainerStyle={styles.container}>
       <View style = {styles.bio}>
-        <Text style={styles.org}>
+        <Text style={styles.orgTitle}>
           {org.Organization}
         </Text>
         <Text style={styles.description}>
           {org.Description}
         </Text>
       </View>
-      {org.Contact.length != 0 ? infoTitleContact("Contact: ", org.Contact) : null}
+      {org.Contact.length != 0 ? infoTitleContact("Contact: ", org.Contact, onContactSelect)  : null}
       {org.Website.length != 0 ? infoTitleWebsite("Website: ", org.Website) : null}
       {org.Phone.length != 0 ? infoTitlePhone("Phone: ", org.Phone) : null}
+      {org.Topic.length != 0 ? infoTitle("Services: ", org.Topic) : null}
     </ScrollView>
   );
 }
@@ -82,9 +97,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
   },
-  org: {
+  orgTitle: {
     fontSize: 30,
     marginTop: 10,
+    textAlign: 'center' 
   },
   description: {
     fontSize: 16,

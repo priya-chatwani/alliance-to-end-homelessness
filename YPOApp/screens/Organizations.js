@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 
 export default function Organizations(Props) {
-
   const [organizationList, setOrganizationList] = useState([]);
 
   useEffect(() => {
@@ -27,7 +26,7 @@ export default function Organizations(Props) {
 
   const OrganizationRender = organizationList.map((organization, i) => {
     return (
-      <Organization key={i} organization={organization} onOrgSelect={Props.onOrgSelect} onContactSelect={Props.onContactSelect}/>
+      <Organization key={i} organization={organization} onOrgSelect={Props.onOrgSelect} />
     );
   });
 

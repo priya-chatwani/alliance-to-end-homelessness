@@ -9,9 +9,8 @@ import {
 import Colors from '../constants/Colors.js';
 
 export default function Organization(Props) {
-
 	const onPress = () => {
-		Props.onOrgSelect(Props.organization);
+		Props.onOrgSelect(Props.organization, Props.organization.Contact);
 	}
 
 	return (
