@@ -1,13 +1,15 @@
 import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
+import React, {useState} from 'react';
 import Colors from '../constants/Colors';
 import {
+  Image,
   ScrollView,
   StyleSheet,
   Linking,
   Text,
   View,
 } from 'react-native';
+import * as firebase from 'firebase';
 
 function infoTitleContact(title, contact, onContactSelect) {
   return(
@@ -62,19 +64,35 @@ function infoTitle(title, info) {
 }
 
 function OrgBio(Props) {
+  const [imageUrl, setImageUrl] = useState("");
   const org = Props.navigation.getParam('org');
+  const nameWithoutSpace = org.Organization.replace(/\s+/g, '');
+  const imagePath = "images/Organizations/" + nameWithoutSpace + ".jpg";
   const onContactSelect = Props.navigation.getParam('onContactSelect');
+
+  React.useEffect(() => {
+    firebase.storage().ref().child(imagePath).getDownloadURL().then(data => {
+			setImageUrl(data);
+		}).catch(error => {
+			console.log(error);
+		})
+  },[]);
+
   return(
     <ScrollView contentContainerStyle={styles.container}>
       <View style = {styles.bio}>
         <Text style={styles.orgTitle}>
           {org.Organization}
         </Text>
+        <Image
+          source={{ uri: imageUrl }}
+          style={styles.image}
+        />
         <Text style={styles.description}>
           {org.Description}
         </Text>
       </View>
-      {org.Contact.length != 0 ? infoTitleContact("Contact: ", org.Contact, onContactSelect)  : null}
+      {org.Contact.length != 0 ? infoTitleContact("Contact: ", org.Contact, onContactSelect) : null}
       {org.Website.length != 0 ? infoTitleWebsite("Website: ", org.Website) : null}
       {org.Phone.length != 0 ? infoTitlePhone("Phone: ", org.Phone) : null}
       {org.Topic.length != 0 ? infoTitle("Services: ", org.Topic) : null}
@@ -114,4 +132,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
+  image: {
+    marginTop: 10,
+    width: 300,
+    height: 200,
+    resizeMode: 'contain',
+  }
 });
