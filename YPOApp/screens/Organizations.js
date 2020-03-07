@@ -18,6 +18,7 @@ import {
 export default function Organizations(Props) {
 
   const [organizationList, setOrganizationList] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     var query = firebase.database().ref('Organizations');
@@ -30,20 +31,26 @@ export default function Organizations(Props) {
     });
   },[]);
 
-  const OrganizationRender = organizationList.map((organization, i) => {
+  const OrganizationRender = organizationList.filter((organization, i) => {
+    var name = organization.Organization.trim().toLowerCase();
+    var topic = organization.Topic.trim().toLowerCase();
+    var searchClean = search.trim().toLowerCase();
+
+    return name.includes(searchClean) || topic.includes(searchClean);
+  }).map((organization, i) => {
     return (
       <Organization key={i} organization={organization} onOrgSelect={Props.onOrgSelect}/>
     );
   });
 
-  const [search, setSearch] = useState('');
+  
 
   return (
     <View style={{ flex: 1}}>
       <SearchBar
-        showLoading
+        round
         platform="ios"
-        placeholder='Search'
+        placeholder='Search here...'
         value={search}
         onChangeText={(text) => setSearch(text)}
       />
