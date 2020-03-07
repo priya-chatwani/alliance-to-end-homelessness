@@ -11,6 +11,7 @@ import DirectoryScreen from '../screens/DirectoryScreen';
 import EngagementScreen from '../screens/EngagementScreen';
 import SpeakerBio from '../screens/SpeakerBio';
 import OrgBio from '../screens/OrgBio';
+import Articles from '../screens/Articles';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -68,9 +69,16 @@ DirectoryStack.navigationOptions = {
 
 DirectoryStack.path = '';
 
-//added by aj
- const AboutStack = createStackNavigator(
-      {
+Articles.navigationOptions = {
+  title: 'Articles',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue,
+  },
+  headerTintColor: '#fff',
+}
+
+const AboutStack = createStackNavigator(
+   {
      About: AboutScreen,
    },
    config
@@ -83,7 +91,7 @@ DirectoryStack.path = '';
      <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-information-circle' : 'ios-information-circle'} />
    ),
  };
- //this was orignally in aboutscreen
+
  AboutScreen.navigationOptions = {
    title: 'About',
    headerStyle: {
@@ -95,14 +103,24 @@ DirectoryStack.path = '';
 
 AboutStack.path = '';
 
-
-
 const EngagementStack = createStackNavigator(
   {
     Engagement: EngagementScreen,
+    Articles: Articles,
   },
   config
 );
+
+EngagementScreen.navigationOptions = {
+  title: 'Engagement',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue
+  },
+  headerTitleStyle: {
+    padding: 10
+  },
+  headerTintColor: '#fff',
+};
 
 EngagementStack.navigationOptions = {
   tabBarLabel: 'Engagement',
@@ -126,6 +144,7 @@ const tabNavigator = createBottomTabNavigator({
   AgendaStack,
   DirectoryStack,
   EngagementStack,
+  AboutStack
 }, tabOptions);
 
 tabNavigator.path = '';

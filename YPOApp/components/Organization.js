@@ -18,45 +18,33 @@ export default function Organization(Props){
     Props.onOrgSelect(Props.organization);
   }
 
-  const buttonIcon = (
-    <Ionicons
-      name={'md-arrow-dropright'}
-      size={28}
-      color={Colors.YPOBlue}
-    />
-  );
 	return (
-		<View>
+		<TouchableOpacity onPress={() => Props.onOrgSelect(Props.organization)} activeTint={.80} style={styles.container}>
 			<View style={styles.item}>
 				<Text style={styles.organization}>
 					{Props.organization.Organization}
 				</Text>
-        <Button onPress={() => Props.onOrgSelect(Props.organization)} icon={buttonIcon} type={'clear'}/>
 			</View>
-			<Divider style={styles.divider} />
-		</View>
+			<Divider style={{backgroundColor: '#888888'}} />
+		</TouchableOpacity>
 	);
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fff',
+    paddingHorizontal: 10,
+  },
 	item: {
-		backgroundColor: '#fff',
-		height: 71,
+    paddingVertical: 20,
 		display: 'flex',
 		flexDirection: 'row',
-		alignItems: 'center',
-    padding: 5,
+		justifyContent: 'center',
 	},
 	organization: {
+    fontSize: 16,
 		flexWrap: 'wrap',
 		flex: 5,
 		color: '#000000',
-		marginLeft: 20,
-		marginRight: 10,
 	},
-	divider: {
-		paddingLeft: 5,
-		paddingRight: 5,
-		backgroundColor: '#888888',
-	}
 });
