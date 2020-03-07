@@ -4,6 +4,7 @@ import Event from '../components/Event';
 import { useNavigation } from '@react-navigation/native';
 
 import * as firebase from 'firebase';
+import Colors from '../constants/Colors.js';
 
 import {
   Image,
@@ -38,9 +39,21 @@ React.useEffect(() => {
     );
   }, [Props]);
 
-	return (
+	return (Day1Render.length != 0 ? (
 		<ScrollView style={{ flex: 1}}>
         {Day1Render.filter(Boolean)}
     </ScrollView>
-	);
+	) : (
+    <View style={styles.container}>
+      <ActivityIndicator size={"large"} color={Colors.YPOBlue}/>
+    </View>
+  ));
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});

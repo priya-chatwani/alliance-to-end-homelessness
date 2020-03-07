@@ -18,7 +18,7 @@ import {
 export default function articles() {
 
   const [articleList, setArticleList] = useState([]);
-  
+
   useEffect(() => {
     var query = firebase.database().ref('Articles');
     query.once('value', function(snapshot) {

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { SearchBar } from 'react-native-elements';
 
 import Organization from '../components/Organization';
+import Colors from '../constants/Colors.js';
 
 import * as firebase from 'firebase';
 import {
@@ -13,6 +14,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ActivityIndicator,
 } from 'react-native';
 
 export default function Organizations(Props) {
@@ -38,7 +40,7 @@ export default function Organizations(Props) {
 
   const [search, setSearch] = useState('');
 
-  return (
+  return (OrganizationRender.length != 0 ? (
     <View style={{ flex: 1}}>
       <SearchBar
         showLoading
@@ -51,5 +53,17 @@ export default function Organizations(Props) {
         {OrganizationRender}
       </ScrollView>
     </View>
-  );
+  ) : (
+    <View style={styles.container}>
+      <ActivityIndicator size={"large"} color={Colors.YPOBlue}/>
+    </View>
+  ));
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});

@@ -24,7 +24,7 @@ export default function Event(Props){
       style={{margin: 5}}
       name={'md-arrow-dropdown'}
       size={28}
-      color={'#fff'}
+      color={'#888888'}
     />
 	);
 
@@ -33,11 +33,11 @@ export default function Event(Props){
       style={{margin: 5}}
     	name={'md-arrow-dropup'}
     	size={28}
-     	color={'#fff'}
+     	color={'#888888'}
     />
 	);
-	
-	
+
+
 
 
 	const [expanded, setExpanded] = React.useState(false);
@@ -101,7 +101,7 @@ export default function Event(Props){
 			{(expanded) ? Location : null}
 			{(expanded && Props.event.Speakers.length != 0) ? SpeakersRendered : null}
 			{(expanded && Props.event.Moderators.length != 0) ? Moderators : null}
-			<Divider style={{backgroundColor: '#888888'}} />
+			<Divider style={{backgroundColor: '#808080'}} />
 		</TouchableOpacity>
 
 	);
@@ -109,7 +109,7 @@ export default function Event(Props){
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#44779F',
+    backgroundColor: '#fff',
     paddingHorizontal: 10,
   },
 	item: {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	title: {
-		color: '#fff',
+		color: '#000',
 		flexWrap: 'wrap',
 		flex: 3,
     marginRight: 5,
@@ -127,22 +127,22 @@ const styles = StyleSheet.create({
 	time: {
 			flexWrap: 'wrap',
 			flex: 2,
-			color: '#fff',
+			color: '#000',
 	},
 	expanded: {
     marginVertical: 10,
-		backgroundColor: '#44779F',
-		color: '#fff',
+		backgroundColor: '#fff',
+		color: '#000',
 	},
 	speakersName: {
-		color: '#fff',
+		color: '#000',
 		fontSize: 14,
 		textDecorationLine: 'underline',
     marginRight: 5,
 
 	},
 	speakerButton: {
-		backgroundColor: '#44779F',
+		backgroundColor: '#fff',
 		flexDirection: 'row',
 		flexWrap: 'wrap',
 		alignItems: 'center',
