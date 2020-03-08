@@ -2,6 +2,7 @@ import * as WebBrowser from 'expo-web-browser';
 import React, {useState} from 'react';
 import Colors from '../constants/Colors';
 import {
+  ActivityIndicator,
   Image,
   ScrollView,
   StyleSheet,
@@ -84,10 +85,13 @@ function OrgBio(Props) {
         <Text style={styles.orgTitle}>
           {org.Organization}
         </Text>
-        <Image
-          source={{ uri: imageUrl }}
-          style={styles.image}
-        />
+        {imageUrl.length == 0 ? 
+          <ActivityIndicator style={styles.image} size={"large"} color={Colors.YPOBlue}/> :
+          <Image
+            source={{ uri: imageUrl }}
+            style={styles.image}
+          />
+        }
         <Text style={styles.description}>
           {org.Description}
         </Text>
