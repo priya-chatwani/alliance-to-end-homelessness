@@ -1,10 +1,8 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { useState, useEffect } from 'react';
 import { SearchBar } from 'react-native-elements';
-
 import Organization from '../components/Organization';
 import Colors from '../constants/Colors.js';
-
 import * as firebase from 'firebase';
 import {
   ScrollView,
