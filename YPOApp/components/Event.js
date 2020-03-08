@@ -27,7 +27,8 @@ export default function Event(Props) {
     	size={28}
      	color={'#888888'}
     />
-    
+  );
+  
 	const [expanded, setExpanded] = React.useState(false);
 	const [buttonIcon, setButtonIcon] = React.useState(dropdown);
 
