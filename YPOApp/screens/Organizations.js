@@ -1,23 +1,19 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { useState, useEffect } from 'react';
 import { SearchBar } from 'react-native-elements';
-
 import Organization from '../components/Organization';
-
+import Colors from '../constants/Colors.js';
 import * as firebase from 'firebase';
 import {
-  Image,
-  Platform,
   ScrollView,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
+  ActivityIndicator
 } from 'react-native';
 
 export default function Organizations(Props) {
-
   const [organizationList, setOrganizationList] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     var query = firebase.database().ref('Organizations');
@@ -30,20 +26,26 @@ export default function Organizations(Props) {
     });
   },[]);
 
-  const OrganizationRender = organizationList.map((organization, i) => {
+  const OrganizationRender = organizationList.filter((organization, i) => {
+    var name = organization.Organization.trim().toLowerCase();
+    var topic = organization.Topic.trim().toLowerCase();
+    var searchClean = search.trim().toLowerCase();
+
+    return name.includes(searchClean) || topic.includes(searchClean);
+  }).map((organization, i) => {
     return (
-      <Organization key={i} organization={organization} onOrgSelect={Props.onOrgSelect}/>
+      <Organization key={i} organization={organization} onOrgSelect={Props.onOrgSelect} />
     );
   });
 
-  const [search, setSearch] = useState('');
 
-  return (
+
+  return (OrganizationRender.length != 0 ? (
     <View style={{ flex: 1}}>
       <SearchBar
-        showLoading
+        round
         platform="ios"
-        placeholder='Search'
+        placeholder='Search here...'
         value={search}
         onChangeText={(text) => setSearch(text)}
       />
@@ -51,5 +53,17 @@ export default function Organizations(Props) {
         {OrganizationRender}
       </ScrollView>
     </View>
-  );
+  ) : (
+    <View style={styles.container}>
+      <ActivityIndicator size={"large"} color={Colors.YPOBlue}/>
+    </View>
+  ));
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});

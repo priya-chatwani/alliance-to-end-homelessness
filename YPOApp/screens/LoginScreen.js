@@ -4,7 +4,7 @@ import * as firebase from 'firebase';
 import {
   Image,
   Alert,
-  ScrollView,
+  ActivityIndicator,
   StyleSheet,
   Text,
   TextInput,
@@ -19,7 +19,7 @@ export default function LoginScreen({ navigation }) {
 
 	const [imageUrl, setImageUrl] = useState("");
 
-	const ref = firebase.storage().ref().child("images/YPOLogo.jpg");
+	const ref = firebase.storage().ref().child("images/white_icon.png");
 
 	useEffect(() => {
 		ref.getDownloadURL().then(data => {
@@ -34,8 +34,9 @@ export default function LoginScreen({ navigation }) {
 
 	const onPress = () => {
 		if (code == 'alliance'){
-			navigation.navigate('Main');
-		}else{
+		navigation.navigate('Main');
+		}else
+    {
       setCode('');
       Alert.alert(
         'Incorrect Access Code',
@@ -43,24 +44,30 @@ export default function LoginScreen({ navigation }) {
         [
           {text: 'OK', onPress: () => console.log('OK Pressed')},
         ],
-        {cancelable: false},
       );
     }
 	};
 
 	return (
-		<View style={styles.container}>
-			<Text style={styles.title}>
-				YPO Alliance to End Homelessness
-			</Text>
-			<TextInput clearTextOnFocus={true} style={styles.code} onChangeText={(text) => setCode(text)} value={code} placeholder="access code" secureTextEntry={true}/>
-			<View style={styles.buttonContainer}>
-				<Button title={"Submit"} onPress={onPress} buttonStyle={styles.button} titleStyle={styles.buttonTitle} />
+		<View style={{flexDirection: 'column', flex:1}}>
+			<View style={styles.container}>
+				<Text style={styles.title}>
+					Alliance to End Homelessness
+				</Text>
+				<TextInput clearTextOnFocus={true} style={styles.code} onChangeText={(text) => setCode(text)} value={code} placeholder="access code" secureTextEntry={true}/>
+				<View style={styles.buttonContainer}>
+					<Button title={"Submit"} onPress={onPress} buttonStyle={styles.button} titleStyle={styles.buttonTitle} />
+				</View>
 			</View>
-			<Image
-				source={{ uri: imageUrl }}
-				style={styles.image}
-			/>
+			<View style={styles.logo}>
+				{imageUrl.length == 0 ? 
+					<ActivityIndicator size={"large"} color={Colors.YPOBlue}/> :
+					<Image
+						source={{ uri: imageUrl }}
+						style={styles.image}
+					/>
+				}
+			</View>
 		</View>
 
 	);
@@ -68,21 +75,21 @@ export default function LoginScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-  	display: 'flex',
-  	flex: 1,
+  	flex: 3,
   	flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
   image: {
-	marginTop: 50,
-	width: 146,
-	height: 56,
+  	marginTop: 100,
+  	width: 100,
+  	height: 100,
   },
   buttonContainer:{
   	display: 'flex',
   	flexDirection: 'row',
   	alignItems: 'flex-end',
+    paddingBottom: 10,
   },
   title: {
   	fontSize: 36,
@@ -91,9 +98,9 @@ const styles = StyleSheet.create({
   	fontWeight: 'bold',
   },
   logo: {
-  	width: 146,
-  	height: 56,
-
+  	flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   code: {
   	height: 40,

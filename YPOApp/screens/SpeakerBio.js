@@ -1,16 +1,14 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, {useState} from 'react';
-import Event from '../components/Event';
 import Colors from '../constants/Colors';
-
 import {
+  ActivityIndicator,
   Image,
   ScrollView,
   StyleSheet,
   Text,
-  View,
+  Linking
 } from 'react-native';
-
 import * as firebase from 'firebase';
 
 export default function SpeakerBio (Props) {
@@ -41,13 +39,22 @@ export default function SpeakerBio (Props) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      {website.length > 0 ?
+        <Text style={styles.linkedName} onPress={() => Linking.openURL(website)}>
+          {speaker}
+        </Text>
+      : 
       <Text style={styles.name}>
         {speaker}
       </Text>
-      <Image
-				source={{ uri: imageUrl }}
-				style={styles.image}
-			/>
+      }
+      {imageUrl.length == 0 ? 
+        <ActivityIndicator style={styles.image} size={"large"} color={Colors.YPOBlue}/> :
+        <Image
+          source={{ uri: imageUrl }}
+          style={styles.image}
+        />
+      }
       <Text style={styles.bio}>
         {bio}
       </Text>
@@ -61,9 +68,14 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       padding: 10,
     },
-    name: {
+    linkedName: {
       fontSize: 28,
       marginTop: 10,
+      textDecorationLine: 'underline',
+    },
+    name: {
+      fontSize: 28,
+      marginTop: 10
     },
     bio: {
       fontSize: 16,
@@ -73,6 +85,7 @@ const styles = StyleSheet.create({
       marginTop: 10,
       width: 300,
       height: 200,
+      resizeMode: 'contain',
     }
   }
 );

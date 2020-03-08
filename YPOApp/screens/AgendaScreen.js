@@ -1,27 +1,14 @@
 import * as WebBrowser from 'expo-web-browser';
 import { NavigationContainer } from '@react-navigation/native';
-import { useNavigation } from '@react-navigation/native';
-
-import { createStackNavigator } from 'react-navigation-stack';
-import React, {useState} from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Colors from '../constants/Colors';
 import Day1Agenda from '../screens/Day1Agenda';
 import Day2Agenda from '../screens/Day2Agenda';
-import SpeakerBio from '../screens/SpeakerBio';
 
 const Tab = createMaterialTopTabNavigator();
 
-function AgendaTabNavigator(Props){
+function AgendaTabNavigator(Props) {
 
   const Day1 = () => {
     return (

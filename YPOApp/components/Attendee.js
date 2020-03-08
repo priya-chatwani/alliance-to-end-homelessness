@@ -1,22 +1,19 @@
 import React from 'react';
-import { ListItem, Divider, Button } from 'react-native-elements';
+import { Divider, Button } from 'react-native-elements';
 import {
-  Image,
-  ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
 
-import Colors from '../constants/Colors.js'
 import { Ionicons } from '@expo/vector-icons';
 
 export default function Attendee (Props) {
 
 	const dropdown = (
 		<Ionicons
+			style={{margin: 5}}
 			name={'md-arrow-dropdown'}
 			size={28}
 			color={'#C4C4C4'}
@@ -25,6 +22,7 @@ export default function Attendee (Props) {
 
 	const dropup = (
 		<Ionicons
+      		style={{margin: 5}}
 			name={'md-arrow-dropup'}
 			size={28}
 			color={'#C4C4C4'}
@@ -62,51 +60,42 @@ export default function Attendee (Props) {
 	);
 
 	return (
-		<View>
+		<TouchableOpacity onPress={onPress} activeOpacity={.80} style={styles.container}>
 			<View style={styles.item}>
-				<Text style={styles.name}> 
+				<Text style={styles.name}>
 					{Props.attendee.First + " " + Props.attendee.Last}
 				</Text>
 				{(Props.attendee.Company.length > 0 || Props.attendee.Region.length > 0) ? 
 					<Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
 			</View>
 			{(expanded) ? AttendeeInfo : null}
-			<Divider style={styles.divider} />
-		</View>
+			<Divider style={{backgroundColor: '#C4C4C4'}} />
+		</TouchableOpacity>
 	);
 }
 
 const styles = StyleSheet.create({
-
-	button: {
-		flex: 1, 
-		marginRight: 15,
+	container: {
+		paddingHorizontal: 10,
+		backgroundColor: '#fff',
 	},
 	item: {
-		backgroundColor: '#fff',
-		height: 71,
 		display: 'flex',
+		height: 71,
 		flexDirection: 'row',
 		alignItems: 'center',
-	}, 
+	},
 	name: {
+    	fontSize: 16,
 		flexWrap: 'wrap',
-		flex: 2,
+		flex: 1,
 		color: '#000000',
-		marginLeft: 20,
-		marginRight: 10,
-	}, 
+	},
 	info: {
-		paddingLeft: 40, 
-		paddingBottom: 10,
+		paddingLeft: 40,
+    	paddingBottom: 10,
 		backgroundColor: '#fff',
 		color: '#44779F',
-		flex: 3,
-	}, 
-	divider: {
-		paddingLeft: 5,
-		paddingRight: 5,
-		backgroundColor: '#C4C4C4',
 	},
 	heading: {
 		fontWeight: 'bold',

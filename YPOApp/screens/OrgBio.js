@@ -1,9 +1,8 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, {useState} from 'react';
-import Event from '../components/Event';
 import Colors from '../constants/Colors';
-
 import {
+  ActivityIndicator,
   Image,
   ScrollView,
   StyleSheet,
@@ -11,23 +10,22 @@ import {
   Text,
   View,
 } from 'react-native';
-
 import * as firebase from 'firebase';
 
-function infoTitle(title, info){
+function infoTitleContact(title, contact, onContactSelect) {
   return(
     <View style={styles.infoItem}>
       <Text style={styles.infoTitle}>
         {title}
       </Text>
-      <Text style={{fontSize: 16}}>
-        {info}
+      <Text style={styles.linked} onPress={() => onContactSelect(contact)}>
+        {contact}
       </Text>
     </View>
   )
 }
 
-function infoTitlePhone(title, phoneNumber){
+function infoTitlePhone(title, phoneNumber) {
   return(
     <View style={styles.infoItem}>
       <Text style={styles.infoTitle}>
@@ -40,7 +38,7 @@ function infoTitlePhone(title, phoneNumber){
   )
 }
 
-function infoTitleWebsite(title, website){
+function infoTitleWebsite(title, website) {
   return(
     <View style={styles.infoItem}>
       <Text style={styles.infoTitle}>
@@ -53,21 +51,55 @@ function infoTitleWebsite(title, website){
   )
 }
 
-function OrgBio(Props){
-  const org = Props.navigation.getParam('org')
+function infoTitle(title, info) {
+  return(
+    <View style={styles.infoItem}>
+      <Text style={styles.infoTitle}>
+        {title}
+      </Text>
+      <Text style={{fontSize: 16}}>
+        {info}
+      </Text>
+    </View>
+  )
+}
+
+function OrgBio(Props) {
+  const [imageUrl, setImageUrl] = useState("");
+  const org = Props.navigation.getParam('org');
+  const nameWithoutSpace = org.Organization.replace(/\s+/g, '');
+  const imagePath = "images/Organizations/" + nameWithoutSpace + ".jpg";
+  const onContactSelect = Props.navigation.getParam('onContactSelect');
+
+  React.useEffect(() => {
+    firebase.storage().ref().child(imagePath).getDownloadURL().then(data => {
+			setImageUrl(data);
+		}).catch(error => {
+			console.log(error);
+		})
+  },[]);
+
   return(
     <ScrollView contentContainerStyle={styles.container}>
       <View style = {styles.bio}>
-        <Text style={styles.org}>
+        <Text style={styles.orgTitle}>
           {org.Organization}
         </Text>
+        {imageUrl.length == 0 ? 
+          <ActivityIndicator style={styles.image} size={"large"} color={Colors.YPOBlue}/> :
+          <Image
+            source={{ uri: imageUrl }}
+            style={styles.image}
+          />
+        }
         <Text style={styles.description}>
           {org.Description}
         </Text>
       </View>
-      {org.Contact.length != 0 ? infoTitle("Contact: ", org.Contact) : null}
-      {org.Contact.length != 0 ? infoTitleWebsite("Website: ", org.Website) : null}
+      {org.Contact.length != 0 ? infoTitleContact("Contact: ", org.Contact, onContactSelect) : null}
+      {org.Website.length != 0 ? infoTitleWebsite("Website: ", org.Website) : null}
       {org.Phone.length != 0 ? infoTitlePhone("Phone: ", org.Phone) : null}
+      {org.Topic.length != 0 ? infoTitle("Services: ", org.Topic) : null}
     </ScrollView>
   );
 }
@@ -87,9 +119,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
   },
-  org: {
+  orgTitle: {
     fontSize: 30,
     marginTop: 10,
+    textAlign: 'center' 
   },
   description: {
     fontSize: 16,
@@ -103,4 +136,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
+  image: {
+    marginTop: 10,
+    width: 300,
+    height: 200,
+    resizeMode: 'contain',
+  }
 });
