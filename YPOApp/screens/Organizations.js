@@ -8,6 +8,7 @@ import Colors from '../constants/Colors.js';
 import * as firebase from 'firebase';
 import {
   ScrollView,
+  StyleSheet,
   View,
   ActivityIndicator,
 } from 'react-native';

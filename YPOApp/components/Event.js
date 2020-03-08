@@ -13,20 +13,21 @@ export default function Event(Props) {
 
 	const dropdown = (
 		<Ionicons
-      style={{margin: 5}}
-      name={'md-arrow-dropdown'}
-      size={28}
-      color={'#888888'}
-    />
+			style={{margin: 5}}
+			name={'md-arrow-dropdown'}
+			size={28}
+			color={'#888888'}
+		/>
 	);
 
 	const dropup = (
 		<Ionicons
-      style={{margin: 5}}
-    	name={'md-arrow-dropup'}
-    	size={28}
-     	color={'#888888'}
-    />
+			style={{margin: 5}}
+			name={'md-arrow-dropup'}
+			size={28}
+			color={'#888888'}
+		/>
+	)
     
 	const [expanded, setExpanded] = React.useState(false);
 	const [buttonIcon, setButtonIcon] = React.useState(dropdown);
