@@ -5,6 +5,8 @@ import { SearchBar } from 'react-native-elements';
 import Attendee from '../components/Attendee';
 
 import * as firebase from 'firebase';
+import Colors from '../constants/Colors.js';
+
 import {
   Image,
   Platform,
@@ -13,13 +15,14 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ActivityIndicator,
 } from 'react-native';
 
 export default function Attendees() {
 
   const [attendeeList, setattendeeList] = useState([]);
-    const [search, setSearch] = useState('');
-  
+  const [search, setSearch] = useState('');
+
   useEffect(() => {
     var query = firebase.database().ref('Attendees');
     query.once('value', function(snapshot) {
@@ -51,7 +54,7 @@ export default function Attendees() {
     );
   });
 
-  return (
+  return (AttendeeRender.length != 0 ? (
     <View style={{ flex: 1}}>
       <SearchBar
         round
@@ -64,5 +67,17 @@ export default function Attendees() {
         {AttendeeRender}
       </ScrollView>
     </View>
-  );
+  ) : (
+    <View style={styles.container}>
+      <ActivityIndicator size={"large"} color={Colors.YPOBlue}/>
+    </View>
+  ));
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});

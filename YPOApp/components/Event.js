@@ -13,22 +13,21 @@ export default function Event(Props) {
 
 	const dropdown = (
 		<Ionicons
-			style={{margin: 5}}
-			name={'md-arrow-dropdown'}
-			size={28}
-			color={'#fff'}
-		/>
+      style={{margin: 5}}
+      name={'md-arrow-dropdown'}
+      size={28}
+      color={'#888888'}
+    />
 	);
 
 	const dropup = (
 		<Ionicons
-			style={{margin: 5}}
-			name={'md-arrow-dropup'}
-			size={28}
-			color={'#fff'}
-    	/>
-	);
-	
+      style={{margin: 5}}
+    	name={'md-arrow-dropup'}
+    	size={28}
+     	color={'#888888'}
+    />
+    
 	const [expanded, setExpanded] = React.useState(false);
 	const [buttonIcon, setButtonIcon] = React.useState(dropdown);
 
@@ -127,10 +126,10 @@ export default function Event(Props) {
 }
 
 const styles = StyleSheet.create({
-	container: {
-		backgroundColor: '#44779F',
-		paddingHorizontal: 10,
-	},
+  container: {
+    backgroundColor: '#fff',
+    paddingHorizontal: 10,
+  },
 	item: {
 		paddingVertical: 10,
 		display: 'flex',
@@ -138,30 +137,31 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	title: {
-		color: '#fff',
+		color: '#000',
 		flexWrap: 'wrap',
 		flex: 3,
     	marginRight: 5,
 	},
 	time: {
-		flexWrap: 'wrap',
-		flex: 2,
-		color: '#fff',
+			flexWrap: 'wrap',
+			flex: 2,
+			color: '#000',
 	},
 	expanded: {
-    	marginVertical: 10,
-		backgroundColor: '#44779F',
-		color: '#fff',
+    marginVertical: 10,
+		backgroundColor: '#fff',
+		color: '#000',
 		fontWeight: 'bold',
+
 	},
 	speakersName: {
-		color: '#fff',
+		color: '#000',
 		fontSize: 14,
 		textDecorationLine: 'underline',
     	margin: 6,
 	},
 	speakerButton: {
-		backgroundColor: '#44779F',
+		backgroundColor: '#fff',
 		flexDirection: 'row',
 		flexWrap: 'wrap',
 		alignItems: 'center',
