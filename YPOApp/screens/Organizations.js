@@ -9,6 +9,7 @@ import {
   StyleSheet,
   View,
   ActivityIndicator,
+  StyleSheet,
 } from 'react-native';
 
 export default function Organizations(Props) {
@@ -38,7 +39,7 @@ export default function Organizations(Props) {
     );
   });
 
-  
+
 
   return (OrganizationRender.length != 0 ? (
     <View style={{ flex: 1}}>
