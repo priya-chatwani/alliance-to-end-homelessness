@@ -1,4 +1,5 @@
 import * as WebBrowser from 'expo-web-browser';
+import {Dimensions} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import * as firebase from 'firebase';
@@ -59,6 +60,7 @@ export default function AboutScreen({ navigation }) {
   }, []);
 
   return (
+
     <View style={styles.container}>
       <Text style={styles.title}>
         Alliance To End Homelessness
@@ -67,53 +69,62 @@ export default function AboutScreen({ navigation }) {
         Homelessness is a globel problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. We will hear from a range of experts from across the world including, policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
       </Text>
       <Text style={styles.subTitle}> Organizers </Text>
-<<<<<<< HEAD
 
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>
+        Alliance To End Homelessness
+     
+      </Text>
+      <Text style={styles.infoText}>
+        Homelessness is a globel problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. We will hear from a range of experts from across the world including, policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
+      </Text>
+
+      <Text style={styles.subTitle}> Organizers </Text>
+
+
+
+
+    <View style={styles.row}>
+      
+
+    <View style={styles.columnLeft}>
 
     <View style={styles.container2}>
 
        <Image
-       	source={{ uri: imageUrl1 }}
-        style={styles.firstRow}
+        source={{ uri: imageUrl1 }}
+        style= {styles.firstRow}
        />
 
        <Image
          source={{ uri: imageUrl2 }}
-         style = {styles.secondRow}
+         style = {styles.firstRow}
        />
+
+      </View>
+      
+       <View style={styles.column}>
+
 
        <Image
          source={{ uri: imageUrl3 }}
        style={styles.firstRow}
        />
 
+
        <Image
          source={{ uri: imageUrl4 }}
        style={styles.firstRow}
        />
 
-
+      
+    
+ </View>
        </View>
-      </View>
-=======
-      <Image
-        source={{ uri: imageUrl1 }}
-        style={styles.firstRow}
-      />
-      <Image
-        source={{ uri: imageUrl2 }}
-        style = {styles.secondRow}
-      />
-      <Image
-        source={{ uri: imageUrl3 }}
-        style={styles.firstRow}
-      />
-      <Image
-        source={{ uri: imageUrl4 }}
-        style={styles.firstRow}
-      />
-    </View>
->>>>>>> 569488079c96a0ad3066c8df9812241d28562a67
+
+
+    </ScrollView>
+
 
 	);
 }
@@ -124,7 +135,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'absolute',
   },
-<<<<<<< HEAD
+
+  firstRow:{
   container2: {
     display: 'flex',
   	flex: 1,
@@ -135,31 +147,81 @@ const styles = StyleSheet.create({
 
   firstRow:{
     gridColumn: '2/2',
-=======
+
+
+  row: {
+
+    display: 'flex',
+  	flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: 30
+
+  },
+ 
+ columnLeft: {
+
+  //gridItem: 'width/2',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
+  marginRight: 25,
+
+
+ },
+
+ columnRight: {
+
+  //gridItem: 'width/2',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
+  marginRight: 25,
+
+
+ },
+
+ 
+
   firstRow:{
->>>>>>> 569488079c96a0ad3066c8df9812241d28562a67
+
+
+  firstRow:{
     marginVertical: 8,
     marginHorizontal: 16,
     width: 100,
     height: 100,
     borderRadius: 100/ 2,
   },
+  secondRow:{
+    display: 'grid',
+    gridTemplateColumns: '60px 60px',
+    gridTemplateRows: '60px 60px',
+    gridColumn: '1/2',
   secondRow: {
     marginVertical: 8,
     marginHorizontal: 16,
     width: 100,
     height: 100,
     borderRadius: 100/ 2,
+  secondRow: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+
   },
   title: {
   	fontSize: 30,
+    marginVertical: 30,
   	color: Colors.YPOBlue,
   	textAlign: 'center',
   	fontWeight: 'bold',
   },
   infoText: {
-    fontSize: 18,
-    textAlign: 'center'
+    fontSize: 23,
+    textAlign: 'center',
+
   },
   subTitle: {
     fontSize: 25,
@@ -171,6 +233,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute'
+    marginVertical: 30,
   },
   code: {
   	height: 40,
@@ -181,4 +244,5 @@ const styles = StyleSheet.create({
   	borderWidth: 1,
   	borderRadius: 20,
   }
-});
+},
+);
