@@ -21,6 +21,7 @@ import {
 export default function Attendees() {
 
   const [attendeeList, setattendeeList] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     var query = firebase.database().ref('Attendees');
@@ -33,20 +34,32 @@ export default function Attendees() {
     });
   },[]);
 
-  const AttendeeRender = attendeeList.map((attendee, i) => {
+  const AttendeeRender = attendeeList.filter((attendee, i) => {
+    var firstName = attendee.First.trim().toLowerCase();
+    var lastName = attendee.Last.trim().toLowerCase();
+    var fullName = firstName + " " + lastName;
+    var company = attendee.Company.trim().toLowerCase();
+    var searchClean = search.trim().toLowerCase();
+
+    if(searchClean == "") return true;
+
+    return (firstName.substring(0,searchClean.length) == searchClean ||
+            lastName.substring(0,searchClean.length) == searchClean ||
+            fullName.substring(0,searchClean.length) == searchClean) ||
+            company.substring(0,searchClean.length) == searchClean;
+
+  }).map((attendee, i) => {
     return (
       <Attendee key={i} attendee={attendee}/>
     );
   });
 
-  const [search, setSearch] = useState('');
-
   return (AttendeeRender.length != 0 ? (
     <View style={{ flex: 1}}>
       <SearchBar
-        showLoading
+        round
         platform="ios"
-        placeholder='Search'
+        placeholder="Search here..."
         value={search}
         onChangeText={(text) => setSearch(text)}
       />

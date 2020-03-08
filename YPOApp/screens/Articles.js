@@ -18,7 +18,8 @@ import {
 export default function articles() {
 
   const [articleList, setArticleList] = useState([]);
-
+  const [search, setSearch] = useState('');
+  
   useEffect(() => {
     var query = firebase.database().ref('Articles');
     query.once('value', function(snapshot) {
@@ -30,20 +31,24 @@ export default function articles() {
     });
   },[]);
 
-  const ArticleRenderer = articleList.map((article, i) => {
+  const ArticleRenderer = articleList.filter((article, i) => {
+    var name = article.Title.trim().toLowerCase();
+    var searchClean = search.trim().toLowerCase();
+
+    return name.includes(searchClean);
+  }).map((article, i) => {
     return (
       <Article key={i} article={article}/>
     );
   });
 
-  const [search, setSearch] = useState('');
 
   return (
     <View style={{ flex: 1}}>
       <SearchBar
-        showLoading
+        round
         platform="ios"
-        placeholder='Search'
+        placeholder='Search here...'
         value={search}
         onChangeText={(text) => setSearch(text)}
       />
