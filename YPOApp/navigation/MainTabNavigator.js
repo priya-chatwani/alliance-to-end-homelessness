@@ -56,6 +56,7 @@ const DirectoryStack = createStackNavigator(
   {
     Directory: DirectoryScreen,
     OrgBio: OrgBio,
+    SpeakerBio: SpeakerBio,
   },
   config
 );

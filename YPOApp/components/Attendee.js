@@ -1,23 +1,19 @@
 import React from 'react';
-import { ListItem, Divider, Button } from 'react-native-elements';
+import { Divider, Button } from 'react-native-elements';
 import {
-  Image,
-  ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
 
-import Colors from '../constants/Colors.js'
 import { Ionicons } from '@expo/vector-icons';
 
 export default function Attendee (Props) {
 
 	const dropdown = (
 		<Ionicons
-      style={{margin: 5}}
+			style={{margin: 5}}
 			name={'md-arrow-dropdown'}
 			size={28}
 			color={'#C4C4C4'}
@@ -26,7 +22,7 @@ export default function Attendee (Props) {
 
 	const dropup = (
 		<Ionicons
-      style={{margin: 5}}
+      		style={{margin: 5}}
 			name={'md-arrow-dropup'}
 			size={28}
 			color={'#C4C4C4'}
@@ -69,7 +65,8 @@ export default function Attendee (Props) {
 				<Text style={styles.name}>
 					{Props.attendee.First + " " + Props.attendee.Last}
 				</Text>
-				{buttonIcon}
+				{(Props.attendee.Company.length > 0 || Props.attendee.Region.length > 0) ? 
+					<Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
 			</View>
 			{(expanded) ? AttendeeInfo : null}
 			<Divider style={{backgroundColor: '#C4C4C4'}} />
@@ -78,25 +75,25 @@ export default function Attendee (Props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 10,
-    backgroundColor: '#fff',
-  },
+	container: {
+		paddingHorizontal: 10,
+		backgroundColor: '#fff',
+	},
 	item: {
-		paddingVertical: 10,
 		display: 'flex',
+		height: 71,
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
 	name: {
-    fontSize: 16,
+    	fontSize: 16,
 		flexWrap: 'wrap',
 		flex: 1,
 		color: '#000000',
 	},
 	info: {
 		paddingLeft: 40,
-    paddingBottom: 10,
+    	paddingBottom: 10,
 		backgroundColor: '#fff',
 		color: '#44779F',
 	},

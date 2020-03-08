@@ -3,6 +3,7 @@ import React from 'react';
 import Event from '../components/Event';
 
 import * as firebase from 'firebase';
+import Colors from '../constants/Colors.js';
 
 import {
   Image,
@@ -37,9 +38,21 @@ React.useEffect(() => {
     );
   });
 
-	return (
+	return (Day2Render.length != 0 ? (
 		<ScrollView style={{ flex: 1}}>
         {Day2Render}
     </ScrollView>
-	);
+	) : (
+    <View style={styles.container}>
+      <ActivityIndicator size={"large"} color={Colors.YPOBlue}/>
+    </View>
+  ));
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});

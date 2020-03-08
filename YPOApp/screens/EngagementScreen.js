@@ -27,15 +27,6 @@ EngagementScreen.navigationOptions = {
 };
 
 export default function EngagementScreen({ navigation }) {
-
-  // EngagementScreen.navigationOptions = {
-  //   title: 'Engagement',
-  //   headerStyle: {
-  //     backgroundColor: Colors.YPOBlue,
-  //   },
-  //   headerTintColor: '#fff',
-  // };
-
 	return (
 		<View style={styles.container}>
       <Button style={styles.button}
@@ -44,8 +35,6 @@ export default function EngagementScreen({ navigation }) {
           size={150}
           color='white'
         />}
-        // title="Articles"
-        // titleStyle={styles.text}
         type="clear"
         onPress={() => navigation.navigate('Articles')}
 			/>
@@ -55,8 +44,6 @@ export default function EngagementScreen({ navigation }) {
           size={150}
           color='white'
         />}
-        // title="Facebook Group"
-        // titleStyle={styles.text}
         type="clear"
         onPress={() => Linking.openURL('https://www.facebook.com/groups/alliancetoendhomelessness')}
 			/>
