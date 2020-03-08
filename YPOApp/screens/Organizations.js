@@ -8,8 +8,7 @@ import {
   ScrollView,
   StyleSheet,
   View,
-  ActivityIndicator,
-  StyleSheet,
+  ActivityIndicator
 } from 'react-native';
 
 export default function Organizations(Props) {
