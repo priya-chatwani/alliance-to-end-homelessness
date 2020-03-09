@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import * as firebase from 'firebase';
 import {
   Image,
+  ActivityIndicator,
   ScrollView,
   StyleSheet,
   Text,
@@ -67,32 +68,44 @@ export default function AboutScreen({ navigation }) {
       <Text style={styles.subTitle}>Organizers</Text>
       <View style={styles.row}>
         <View style={styles.column}>
-          <TouchableOpacity onPress={() => onSpeakerSelect("Sandy Sigal")}>
-            <Image
-              source={{ uri: imageUrl1 }}
-              style= {styles.firstRow}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => onSpeakerSelect("Debra Fine")}>
-            <Image
-              source={{ uri: imageUrl2 }}
-              style= {styles.firstRow}
-            />
-          </TouchableOpacity>
+          {imageUrl1.length == 0 ? 
+            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
+            <TouchableOpacity onPress={() => onSpeakerSelect("Sandy Sigal")}>
+              <Image
+                source={{ uri: imageUrl1 }}
+                style= {styles.firstRow}
+              />
+            </TouchableOpacity>
+          }
+          {imageUrl2.length == 0 ? 
+            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
+            <TouchableOpacity onPress={() => onSpeakerSelect("Debra Fine")}>
+              <Image
+                source={{ uri: imageUrl2 }}
+                style= {styles.firstRow}
+              />
+            </TouchableOpacity>
+          }
         </View>
         <View style={styles.column}>
-          <TouchableOpacity onPress={() => onSpeakerSelect("Rosie Donahower")}>
-            <Image
-              source={{ uri: imageUrl3 }}
-              style= {styles.firstRow}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => onSpeakerSelect("Sandor Valner")}>
-            <Image
-              source={{ uri: imageUrl4 }}
-              style= {styles.firstRow}
-            />
-          </TouchableOpacity>
+          {imageUrl3.length == 0 ? 
+            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
+            <TouchableOpacity onPress={() => onSpeakerSelect("Rosie Donahower")}>
+              <Image
+                source={{ uri: imageUrl3 }}
+                style= {styles.firstRow}
+              />
+            </TouchableOpacity>
+          }
+          {imageUrl4.length == 0 ? 
+            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
+            <TouchableOpacity onPress={() => onSpeakerSelect("Sandor Valner")}>
+              <Image
+                source={{ uri: imageUrl4 }}
+                style= {styles.firstRow}
+              />
+            </TouchableOpacity>
+          }
         </View>  
       </View>  
     </ScrollView> 
