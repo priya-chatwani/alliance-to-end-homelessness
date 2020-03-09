@@ -1,20 +1,22 @@
 import * as WebBrowser from 'expo-web-browser';
-import {Dimensions} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import * as firebase from 'firebase';
 import {
   Image,
+  ActivityIndicator,
   ScrollView,
   StyleSheet,
   Text,
   View,
+  TouchableOpacity
 } from 'react-native';
 
 import Colors from '../constants/Colors';
 
-
 export default function AboutScreen({ navigation }) {
+  const onSpeakerSelect = (speaker) => {
+    navigation.navigate('SpeakerBio', {speaker: speaker});
+  }
 
   const [imageUrl1, setImageUrl1] = useState("");
   const ref1 = firebase.storage().ref().child("images/Leaders/sandy.jpg");
@@ -61,29 +63,49 @@ export default function AboutScreen({ navigation }) {
         Alliance To End Homelessness
       </Text>
       <Text style={styles.infoText}>
-        Homelessness is a global problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. We will hear from a range of experts from across the world including, policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
+        Homelessness is a global problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. The Alliance to End Homelessness event will bring a range of experts from across the world, including policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
       </Text>
       <Text style={styles.subTitle}>Organizers</Text>
       <View style={styles.row}>
         <View style={styles.column}>
-          <Image
-            source={{ uri: imageUrl1 }}
-            style= {styles.firstRow}
-          />
-          <Image
-            source={{ uri: imageUrl2 }}
-            style = {styles.firstRow}
-          />
+          {imageUrl1.length == 0 ? 
+            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
+            <TouchableOpacity onPress={() => onSpeakerSelect("Sandy Sigal")}>
+              <Image
+                source={{ uri: imageUrl1 }}
+                style= {styles.firstRow}
+              />
+            </TouchableOpacity>
+          }
+          {imageUrl2.length == 0 ? 
+            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
+            <TouchableOpacity onPress={() => onSpeakerSelect("Debra Fine")}>
+              <Image
+                source={{ uri: imageUrl2 }}
+                style= {styles.firstRow}
+              />
+            </TouchableOpacity>
+          }
         </View>
         <View style={styles.column}>
-          <Image
-            source={{ uri: imageUrl3 }}
-            style={styles.firstRow}
-          />
-          <Image
-            source={{ uri: imageUrl4 }}
-            style={styles.firstRow}
-          />
+          {imageUrl3.length == 0 ? 
+            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
+            <TouchableOpacity onPress={() => onSpeakerSelect("Rosie Donahower")}>
+              <Image
+                source={{ uri: imageUrl3 }}
+                style= {styles.firstRow}
+              />
+            </TouchableOpacity>
+          }
+          {imageUrl4.length == 0 ? 
+            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
+            <TouchableOpacity onPress={() => onSpeakerSelect("Sandor Valner")}>
+              <Image
+                source={{ uri: imageUrl4 }}
+                style= {styles.firstRow}
+              />
+            </TouchableOpacity>
+          }
         </View>  
       </View>  
     </ScrollView> 
