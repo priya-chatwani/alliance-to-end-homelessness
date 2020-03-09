@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginBottom: 30
   },
- 
+  
  column: {
   flexDirection: 'column',
   justifyContent: 'space-between',
