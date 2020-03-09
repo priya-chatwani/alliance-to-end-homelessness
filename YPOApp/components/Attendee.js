@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
 		color: '#000000',
 	},
 	info: {
+    paddingLeft: 3,
     paddingBottom: 10,
 		backgroundColor: '#fff',
 		color: '#44779F',
