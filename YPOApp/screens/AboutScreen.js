@@ -70,16 +70,7 @@ export default function AboutScreen({ navigation }) {
       </Text>
       <Text style={styles.subTitle}> Organizers </Text>
 
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>
-        Alliance To End Homelessness
-     
-      </Text>
-      <Text style={styles.infoText}>
-        Homelessness is a globel problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. We will hear from a range of experts from across the world including, policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
-      </Text>
-
-      <Text style={styles.subTitle}> Organizers </Text>
+  
 
 
 
@@ -87,9 +78,8 @@ export default function AboutScreen({ navigation }) {
     <View style={styles.row}>
       
 
-    <View style={styles.columnLeft}>
+    <View style={styles.column}>
 
-    <View style={styles.container2}>
 
        <Image
         source={{ uri: imageUrl1 }}
@@ -102,8 +92,7 @@ export default function AboutScreen({ navigation }) {
        />
 
       </View>
-      
-       <View style={styles.column}>
+      <View style={styles.column}>
 
 
        <Image
@@ -117,16 +106,14 @@ export default function AboutScreen({ navigation }) {
        style={styles.firstRow}
        />
 
-      
-    
- </View>
-       </View>
+  
+     </View>  
+    </View>  
+
+  </View> 
 
 
-    </ScrollView>
-
-
-	);
+  );
 }
 
 const styles = StyleSheet.create({
@@ -136,87 +123,40 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 
-  firstRow:{
   container2: {
     display: 'flex',
-  	flex: 1,
-    display: 'grid',
-    gridTemplateColumns: '60px 60px',
-    gridTemplateRows: '60px 60px',
+    flex: 1,
+    
   },
-
-  firstRow:{
-    gridColumn: '2/2',
-
-
   row: {
-
-    display: 'flex',
-  	flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginBottom: 30
-
-  },
- 
- columnLeft: {
-
-  //gridItem: 'width/2',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  flexWrap: 'wrap',
-  marginRight: 25,
-
-
- },
-
- columnRight: {
-
-  //gridItem: 'width/2',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  flexWrap: 'wrap',
-  marginRight: 25,
-
-
- },
-
- 
-
-  firstRow:{
-
-
-  firstRow:{
-    marginVertical: 8,
-    marginHorizontal: 16,
-    width: 100,
-    height: 100,
-    borderRadius: 100/ 2,
-  },
-  secondRow:{
-    display: 'grid',
-    gridTemplateColumns: '60px 60px',
-    gridTemplateRows: '60px 60px',
-    gridColumn: '1/2',
-  secondRow: {
-    marginVertical: 8,
-    marginHorizontal: 16,
-    width: 100,
-    height: 100,
-    borderRadius: 100/ 2,
-  secondRow: {
     display: 'flex',
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
-
+    marginBottom: 30
   },
+ 
+ column: {
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
+  marginRight: 25,
+ },
+
+  firstRow:{
+    marginVertical: 8,
+    marginHorizontal: 16,
+    width: 100,
+    height: 100,
+    borderRadius: 100/ 2,
+  },
+  
   title: {
-  	fontSize: 30,
+    fontSize: 30,
     marginVertical: 30,
-  	color: Colors.YPOBlue,
-  	textAlign: 'center',
-  	fontWeight: 'bold',
+    color: Colors.YPOBlue,
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
   infoText: {
     fontSize: 23,
@@ -225,24 +165,22 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 25,
-  	color: Colors.YPOBlue,
-  	textAlign: 'center',
-  	fontWeight: 'bold',
+    color: Colors.YPOBlue,
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
-  hi: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute'
-    marginVertical: 30,
-  },
+
   code: {
-  	height: 40,
-  	width: 300,
-  	borderColor: 'gray',
-  	paddingLeft: 5,
-  	marginTop: 40,
-  	borderWidth: 1,
-  	borderRadius: 20,
+    height: 40,
+    width: 300,
+    borderColor: 'gray',
+    paddingLeft: 5,
+    marginTop: 40,
+    borderWidth: 1,
+    borderRadius: 20,
+  },
+
+  buttonTitle: {
+    fontSize: 14,
   }
-},
-);
+});
