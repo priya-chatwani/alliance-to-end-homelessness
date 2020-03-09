@@ -6,12 +6,8 @@ import * as firebase from 'firebase';
 import {
   Image,
   ScrollView,
-  Flatlist,
-  ActivityIndicator,
   StyleSheet,
   Text,
-  TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -60,59 +56,37 @@ export default function AboutScreen({ navigation }) {
   }, []);
 
   return (
-
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>
         Alliance To End Homelessness
       </Text>
       <Text style={styles.infoText}>
         Homelessness is a globel problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. We will hear from a range of experts from across the world including, policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
       </Text>
-      <Text style={styles.subTitle}> Organizers </Text>
-
-  
-
-
-
-
-    <View style={styles.row}>
-      
-
-    <View style={styles.column}>
-
-
-       <Image
-        source={{ uri: imageUrl1 }}
-        style= {styles.firstRow}
-       />
-
-       <Image
-         source={{ uri: imageUrl2 }}
-         style = {styles.firstRow}
-       />
-
-      </View>
-      <View style={styles.column}>
-
-
-       <Image
-         source={{ uri: imageUrl3 }}
-       style={styles.firstRow}
-       />
-
-
-       <Image
-         source={{ uri: imageUrl4 }}
-       style={styles.firstRow}
-       />
-
-  
-     </View>  
-    </View>  
-
-  </View> 
-
-
+      <Text style={styles.subTitle}>Organizers</Text>
+      <View style={styles.row}>
+        <View style={styles.column}>
+          <Image
+            source={{ uri: imageUrl1 }}
+            style= {styles.firstRow}
+          />
+          <Image
+            source={{ uri: imageUrl2 }}
+            style = {styles.firstRow}
+          />
+        </View>
+        <View style={styles.column}>
+          <Image
+            source={{ uri: imageUrl3 }}
+            style={styles.firstRow}
+          />
+          <Image
+            source={{ uri: imageUrl4 }}
+            style={styles.firstRow}
+          />
+        </View>  
+      </View>  
+    </ScrollView> 
   );
 }
 
@@ -121,12 +95,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
+    padding: 10,
   },
-
   container2: {
     display: 'flex',
     flex: 1,
-    
   },
   row: {
     display: 'flex',
@@ -135,14 +108,12 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginBottom: 30
   },
- 
- column: {
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  flexWrap: 'wrap',
-  marginRight: 25,
- },
-
+  column: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    marginRight: 25,
+  },
   firstRow:{
     marginVertical: 8,
     marginHorizontal: 16,
@@ -150,7 +121,6 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 100/ 2,
   },
-  
   title: {
     fontSize: 30,
     marginVertical: 30,
@@ -161,15 +131,14 @@ const styles = StyleSheet.create({
   infoText: {
     fontSize: 23,
     textAlign: 'center',
-
   },
   subTitle: {
     fontSize: 25,
     color: Colors.YPOBlue,
     textAlign: 'center',
     fontWeight: 'bold',
+    margin: 10,
   },
-
   code: {
     height: 40,
     width: 300,
@@ -179,7 +148,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
   },
-
   buttonTitle: {
     fontSize: 14,
   }
