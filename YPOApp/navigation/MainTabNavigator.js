@@ -79,10 +79,11 @@ Articles.navigationOptions = {
 }
 
 const AboutStack = createStackNavigator(
-   {
-     About: AboutScreen,
-   },
-   config
+  {
+    About: AboutScreen,
+    SpeakerBio: SpeakerBio,
+  },
+  config
  );
 
 

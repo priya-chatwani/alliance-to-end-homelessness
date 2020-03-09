@@ -6,12 +6,7 @@ import Article from '../components/Article';
 
 import * as firebase from 'firebase';
 import {
-  Image,
-  Platform,
   ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
