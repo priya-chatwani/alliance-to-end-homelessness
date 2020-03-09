@@ -1,22 +1,24 @@
 import * as WebBrowser from 'expo-web-browser';
+import {Dimensions} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import * as firebase from 'firebase';
 import {
   Image,
-  ActivityIndicator,
   ScrollView,
+  Flatlist,
+  ActivityIndicator,
   StyleSheet,
   Text,
+  TextInput,
+  TouchableOpacity,
   View,
-  TouchableOpacity
 } from 'react-native';
 
 import Colors from '../constants/Colors';
 
+
 export default function AboutScreen({ navigation }) {
-  const onSpeakerSelect = (speaker) => {
-    navigation.navigate('SpeakerBio', {speaker: speaker});
-  }
 
   const [imageUrl1, setImageUrl1] = useState("");
   const ref1 = firebase.storage().ref().child("images/Leaders/sandy.jpg");
@@ -58,57 +60,62 @@ export default function AboutScreen({ navigation }) {
   }, []);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+
+    <View style={styles.container}>
       <Text style={styles.title}>
         Alliance To End Homelessness
       </Text>
       <Text style={styles.infoText}>
-        Homelessness is a global problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. The Alliance to End Homelessness event will bring a range of experts from across the world, including policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
+        Homelessness is a globel problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. We will hear from a range of experts from across the world including, policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
       </Text>
-      <Text style={styles.subTitle}>Organizers</Text>
-      <View style={styles.row}>
-        <View style={styles.column}>
-          {imageUrl1.length == 0 ? 
-            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
-            <TouchableOpacity onPress={() => onSpeakerSelect("Sandy Sigal")}>
-              <Image
-                source={{ uri: imageUrl1 }}
-                style= {styles.firstRow}
-              />
-            </TouchableOpacity>
-          }
-          {imageUrl2.length == 0 ? 
-            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
-            <TouchableOpacity onPress={() => onSpeakerSelect("Debra Fine")}>
-              <Image
-                source={{ uri: imageUrl2 }}
-                style= {styles.firstRow}
-              />
-            </TouchableOpacity>
-          }
-        </View>
-        <View style={styles.column}>
-          {imageUrl3.length == 0 ? 
-            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
-            <TouchableOpacity onPress={() => onSpeakerSelect("Rosie Donahower")}>
-              <Image
-                source={{ uri: imageUrl3 }}
-                style= {styles.firstRow}
-              />
-            </TouchableOpacity>
-          }
-          {imageUrl4.length == 0 ? 
-            <ActivityIndicator style={styles.firstRow} size={"large"} color={Colors.YPOBlue}/> :
-            <TouchableOpacity onPress={() => onSpeakerSelect("Sandor Valner")}>
-              <Image
-                source={{ uri: imageUrl4 }}
-                style= {styles.firstRow}
-              />
-            </TouchableOpacity>
-          }
-        </View>  
-      </View>  
-    </ScrollView> 
+      <Text style={styles.subTitle}> Organizers </Text>
+
+  
+
+
+
+    <View style={styles.row}>
+      
+
+    <View style={styles.column}>
+
+
+       <Image
+        source={{ uri: imageUrl1 }}
+        style= {styles.firstRow}
+       />
+
+        <Text style={styles.name}> Sandy Sigal </Text>
+
+       <Image
+         source={{ uri: imageUrl2 }}
+         style = {styles.firstRow}
+       />
+
+        <Text style={styles.name}> Debra Fine </Text>
+
+      </View>
+      <View style={styles.column}>
+
+
+       <Image
+         source={{ uri: imageUrl3 }}
+       style={styles.firstRow}
+       />
+
+ <Text style={styles.name}> Rosie Donahower </Text>
+       <Image
+         source={{ uri: imageUrl4 }}
+       style={styles.firstRow}
+       />
+ <Text style={styles.name}> Sandor Valner </Text>
+  
+     </View>  
+    </View>  
+
+  </View> 
+
+
   );
 }
 
@@ -117,11 +124,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    padding: 10,
   },
+
   container2: {
     display: 'flex',
     flex: 1,
+    
   },
   row: {
     display: 'flex',
@@ -130,12 +138,14 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginBottom: 30
   },
-  column: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    marginRight: 25,
-  },
+ 
+ column: {
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
+  marginRight: 25,
+ },
+
   firstRow:{
     marginVertical: 8,
     marginHorizontal: 16,
@@ -143,6 +153,7 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 100/ 2,
   },
+  
   title: {
     fontSize: 30,
     marginVertical: 30,
@@ -153,13 +164,19 @@ const styles = StyleSheet.create({
   infoText: {
     fontSize: 23,
     textAlign: 'center',
+
   },
   subTitle: {
     fontSize: 25,
     color: Colors.YPOBlue,
     textAlign: 'center',
     fontWeight: 'bold',
-    margin: 10,
+  },
+name: {
+    fontSize: 15,
+    color: Colors.YPOBlue,
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
   code: {
     height: 40,
@@ -170,6 +187,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
   },
+
   buttonTitle: {
     fontSize: 14,
   }
