@@ -28,7 +28,7 @@ export default function Event(Props) {
      	color={'#888888'}
     />
   );
-  
+
 	const [expanded, setExpanded] = React.useState(false);
 	const [buttonIcon, setButtonIcon] = React.useState(dropdown);
 
@@ -141,12 +141,12 @@ const styles = StyleSheet.create({
 		color: '#000',
 		flexWrap: 'wrap',
 		flex: 3,
-    	marginRight: 5,
+    marginRight: 5,
 	},
 	time: {
-			flexWrap: 'wrap',
-			flex: 2,
-			color: '#000',
+		flexWrap: 'wrap',
+		flex: 2,
+		color: '#000',
 	},
 	expanded: {
     marginVertical: 10,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
 		color: '#000',
 		fontSize: 14,
 		textDecorationLine: 'underline',
-    	margin: 6,
+    margin: 6,
 	},
 	speakerButton: {
 		backgroundColor: '#fff',
