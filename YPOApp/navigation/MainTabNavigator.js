@@ -2,8 +2,12 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import {
+  Text,
+  View,
+  StyleSheet
+} from 'react-native';
 import Colors from '../constants/Colors';
-
 import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
 import AboutScreen from '../screens/AboutScreen';
@@ -25,7 +29,6 @@ SpeakerBio.navigationOptions = {
   },
   headerTintColor: '#fff',
 };
-
 
 OrgBio.navigationOptions = {
   title: 'Organization Bio',
@@ -70,8 +73,19 @@ DirectoryStack.navigationOptions = {
 
 DirectoryStack.path = '';
 
+class IconTitle extends React.Component {
+  render() {
+    return (
+      <View style={styles.header}>
+        <Text style={styles.title}>Articles</Text>
+        <TabBarIcon name={Platform.OS === 'ios' ? 'ios-open' : 'md-open'} />
+      </View>
+    );
+  }
+}
+
 Articles.navigationOptions = {
-  title: 'Articles',
+  headerTitle: <IconTitle />,
   headerStyle: {
     backgroundColor: Colors.YPOBlue,
   },
@@ -135,9 +149,9 @@ EngagementStack.path = '';
 
 const tabOptions = {
   tabBarOptions: {
-      style:{
-        backgroundColor:Colors.YPOBlue,
-      },
+    style:{
+      backgroundColor:Colors.YPOBlue,
+    },
     showLabel: false,
   },
 }
@@ -152,3 +166,20 @@ const tabNavigator = createBottomTabNavigator({
 tabNavigator.path = '';
 
 export default tabNavigator;
+
+const styles = StyleSheet.create({
+  header: {
+    display: 'flex',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  title: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: '#fff',
+    marginHorizontal: 16,
+    textAlign: 'center'
+  }
+})
