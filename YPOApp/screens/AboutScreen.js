@@ -74,7 +74,6 @@ export default function AboutScreen({ navigation }) {
 
 
 
-
     <View style={styles.row}>
       
 
@@ -86,10 +85,14 @@ export default function AboutScreen({ navigation }) {
         style= {styles.firstRow}
        />
 
+        <Text style={styles.name}> Sandy Sigal </Text>
+
        <Image
          source={{ uri: imageUrl2 }}
          style = {styles.firstRow}
        />
+
+        <Text style={styles.name}> Debra Fine </Text>
 
       </View>
       <View style={styles.column}>
@@ -100,12 +103,12 @@ export default function AboutScreen({ navigation }) {
        style={styles.firstRow}
        />
 
-
+ <Text style={styles.name}> Rosie Donahower </Text>
        <Image
          source={{ uri: imageUrl4 }}
        style={styles.firstRow}
        />
-
+ <Text style={styles.name}> Sandor Valner </Text>
   
      </View>  
     </View>  
@@ -169,7 +172,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
-
+name: {
+    fontSize: 15,
+    color: Colors.YPOBlue,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
   code: {
     height: 40,
     width: 300,
