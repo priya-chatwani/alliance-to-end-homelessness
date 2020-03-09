@@ -138,12 +138,13 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginBottom: 30
   },
- 
+  
  column: {
   flexDirection: 'column',
   justifyContent: 'space-between',
   flexWrap: 'wrap',
-  marginRight: 25,
+  marginRight: 20,
+  marginLeft: 20,
  },
 
   firstRow:{
