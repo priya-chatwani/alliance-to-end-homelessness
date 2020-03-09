@@ -7,7 +7,8 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  Linking
+  Linking,
+  View
 } from 'react-native';
 import * as firebase from 'firebase';
 
@@ -39,15 +40,9 @@ export default function SpeakerBio (Props) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {website.length > 0 ?
-        <Text style={styles.linkedName} onPress={() => Linking.openURL(website)}>
-          {speaker}
-        </Text>
-      : 
       <Text style={styles.name}>
         {speaker}
       </Text>
-      }
       {imageUrl.length == 0 ? 
         <ActivityIndicator style={styles.image} size={"large"} color={Colors.YPOBlue}/> :
         <Image
@@ -58,6 +53,14 @@ export default function SpeakerBio (Props) {
       <Text style={styles.bio}>
         {bio}
       </Text>
+      {website.length > 0 ?
+        <View style={styles.website}>
+          <Text style={styles.infoTitle}>Website: </Text>
+          <Text style={styles.linked} onPress={() => Linking.openURL(website)}>{website}</Text>
+        </View>
+      : 
+      null
+      }
     </ScrollView>
   );
 
@@ -68,9 +71,8 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       padding: 10,
     },
-    linkedName: {
-      fontSize: 28,
-      marginTop: 10,
+    linked: {
+      fontSize: 16,
       textDecorationLine: 'underline',
     },
     name: {
@@ -86,6 +88,17 @@ const styles = StyleSheet.create({
       width: 300,
       height: 200,
       resizeMode: 'contain',
+    },
+    infoTitle: {
+      fontWeight: 'bold',
+      fontSize: 16,
+    },
+    website: {
+      marginTop: 15,
+      flexDirection: 'row',
+      flex: 1,
+      alignSelf: 'flex-start',
+      flexWrap: 'wrap'
     }
   }
 );
