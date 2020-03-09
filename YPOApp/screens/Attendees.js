@@ -22,6 +22,7 @@ export default function Attendees() {
 
   const [attendeeList, setattendeeList] = useState([]);
   const [search, setSearch] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     var query = firebase.database().ref('Attendees');
@@ -31,6 +32,7 @@ export default function Attendees() {
           tempAttendeeList.push(childSnapshot.val());
         });
         setattendeeList(tempAttendeeList)
+        setIsLoading(false);
     });
   },[]);
 
@@ -54,8 +56,8 @@ export default function Attendees() {
     );
   });
 
-  return (AttendeeRender.length != 0 ? (
-    <View style={{ flex: 1}}>
+  return (!isLoading ? (
+    <View style={{ flex: 1, backgroundColor: '#fff'}}>
       <SearchBar
         round
         platform="ios"

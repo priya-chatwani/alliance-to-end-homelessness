@@ -14,6 +14,7 @@ import {
 export default function Organizations(Props) {
   const [organizationList, setOrganizationList] = useState([]);
   const [search, setSearch] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     var query = firebase.database().ref('Organizations');
@@ -23,6 +24,7 @@ export default function Organizations(Props) {
           tempOrganizationList.push(childSnapshot.val());
         });
         setOrganizationList(tempOrganizationList)
+        setIsLoading(false)
     });
   },[]);
 
@@ -40,8 +42,8 @@ export default function Organizations(Props) {
 
 
 
-  return (OrganizationRender.length != 0 ? (
-    <View style={{ flex: 1}}>
+  return (!isLoading ? (
+    <View style={{ flex: 1, backgroundColor: '#fff'}}>
       <SearchBar
         round
         platform="ios"
@@ -65,5 +67,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   }
 });
