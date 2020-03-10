@@ -1,5 +1,5 @@
-# Smash Mouth Cover Band 
-<img src="/images/Logo.jpeg" alt="logo" width="300" align="middle"/>
+# Alliance to End Homelessness 
+<img src="/YPOApp/assets/images/icon.png" alt="logo" width="300" align="middle"/>
 
 ## Team Members
 <ul>
@@ -29,6 +29,9 @@ We are partnering with the Young Presidents Organization to develop a mobile app
 
 ## Progress
 View our weekly decisions and deadlines <a href="https://docs.google.com/spreadsheets/d/1abSycjBtvfGQOMzM6A699j3RjQ4nNiVh9q1VzP8SGiE/edit?usp=sharing">here</a>, and check out our <a href="https://docs.google.com/document/d/1vRvKtzQ15n6OQYMCWVTmXRuHfMJGouZEPa06L9YNomg/edit?usp=sharing">documentation doc</a> for more information about our technical design decisions.
+
+## Privacy Policy
+The Privacy Policy is linked <a href="https://docs.google.com/document/d/1IMAkqfpzeGSt1C10Z7nrKcJ7QdR8BWfreO6ZrlXbVMc/edit" here</a>.
 
 ## Communication
 We keep in touch via iMessage group chat. In terms of chatting with TAs, we prefer to communicate via email. 
