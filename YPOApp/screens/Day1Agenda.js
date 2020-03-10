@@ -1,16 +1,11 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import Event from '../components/Event';
-import { useNavigation } from '@react-navigation/native';
-
 import * as firebase from 'firebase';
 import Colors from '../constants/Colors.js';
-
 import {
-  Image,
   ScrollView,
   StyleSheet,
-  Text,
   View,
   ActivityIndicator,
 } from 'react-native';
@@ -39,14 +34,15 @@ React.useEffect(() => {
     );
   }, [Props]);
 
-	return (Day1Render.length != 0 ? (
-		<ScrollView style={{ flex: 1}}>
-        {Day1Render.filter(Boolean)}
-    </ScrollView>
-	) : (
-    <View style={styles.container}>
-      <ActivityIndicator size={"large"} color={Colors.YPOBlue}/>
-    </View>
+	return (
+    Day1Render.length != 0 ? (
+      <ScrollView style={{ flex: 1}}>
+          {Day1Render.filter(Boolean)}
+      </ScrollView>
+	  ) : (
+      <View style={styles.container}>
+        <ActivityIndicator size={"large"} color={Colors.YPOBlue}/>
+      </View>
   ));
 }
 
