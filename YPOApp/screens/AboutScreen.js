@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 import {
   Image,
   StyleSheet,
+  ScrollView,
   Text,
   View,
 } from 'react-native';
@@ -59,7 +60,7 @@ export default function AboutScreen({ navigation }) {
 
   return (
 
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>
         Alliance To End Homelessness
       </Text>
@@ -93,7 +94,7 @@ export default function AboutScreen({ navigation }) {
         <Text style={styles.name} onPress={() => onSpeakerSelect("Sandor Valner")}> Sandor Valner </Text>
      </View>  
     </View>  
-  </View> 
+  </ScrollView> 
   );
 }
 
