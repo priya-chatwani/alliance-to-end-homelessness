@@ -31,13 +31,13 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 10,
 	},
 	item: {
-    	paddingVertical: 20,
+    paddingVertical: 20,
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'center',
 	},
 	organization: {
-    	fontSize: 16,
+    fontSize: 16,
 		flexWrap: 'wrap',
 		flex: 5,
 		color: '#000000',

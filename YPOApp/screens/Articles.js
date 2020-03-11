@@ -3,18 +3,22 @@ import React, { useState, useEffect } from 'react';
 import { SearchBar } from 'react-native-elements';
 
 import Article from '../components/Article';
+import Colors from '../constants/Colors.js';
 
 import * as firebase from 'firebase';
 import {
   ScrollView,
   View,
+  ActivityIndicator,
+  StyleSheet
 } from 'react-native';
 
 export default function articles() {
 
   const [articleList, setArticleList] = useState([]);
   const [search, setSearch] = useState('');
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     var query = firebase.database().ref('Articles');
     query.once('value', function(snapshot) {
@@ -23,6 +27,7 @@ export default function articles() {
           tempArticleList.push(childSnapshot.val());
         });
         setArticleList(tempArticleList)
+        setIsLoading(false);
     });
   },[]);
 
@@ -38,7 +43,7 @@ export default function articles() {
   });
 
 
-  return (
+  return (!isLoading ? (
     <View style={{ flex: 1}}>
       <SearchBar
         round
@@ -51,5 +56,17 @@ export default function articles() {
         {ArticleRenderer}
       </ScrollView>
     </View>
-  );
+  ) : (
+    <View style={styles.container}>
+      <ActivityIndicator size={"large"} color={Colors.YPOBlue}/>
+    </View>
+  ));
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});

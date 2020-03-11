@@ -60,7 +60,7 @@ export default function LoginScreen({ navigation }) {
 				</View>
 			</View>
 			<View style={styles.logo}>
-				{imageUrl.length == 0 ? 
+				{imageUrl.length == 0 ?
 					<ActivityIndicator size={"large"} color={Colors.YPOBlue}/> :
 					<Image
 						source={{ uri: imageUrl }}
@@ -75,7 +75,7 @@ export default function LoginScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-  	flex: 3,
+  	flex: 6,
   	flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',

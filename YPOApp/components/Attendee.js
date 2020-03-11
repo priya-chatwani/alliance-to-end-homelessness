@@ -22,7 +22,7 @@ export default function Attendee (Props) {
 
 	const dropup = (
 		<Ionicons
-      		style={{margin: 5}}
+      style={{margin: 5}}
 			name={'md-arrow-dropup'}
 			size={28}
 			color={'#C4C4C4'}
@@ -44,13 +44,13 @@ export default function Attendee (Props) {
 
 	const AttendeeInfo = (
 		<View>
-			{(Props.attendee.Region.length > 0) ? 
+			{(Props.attendee.Region.length > 0) ?
 				<Text style={styles.info}>
 					<Text style={styles.heading}>{"Region: "}</Text>
 					{Props.attendee.Region}
 				</Text>
 			: null}
-			{(Props.attendee.Company.length > 0) ? 
+			{(Props.attendee.Company.length > 0) ?
 				<Text style={styles.info}>
 					<Text style={styles.heading}>{"Company: "}</Text>
 					{Props.attendee.Company}
@@ -65,7 +65,7 @@ export default function Attendee (Props) {
 				<Text style={styles.name}>
 					{Props.attendee.First + " " + Props.attendee.Last}
 				</Text>
-				{(Props.attendee.Company.length > 0 || Props.attendee.Region.length > 0) ? 
+				{(Props.attendee.Company.length > 0 || Props.attendee.Region.length > 0) ?
 					<Button style={styles.button} icon={buttonIcon} onPress={onPress} type={'clear'}/> : null}
 			</View>
 			{(expanded) ? AttendeeInfo : null}
@@ -86,14 +86,14 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	name: {
-    	fontSize: 16,
+    fontSize: 16,
 		flexWrap: 'wrap',
 		flex: 1,
 		color: '#000000',
 	},
 	info: {
-		paddingLeft: 40,
-    	paddingBottom: 10,
+    paddingLeft: 3,
+    paddingBottom: 10,
 		backgroundColor: '#fff',
 		color: '#44779F',
 	},
