@@ -1,7 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { useState, useEffect } from 'react';
 import { SearchBar } from 'react-native-elements';
-import Organization from '../components/Organization';
+import Speaker from '../components/Speaker';
 import Colors from '../constants/Colors.js';
 import * as firebase from 'firebase';
 import {
@@ -11,39 +11,35 @@ import {
   ActivityIndicator
 } from 'react-native';
 
-export default function Organizations({navigation}) {
-  const onOrgSelect = (org) => {
-    navigation.navigate('OrgBio', {
-      org: org
-    });
+export default function Speakers({navigation}) {
+  const onSpeakerSelect = (speaker) => {
+    navigation.navigate('SpeakerBio', {speaker: speaker});
   }
 
-  const [organizationList, setOrganizationList] = useState([]);
+  const [speakerList, setSpeakerList] = useState([]);
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    var query = firebase.database().ref('Organizations');
+    var query = firebase.database().ref('SpeakersList');
     query.once('value', function(snapshot) {
-        let tempOrganizationList = [];
+        let tempSpeakerList = [];
         snapshot.forEach(function(childSnapshot) {
-          tempOrganizationList.push(childSnapshot.val());
+          tempSpeakerList.push(childSnapshot.val());
         });
-        setOrganizationList(tempOrganizationList);
-        console.log(tempOrganizationList);
+        setSpeakerList(tempSpeakerList);
+        console.log(tempSpeakerList);
         setIsLoading(false);
     });
   },[]);
 
-  const OrganizationRender = organizationList.filter((organization, i) => {
-    var name = organization.Organization.trim().toLowerCase();
-    var services = organization.Services.trim().toLowerCase();
-    var shortDesc = organization.ShortDescription.trim().toLowerCase();
+  const SpeakerRender = speakerList.filter((speaker, i) => {
+    var name = speaker.Name.trim().toLowerCase();
     var searchClean = search.trim().toLowerCase();
-    return name.includes(searchClean) || services.includes(searchClean) || shortDesc.includes(searchClean);
-  }).map((organization, i) => {
+    return name.includes(searchClean);
+  }).map((speaker, i) => {
     return (
-      <Organization key={i} organization={organization} onOrgSelect={onOrgSelect} />
+      <Speaker key={i} speaker={speaker} onSpeakerSelect={onSpeakerSelect} />
     );
   });
   
@@ -53,12 +49,12 @@ export default function Organizations({navigation}) {
       <SearchBar
         round
         platform="ios"
-        placeholder='Search by name or keyword (i.e. food, housing)'
+        placeholder='Search'
         value={search}
         onChangeText={(text) => setSearch(text)}
       />
       <ScrollView>
-        {OrganizationRender}
+        {SpeakerRender}
       </ScrollView>
     </View>
   ) : (
