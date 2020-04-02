@@ -49,7 +49,7 @@ export default function Speakers({navigation}) {
       <SearchBar
         round
         platform="ios"
-        placeholder='Search keywords: housing, food, employment, ...)'
+        placeholder='Search'
         value={search}
         onChangeText={(text) => setSearch(text)}
       />

@@ -19,6 +19,9 @@ export default function Organization(Props) {
 				<Text style={styles.organization}>
 					{Props.organization.Organization}
 				</Text>
+				<Text style={styles.info}>
+					{Props.organization.ShortDescription}
+				</Text>
 			</View>
 			<Divider style={{backgroundColor: '#888888'}} />
 		</TouchableOpacity>
@@ -33,13 +36,20 @@ const styles = StyleSheet.create({
 	item: {
     	paddingVertical: 20,
 		display: 'flex',
-		flexDirection: 'row',
+		flexDirection: 'column',
 		justifyContent: 'center',
 	},
 	organization: {
     	fontSize: 16,
 		flexWrap: 'wrap',
 		flex: 5,
-		color: '#000000',
+		color: '#000000'
 	},
+	info: {
+		fontSize: 12,
+		flexWrap: 'wrap',
+		flex: 5,
+		color: '#000000',
+		paddingTop: 5
+	}
 });

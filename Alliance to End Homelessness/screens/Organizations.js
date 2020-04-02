@@ -37,9 +37,10 @@ export default function Organizations({navigation}) {
 
   const OrganizationRender = organizationList.filter((organization, i) => {
     var name = organization.Organization.trim().toLowerCase();
-    var topic = organization.Topic.trim().toLowerCase();
+    var services = organization.Services.trim().toLowerCase();
+    var shortDesc = organization.ShortDescription.trim().toLowerCase();
     var searchClean = search.trim().toLowerCase();
-    return name.includes(searchClean) || topic.includes(searchClean);
+    return name.includes(searchClean) || services.includes(searchClean) || shortDesc.includes(searchClean);
   }).map((organization, i) => {
     return (
       <Organization key={i} organization={organization} onOrgSelect={onOrgSelect} />

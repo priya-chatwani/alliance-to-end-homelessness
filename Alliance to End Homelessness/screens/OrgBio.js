@@ -51,6 +51,19 @@ function infoTitleWebsite(title, website) {
   )
 }
 
+function infoTitleEmail(title, email) {
+  return(
+    <View style={styles.infoItem}>
+      <Text style={styles.infoTitle}>
+        {title}
+      </Text>
+      <Text style={styles.linked} onPress={() => Linking.openURL('mailto:'+email)}>
+        {email}
+      </Text>
+    </View>
+  )
+}
+
 function infoTitle(title, info) {
   return(
     <View style={styles.infoItem}>
@@ -92,13 +105,14 @@ function OrgBio(Props) {
           />
         }
         <Text style={styles.description}>
-          {org.Description}
+          {org.LongDescription}
         </Text>
       </View>
       {/* {org.Contact.length != 0 ? infoTitleContact("Contact: ", org.Contact, onContactSelect) : null} */}
       {org.Website.length != 0 ? infoTitleWebsite("Website: ", org.Website) : null}
       {org.Phone.length != 0 ? infoTitlePhone("Phone: ", org.Phone) : null}
-      {org.Topic.length != 0 ? infoTitle("Services: ", org.Topic) : null}
+      {org.Email.length != 0 ? infoTitleEmail("Email: ", org.Email) : null}
+      {org.Services.length != 0 ? infoTitle("Keywords: ", org.Services) : null}
     </ScrollView>
   );
 }

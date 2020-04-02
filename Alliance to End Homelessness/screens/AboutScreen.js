@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    margin: 5
+    paddingHorizontal: 10
   },
   container2: {
     display: 'flex',
@@ -163,9 +163,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   infoText: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 3
+    fontSize: 18,
+    textAlign: 'center'
   },
   subTitle: {
     fontSize: 25,
