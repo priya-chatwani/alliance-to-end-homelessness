@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    paddingHorizontal: 10
+    padding: 10
   },
   container2: {
     display: 'flex',
