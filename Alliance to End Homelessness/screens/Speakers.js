@@ -1,58 +1,60 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { useState, useEffect } from 'react';
 import { SearchBar } from 'react-native-elements';
-
-import Article from '../components/Article';
+import Speaker from '../components/Speaker';
 import Colors from '../constants/Colors.js';
-
 import * as firebase from 'firebase';
 import {
   ScrollView,
+  StyleSheet,
   View,
-  ActivityIndicator,
-  StyleSheet
+  ActivityIndicator
 } from 'react-native';
 
-export default function articles() {
+export default function Speakers({navigation}) {
+  const onSpeakerSelect = (speaker) => {
+    navigation.navigate('SpeakerBio', {speaker: speaker});
+  }
 
-  const [articleList, setArticleList] = useState([]);
+  const [speakerList, setSpeakerList] = useState([]);
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    var query = firebase.database().ref('Articles');
+    var query = firebase.database().ref('SpeakersList');
     query.once('value', function(snapshot) {
-        let tempArticleList = [];
+        let tempSpeakerList = [];
         snapshot.forEach(function(childSnapshot) {
-          tempArticleList.push(childSnapshot.val());
+          tempSpeakerList.push(childSnapshot.val());
         });
-        setArticleList(tempArticleList)
+        setSpeakerList(tempSpeakerList);
+        console.log(tempSpeakerList);
         setIsLoading(false);
     });
   },[]);
 
-  const ArticleRenderer = articleList.filter((article, i) => {
-    var name = article.Title.trim().toLowerCase();
+  const SpeakerRender = speakerList.filter((speaker, i) => {
+    var name = speaker.Name.trim().toLowerCase();
     var searchClean = search.trim().toLowerCase();
     return name.includes(searchClean);
-    }).map((article, i) => {
-      return (
-        <Article key={i} article={article}/>
-      );
-    }
-  );
+  }).map((speaker, i) => {
+    return (
+      <Speaker key={i} speaker={speaker} onSpeakerSelect={onSpeakerSelect} />
+    );
+  });
+  
 
   return (!isLoading ? (
-    <View style={{ flex: 1}}>
+    <View style={{ flex: 1, backgroundColor: '#fff'}}>
       <SearchBar
         round
         platform="ios"
-        placeholder='Search here...'
+        placeholder='Search keywords: housing, food, employment, ...)'
         value={search}
         onChangeText={(text) => setSearch(text)}
       />
       <ScrollView>
-        {ArticleRenderer}
+        {SpeakerRender}
       </ScrollView>
     </View>
   ) : (
@@ -67,5 +69,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   }
 });

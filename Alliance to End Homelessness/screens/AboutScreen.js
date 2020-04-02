@@ -6,11 +6,14 @@ import * as firebase from 'firebase';
 import {
   Image,
   StyleSheet,
+  Linking,
   ScrollView,
   Text,
   View,
 } from 'react-native';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import { Button } from 'react-native-elements';
 import Colors from '../constants/Colors';
 
 
@@ -59,14 +62,24 @@ export default function AboutScreen({ navigation }) {
   }, []);
 
   return (
-
-    <ScrollView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>
-        Alliance To End Homelessness
+        YPO Alliance To End Homelessness
       </Text>
       <Text style={styles.infoText}>
-        Homelessness is a global problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. This conference will feature a range of experts from across the world including, policy makers, service providers, creative housing builders, and individuals that have experienced homelessness.
+        Homelessness is a global problem, and a humanitarian crisis. It is complex, and daunting, but it is not insurmountable. 
+        Visit our Facebook Group to engage with and learn about this issue from experts around the world, including policy makers, service providers, and creative housing builders.
       </Text>
+      {/* https://oblador.github.io/react-native-vector-icons/ */}
+      <Button style={styles.button}
+        icon={<Icon
+          name="facebook-official"
+          size={100}
+          color='#3b5998'
+        />}
+        type="clear"
+        onPress={() => Linking.openURL('https://www.facebook.com/groups/alliancetoendhomelessness')}
+			/>
       <Text style={styles.subTitle}> Organizers </Text>
       <View style={styles.row}>
         <View style={styles.column}>
@@ -74,26 +87,39 @@ export default function AboutScreen({ navigation }) {
             source={{ uri: imageUrl1 }}
             style= {styles.firstRow}
           />
-          <Text style={styles.name} onPress={() => onSpeakerSelect("Sandy Sigal")}> Sandy Sigal </Text>
+          <Text style={styles.name}> Sandy Sigal </Text>
           <Image
             source={{ uri: imageUrl2 }}
             style = {styles.firstRow}
           />
-          <Text style={styles.name} onPress={() => onSpeakerSelect("Debra Fine")}> Debra Fine </Text>
+          <Text style={styles.name}> Debra Fine </Text>
         </View>
         <View style={styles.column}>
         <Image
           source={{ uri: imageUrl3 }}
           style={styles.firstRow}
         />
-        <Text style={styles.name} onPress={() => onSpeakerSelect("Rosie Donahower")}> Rosie Donahower </Text>
+        <Text style={styles.name}> Rosie Donahower </Text>
         <Image
           source={{ uri: imageUrl4 }}
           style={styles.firstRow}
         />
-        <Text style={styles.name} onPress={() => onSpeakerSelect("Sandor Valner")}> Sandor Valner </Text>
+        <Text style={styles.name}> Sandor Valner </Text>
      </View>  
     </View>  
+    <View>
+      <Text style={styles.subTitle}> App Feedback </Text>
+      <Text style={styles.infoText}>Please share any feedback and suggestions. We'd love to hear from you!</Text>
+      <Button style={styles.button}
+        icon={<MaterialIcon
+          name="feedback"
+          size={100}
+          color='#3b5998'
+        />}
+        type="clear"
+        onPress={() => Linking.openURL('https://www.facebook.com/groups/alliancetoendhomelessness')}
+			/>
+    </View>
   </ScrollView> 
   );
 }
@@ -103,6 +129,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
+    margin: 5
   },
   container2: {
     display: 'flex',
@@ -113,7 +140,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginBottom: 30
+    marginBottom: 15
   },
   column: {
     flexDirection: 'column',
@@ -130,39 +157,29 @@ const styles = StyleSheet.create({
     borderRadius: 100/ 2,
   },
   title: {
-    fontSize: 30,
-    marginVertical: 30,
+    fontSize: 25,
     color: Colors.YPOBlue,
     textAlign: 'center',
     fontWeight: 'bold',
   },
   infoText: {
-    fontSize: 23,
+    fontSize: 20,
     textAlign: 'center',
+    margin: 3
   },
   subTitle: {
     fontSize: 25,
     color: Colors.YPOBlue,
     textAlign: 'center',
     fontWeight: 'bold',
-    marginTop: 15,
   },
   name: {
     fontSize: 15,
     color: Colors.YPOBlue,
-    textAlign: 'center',
-    textDecorationLine: 'underline',
+    textAlign: 'center'
   },
-  code: {
-    height: 40,
-    width: 300,
-    borderColor: 'gray',
-    paddingLeft: 5,
-    marginTop: 40,
-    borderWidth: 1,
-    borderRadius: 20,
+  button: {
+    marginBottom: 5,
+    borderRadius: 20
   },
-  buttonTitle: {
-    fontSize: 14,
-  }
 });

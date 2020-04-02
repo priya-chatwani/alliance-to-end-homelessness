@@ -12,7 +12,9 @@ import TabBarIcon from '../components/TabBarIcon';
 import AgendaScreen from '../screens/AgendaScreen';
 import AboutScreen from '../screens/AboutScreen';
 import DirectoryScreen from '../screens/DirectoryScreen';
+import Organizations from '../screens/Organizations';
 import EngagementScreen from '../screens/EngagementScreen';
+import Speakers from '../screens/Speakers';
 import SpeakerBio from '../screens/SpeakerBio';
 import OrgBio from '../screens/OrgBio';
 import Articles from '../screens/Articles';
@@ -53,44 +55,80 @@ AgendaStack.navigationOptions = {
   ),
 };
 
-AgendaStack.path = '';
+AgendaStack.pat = '';
 
-const DirectoryStack = createStackNavigator(
+const OrganizationsStack = createStackNavigator(
   {
-    Directory: DirectoryScreen,
+    Organizations: Organizations,
     OrgBio: OrgBio,
+  },
+  config
+);
+
+Organizations.navigationOptions = {
+  title: 'Organizations',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue
+  },
+  headerTitleStyle: {
+    padding: 10
+  },
+  headerTintColor: '#fff',
+}
+
+//https://infinitered.github.io/ionicons-version-3-search/
+OrganizationsStack.navigationOptions = {
+  tabBarLabel: 'Organizations',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'} />
+  ),
+};
+
+const SpeakersStack = createStackNavigator(
+  {
+    Speakers: Speakers,
     SpeakerBio: SpeakerBio,
   },
   config
 );
 
-DirectoryStack.navigationOptions = {
-  tabBarLabel: 'Directory',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-search' : 'md-search'} />
-  ),
-};
-
-DirectoryStack.path = '';
-
-class IconTitle extends React.Component {
-  render() {
-    return (
-      <View style={styles.header}>
-        <Text style={styles.title}>Articles</Text>
-        <TabBarIcon name={Platform.OS === 'ios' ? 'ios-open' : 'md-open'} />
-      </View>
-    );
-  }
-}
-
-Articles.navigationOptions = {
-  headerTitle: <IconTitle />,
+Speakers.navigationOptions = {
+  title: 'Speakers',
   headerStyle: {
-    backgroundColor: Colors.YPOBlue,
+    backgroundColor: Colors.YPOBlue
+  },
+  headerTitleStyle: {
+    padding: 10
   },
   headerTintColor: '#fff',
 }
+
+SpeakersStack.navigationOptions = {
+  tabBarLabel: 'Speakers',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'} />
+  ),
+};
+
+SpeakersStack.path = '';
+
+// const DirectoryStack = createStackNavigator(
+//   {
+//     Directory: DirectoryScreen,
+//     OrgBio: OrgBio,
+//     SpeakerBio: SpeakerBio,
+//   },
+//   config
+// );
+
+// DirectoryStack.navigationOptions = {
+//   tabBarLabel: 'Directory',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-search' : 'md-search'} />
+//   ),
+// };
+//
+// DirectoryStack.path = '';
 
 const AboutStack = createStackNavigator(
   {
@@ -99,7 +137,6 @@ const AboutStack = createStackNavigator(
   },
   config
  );
-
 
  AboutStack.navigationOptions = {
    tabBarLabel: 'About',
@@ -114,7 +151,6 @@ const AboutStack = createStackNavigator(
      backgroundColor: Colors.YPOBlue,
    },
    headerTintColor: '#fff',
-
  };
 
 AboutStack.path = '';
@@ -126,6 +162,34 @@ const EngagementStack = createStackNavigator(
   },
   config
 );
+
+const ArticlesStack = createStackNavigator(
+  {
+    Articles: Articles,
+  },
+  config
+);
+
+Articles.navigationOptions = {
+  title: 'Articles',
+  headerStyle: {
+    backgroundColor: Colors.YPOBlue
+  },
+  headerTitleStyle: {
+    padding: 10
+  },
+  headerTintColor: '#fff',
+}
+
+//https://infinitered.github.io/ionicons-version-3-search/
+ArticlesStack.navigationOptions = {
+  tabBarLabel: 'Articles',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-book' : 'md-book'} />
+  ),
+};
+
+ArticlesStack.path = '';
 
 EngagementScreen.navigationOptions = {
   title: 'Engagement',
@@ -145,8 +209,6 @@ EngagementStack.navigationOptions = {
   ),
 };
 
-EngagementStack.path = '';
-
 const tabOptions = {
   tabBarOptions: {
     style:{
@@ -157,29 +219,12 @@ const tabOptions = {
 }
 
 const tabNavigator = createBottomTabNavigator({
-  AgendaStack,
-  DirectoryStack,
-  EngagementStack,
+  OrganizationsStack,
+  SpeakersStack,
+  ArticlesStack,
   AboutStack
 }, tabOptions);
 
 tabNavigator.path = '';
 
 export default tabNavigator;
-
-const styles = StyleSheet.create({
-  header: {
-    display: 'flex',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  title: {
-    fontSize: 17,
-    fontWeight: '600',
-    color: '#fff',
-    marginHorizontal: 16,
-    textAlign: 'center'
-  }
-})

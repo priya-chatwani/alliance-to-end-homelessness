@@ -8,16 +8,16 @@ import {
 } from 'react-native';
 import Colors from '../constants/Colors.js';
 
-export default function Organization(Props) {
+export default function Speaker(Props) {
 	const onPress = () => {
-		Props.onOrgSelect(Props.organization);
+		Props.onSpeakerSelect(Props.speaker);
 	}
 
 	return (
 		<TouchableOpacity onPress={onPress} activeTint={.80} style={styles.container}>
 			<View style={styles.item}>
-				<Text style={styles.organization}>
-					{Props.organization.Organization}
+				<Text style={styles.speaker}>
+					{Props.speaker.Name}
 				</Text>
 			</View>
 			<Divider style={{backgroundColor: '#888888'}} />
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 	},
-	organization: {
+	speaker: {
     	fontSize: 16,
 		flexWrap: 'wrap',
 		flex: 5,

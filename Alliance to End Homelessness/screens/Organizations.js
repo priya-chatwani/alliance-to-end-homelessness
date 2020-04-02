@@ -11,7 +11,13 @@ import {
   ActivityIndicator
 } from 'react-native';
 
-export default function Organizations(Props) {
+export default function Organizations({navigation}) {
+  const onOrgSelect = (org) => {
+    navigation.navigate('OrgBio', {
+      org: org
+    });
+  }
+
   const [organizationList, setOrganizationList] = useState([]);
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -23,8 +29,9 @@ export default function Organizations(Props) {
         snapshot.forEach(function(childSnapshot) {
           tempOrganizationList.push(childSnapshot.val());
         });
-        setOrganizationList(tempOrganizationList)
-        setIsLoading(false)
+        setOrganizationList(tempOrganizationList);
+        console.log(tempOrganizationList);
+        setIsLoading(false);
     });
   },[]);
 
@@ -32,22 +39,20 @@ export default function Organizations(Props) {
     var name = organization.Organization.trim().toLowerCase();
     var topic = organization.Topic.trim().toLowerCase();
     var searchClean = search.trim().toLowerCase();
-
     return name.includes(searchClean) || topic.includes(searchClean);
   }).map((organization, i) => {
     return (
-      <Organization key={i} organization={organization} onOrgSelect={Props.onOrgSelect} />
+      <Organization key={i} organization={organization} onOrgSelect={onOrgSelect} />
     );
   });
-
-
+  
 
   return (!isLoading ? (
     <View style={{ flex: 1, backgroundColor: '#fff'}}>
       <SearchBar
         round
         platform="ios"
-        placeholder='Search here...'
+        placeholder='Search by name or keyword (i.e. food, housing)'
         value={search}
         onChangeText={(text) => setSearch(text)}
       />

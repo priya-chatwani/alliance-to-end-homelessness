@@ -12,18 +12,18 @@ import {
 } from 'react-native';
 import * as firebase from 'firebase';
 
-function infoTitleContact(title, contact, onContactSelect) {
-  return(
-    <View style={styles.infoItem}>
-      <Text style={styles.infoTitle}>
-        {title}
-      </Text>
-      <Text style={styles.linked} onPress={() => onContactSelect(contact)}>
-        {contact}
-      </Text>
-    </View>
-  )
-}
+// function infoTitleContact(title, contact, onContactSelect) {
+//   return(
+//     <View style={styles.infoItem}>
+//       <Text style={styles.infoTitle}>
+//         {title}
+//       </Text>
+//       <Text style={styles.linked} onPress={() => onContactSelect(contact)}>
+//         {contact}
+//       </Text>
+//     </View>
+//   )
+// }
 
 function infoTitlePhone(title, phoneNumber) {
   return(
@@ -69,7 +69,6 @@ function OrgBio(Props) {
   const org = Props.navigation.getParam('org');
   const nameWithoutSpace = org.Organization.replace(/\s+/g, '');
   const imagePath = "images/Organizations/" + nameWithoutSpace + ".jpg";
-  const onContactSelect = Props.navigation.getParam('onContactSelect');
 
   React.useEffect(() => {
     firebase.storage().ref().child(imagePath).getDownloadURL().then(data => {
@@ -96,7 +95,7 @@ function OrgBio(Props) {
           {org.Description}
         </Text>
       </View>
-      {org.Contact.length != 0 ? infoTitleContact("Contact: ", org.Contact, onContactSelect) : null}
+      {/* {org.Contact.length != 0 ? infoTitleContact("Contact: ", org.Contact, onContactSelect) : null} */}
       {org.Website.length != 0 ? infoTitleWebsite("Website: ", org.Website) : null}
       {org.Phone.length != 0 ? infoTitlePhone("Phone: ", org.Phone) : null}
       {org.Topic.length != 0 ? infoTitle("Services: ", org.Topic) : null}

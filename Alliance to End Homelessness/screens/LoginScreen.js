@@ -5,6 +5,8 @@ import {
   Image,
   Alert,
   ActivityIndicator,
+  TouchableWithoutFeedback,
+  Keyboard,
   StyleSheet,
   Text,
   TextInput,
@@ -49,26 +51,28 @@ export default function LoginScreen({ navigation }) {
 	};
 
 	return (
-		<View style={{flexDirection: 'column', flex:1}}>
-			<View style={styles.container}>
-				<Text style={styles.title}>
-					Alliance to End Homelessness
-				</Text>
-				<TextInput clearTextOnFocus={true} style={styles.code} onChangeText={(text) => setCode(text)} value={code} placeholder="access code" secureTextEntry={true}/>
-				<View style={styles.buttonContainer}>
-					<Button title={"Submit"} onPress={onPress} buttonStyle={styles.button} titleStyle={styles.buttonTitle} />
+		<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+			<View style={{flexDirection: 'column', flex:1}}>
+				<View style={styles.container}>
+					<Text style={styles.title}>
+						Alliance to End Homelessness
+					</Text>
+					<TextInput clearTextOnFocus={true} style={styles.code} onChangeText={(text) => setCode(text)} value={code} placeholder="access code" secureTextEntry={true}/>
+					<View style={styles.buttonContainer}>
+						<Button title={"Submit"} onPress={onPress} buttonStyle={styles.button} titleStyle={styles.buttonTitle} />
+					</View>
+				</View>
+				<View style={styles.logo}>
+					{imageUrl.length == 0 ?
+						<ActivityIndicator size={"large"} color={Colors.YPOBlue}/> :
+						<Image
+							source={{ uri: imageUrl }}
+							style={styles.image}
+						/>
+					}
 				</View>
 			</View>
-			<View style={styles.logo}>
-				{imageUrl.length == 0 ?
-					<ActivityIndicator size={"large"} color={Colors.YPOBlue}/> :
-					<Image
-						source={{ uri: imageUrl }}
-						style={styles.image}
-					/>
-				}
-			</View>
-		</View>
+		</TouchableWithoutFeedback>
 
 	);
 }

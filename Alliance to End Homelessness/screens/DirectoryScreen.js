@@ -16,6 +16,7 @@ function DirectoryTabNavigator(Props) {
       <Organizations onOrgSelect={Props.onOrgSelect} onContactSelect={Props.onContactSelect}/>
     );
   }
+  
   return (
     <DirectoryTab.Navigator
       initialRouteName = "Organizations"
