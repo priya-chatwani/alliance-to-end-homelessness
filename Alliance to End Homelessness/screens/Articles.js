@@ -33,8 +33,10 @@ export default function articles() {
 
   const ArticleRenderer = articleList.filter((article, i) => {
     var name = article.Title.trim().toLowerCase();
+    var publisher = article.Publisher.trim().toLowerCase();
+    var author = article.Author.trim().toLowerCase();
     var searchClean = search.trim().toLowerCase();
-    return name.includes(searchClean);
+    return name.includes(searchClean) || publisher.includes(searchClean) || author.includes(searchClean);
     }).map((article, i) => {
       return (
         <Article key={i} article={article}/>
@@ -47,7 +49,7 @@ export default function articles() {
       <SearchBar
         round
         platform="ios"
-        placeholder='Search here...'
+        placeholder='Search by title, author, publisher'
         value={search}
         onChangeText={(text) => setSearch(text)}
       />
