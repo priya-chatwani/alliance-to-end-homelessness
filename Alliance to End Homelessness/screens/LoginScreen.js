@@ -21,7 +21,7 @@ export default function LoginScreen({ navigation }) {
 
 	const [imageUrl, setImageUrl] = useState("");
 
-	const ref = firebase.storage().ref().child("images/white_icon.png");
+	const ref = firebase.storage().ref().child("images/icon.png");
 
 	useEffect(() => {
 		ref.getDownloadURL().then(data => {
@@ -85,9 +85,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-  	marginTop: 100,
-  	width: 100,
-  	height: 100,
+  	width: 200,
+	height: 200,
+	marginTop: 100,
+	marginBottom: 50  
   },
   buttonContainer:{
   	display: 'flex',
