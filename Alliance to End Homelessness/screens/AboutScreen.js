@@ -117,7 +117,7 @@ export default function AboutScreen({ navigation }) {
           color='#3b5998'
         />}
         type="clear"
-        onPress={() => Linking.openURL('https://www.facebook.com/groups/alliancetoendhomelessness')}
+        onPress={() => Linking.openURL('https://forms.gle/v7gD8HmtEyaPfHecA')}
 			/>
     </View>
   </ScrollView> 
@@ -164,7 +164,8 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 18,
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 5
   },
   subTitle: {
     fontSize: 25,
