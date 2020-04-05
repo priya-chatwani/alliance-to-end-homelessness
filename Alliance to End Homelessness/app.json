@@ -26,6 +26,10 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.appteam.endhomelessness"
+    },
+    "android": {
+      "package": "com.appteam.endhomelessness",
+      "versionCode": 1
     }
   }
 }
